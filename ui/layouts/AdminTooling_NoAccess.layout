@@ -1,0 +1,33 @@
+FrameWidgetClass : "{D275D67090CEC788}ui/layouts/AdminTooling_Players.layout" {
+ {
+  FrameWidgetClass "{5E86C6FADB3382A7}" {
+   Prefab "{5E86C6FADB3382A7}"
+   {
+    HorizontalLayoutWidgetClass "{5E87554916C513EF}" {
+     Prefab "{5E87554916C513EF}"
+     {
+      TextListboxWidgetClass "{5E875549F7457235}" {
+       Prefab "{5E875549F7457235}"
+       Name "playerslistbox"
+      }
+      TextWidgetClass "{5E875548BA683578}" {
+       Name "text"
+       Slot LayoutSlot "{5E875548BA683558}" {
+        VerticalAlign 1
+        Padding 100 0 100 0
+       }
+       Text "Welcome to Admin Tooling."\
+       "For support join https://flabby.dev/discord"\
+       "If this is the first time, open the settings file named,"\
+       "\"Admin_Tooling.json\" and edit as needed."
+       "Font Size" 30
+       "Min Font Size" 30
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,133 @@
+FrameWidgetClass : "{D275D67090CEC788}ui/layouts/AdminTooling_Players.layout" {
+ {
+  FrameWidgetClass "{5E86C6FADB3382A7}" {
+   Prefab "{5E86C6FADB3382A7}"
+   {
+    HorizontalLayoutWidgetClass "{5E87554916C513EF}" {
+     Prefab "{5E87554916C513EF}"
+     {
+      TextWidgetClass "{5E875548CE9F2D20}" {
+       Name "Text0"
+       Slot LayoutSlot "{5E875548CE9F2D01}" {
+        VerticalAlign 1
+       }
+       Text "Select a player"
+      }
+      VerticalLayoutWidgetClass "{5E875548292A7FB6}" {
+       Name "VerticalLayout0"
+       Slot LayoutSlot "{5E875548292A7F9D}" {
+        VerticalAlign 1
+        Padding 10 10 10 10
+       }
+       {
+        ButtonWidgetClass "{5E87554817738D86}" {
+         Name "KickButton"
+         Slot LayoutSlot "{5E87554817738E67}" {
+          Padding 5 5 5 5
+         }
+         components {
+          SCR_ButtonBaseComponent "{5E981D5A31B08B26}" {
+          }
+         }
+         {
+          TextWidgetClass "{5E8755480C9ED523}" {
+           Name "Text0"
+           Slot ButtonWidgetSlot "{5E8755480C9ED518}" {
+           }
+           Color 0 0 0 1
+           Text "Kick"
+          }
+         }
+        }
+        ButtonWidgetClass "{5E87554801F79A0A}" {
+         Name "Button1"
+         Slot LayoutSlot "{5E87554817738E67}" {
+          Padding 5 5 5 5
+         }
+         "Is Visible" 0
+         components {
+          SCR_ButtonBaseComponent "{5E981D5A718CA979}" {
+          }
+         }
+         {
+          TextWidgetClass "{5E87554801F79A09}" {
+           Name "Text0"
+           Slot ButtonWidgetSlot "{5E8755480C9ED518}" {
+           }
+           Color 0 0 0 1
+           Text "Ban"
+          }
+         }
+        }
+        ButtonWidgetClass "{5E8755486D708D0B}" {
+         Name "Button2"
+         Slot LayoutSlot "{5E87554817738E67}" {
+          Padding 5 5 5 5
+         }
+         components {
+          SCR_ButtonBaseComponent "{5E981D5A688680AD}" {
+          }
+         }
+         {
+          TextWidgetClass "{5E8755486D708D09}" {
+           Name "Text0"
+           Slot ButtonWidgetSlot "{5E8755480C9ED518}" {
+           }
+           Color 0 0 0 1
+           Text "Teleport to there"
+          }
+         }
+        }
+        ButtonWidgetClass "{5E87554866B8BE28}" {
+         Name "Button3"
+         Slot LayoutSlot "{5E87554817738E67}" {
+          Padding 5 5 5 5
+         }
+         components {
+          SCR_ButtonBaseComponent "{5E981D5A66A5314D}" {
+          }
+         }
+         {
+          TextWidgetClass "{5E87554866B8BE17}" {
+           Name "Text0"
+           Slot ButtonWidgetSlot "{5E8755480C9ED518}" {
+           }
+           Color 0 0 0 1
+           Text "Teleport to here"
+          }
+         }
+        }
+        ButtonWidgetClass "{5E87554BBD921FAA}" {
+         Name "Button4"
+         Slot LayoutSlot "{5E87554817738E67}" {
+          Padding 5 5 5 5
+         }
+         "Is Visible" 0
+         components {
+          SCR_ButtonBaseComponent "{5E981D5A645C9199}" {
+          }
+         }
+         {
+          TextWidgetClass "{5E87554BBD921FA9}" {
+           Name "Text0"
+           Slot ButtonWidgetSlot "{5E8755480C9ED518}" {
+           }
+           Color 0 0 0 1
+           Text "Spectate"
+          }
+         }
+        }
+       }
+      }
+      TextListboxWidgetClass "{5E875549F7457235}" {
+       Prefab "{5E875549F7457235}"
+       Slot LayoutSlot "{5E875549F7457212}" {
+       }
+       colums "Name;100;"
+      }
+     }
+    }
+   }
+  }
+ }
+}

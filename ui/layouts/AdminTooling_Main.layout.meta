@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{58CEE1E87FF62F5A}ui/layouts/AdminTooling_Main.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

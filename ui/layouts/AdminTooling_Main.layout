@@ -1,0 +1,139 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  FrameWidgetClass "{5E86C6FADB3382A7}" {
+   Name "Frame0"
+   Slot FrameWidgetSlot "{5E86C6FADB338287}" {
+    Anchor 0.1 0.15 0.9 0.85
+    PositionX 0
+    OffsetLeft 0
+    PositionY 6
+    OffsetTop 6
+    SizeX 0
+    OffsetRight 0
+    SizeY -4
+    OffsetBottom -2
+   }
+   {
+    ImageWidgetClass "{5E7063A0078AA010}" {
+     Name "Background"
+     Slot FrameWidgetSlot "{5E7063A0078AA0F5}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom -0
+     }
+     "Z Order" -1
+     Opacity 0.893
+     Color 0.275 0.168 0.051 1
+    }
+    HorizontalLayoutWidgetClass "{5E86C6FA23888E04}" {
+     Name "header0"
+     Slot FrameWidgetSlot "{5E86C6FA23888EFD}" {
+      Anchor 0 0 1 0.05
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 2
+      OffsetBottom -2
+     }
+     "Fill Origin" Center
+     {
+      ScaleWidgetClass "{5E86C6F9B8D0D644}" {
+       Name "title"
+       Slot LayoutSlot "{5E86C6F9B8D0D628}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+       }
+       {
+        RichTextWidgetClass "{5E6E75864E1E71DB}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
+         Name "TextTitle"
+         Slot AlignableSlot "{5E86C6F9AC792769}" {
+          HorizontalAlign 1
+          Padding 5 5 5 5
+         }
+         "Z Order" 2
+         Text "Admin Tooling"
+         "Font Size" 47
+         "Min Font Size" 40
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+    HorizontalLayoutWidgetClass "{5E86C6F9114D1F65}" {
+     Name "footer"
+     Slot FrameWidgetSlot "{5E86C6FA23888EFD}" {
+      Anchor 0 0.95 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY -2
+      OffsetTop -2
+      SizeX 0
+      OffsetRight 0
+      SizeY 2
+      OffsetBottom 0
+     }
+     "Fill Origin" Center
+     {
+      ScaleWidgetClass "{5E86C6F8B36CA793}" {
+       Name "escape"
+       Slot LayoutSlot "{5E86C6F8B36CA871}" {
+        Padding 5 0 5 0
+       }
+       "Z Order" 8
+       {
+        ButtonWidgetClass "{5E86C6FFFE791C0D}" : "{0114A06AD44D49BD}UI/layouts/WidgetLibrary/Buttons/DialogButtonCancel.layout" {
+         Name "Cancel0"
+         Slot AlignableSlot "{5E86C6FFFE791CF1}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+          Padding 0 0 0 0
+         }
+         components {
+          SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
+           m_sLabel "CLOSE"
+          }
+         }
+        }
+       }
+      }
+      ScaleWidgetClass "{5E86C6F9114D1F63}" {
+       Name "title"
+       Slot LayoutSlot "{5E86C6F9B8D0D628}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 10 0 0 0
+       }
+       {
+        RichTextWidgetClass "{5E86C6F9114D1F61}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
+         Name "TextTitle"
+         Slot AlignableSlot "{5E86C6F9AC792769}" {
+          HorizontalAlign 1
+          Padding 5 5 5 5
+         }
+         "Z Order" 2
+         Text "Admin Tooling"
+         "Font Size" 47
+         "Min Font Size" 40
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

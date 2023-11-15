@@ -1,0 +1,35 @@
+FrameWidgetClass : "{58CEE1E87FF62F5A}ui/layouts/AdminTooling_Main.layout" {
+ {
+  FrameWidgetClass "{5E86C6FADB3382A7}" {
+   Prefab "{5E86C6FADB3382A7}"
+   {
+    HorizontalLayoutWidgetClass "{5E87554916C513EF}" {
+     Name "body"
+     Slot FrameWidgetSlot "{5E87554916C513D8}" {
+      Anchor 0.05 0.1 0.95 0.95
+      PositionX 8
+      OffsetLeft 8
+      PositionY 12
+      OffsetTop 12
+      SizeX -16
+      OffsetRight 8
+      SizeY -22
+      OffsetBottom 10
+     }
+     {
+      TextListboxWidgetClass "{5E875549F7457235}" {
+       Name "playerslistbox"
+       Slot LayoutSlot "{5E875549F7457212}" {
+        Padding 5 5 5 5
+        SizeMode Fill
+       }
+       "title visible" 1
+       colums "Name;50;Group;50;"
+       lines 25
+      }
+     }
+    }
+   }
+  }
+ }
+}

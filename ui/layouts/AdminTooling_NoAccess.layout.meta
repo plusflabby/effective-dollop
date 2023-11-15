@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{60A01B753E2811E3}ui/layouts/AdminTooling_NoAccess.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}
