@@ -1,0 +1,137 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  VerticalLayoutWidgetClass "{5EE1632DC2F9E3E4}" {
+   Name "VerticalLayout1"
+   Slot FrameWidgetSlot "{5EE1632DC2F9E3CF}" {
+    Anchor 0.35 0 0.65 1
+    PositionX -0
+    OffsetLeft -0
+    PositionY 0
+    OffsetTop 0
+    SizeX -0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Fill Origin" Center
+   {
+    ScaleWidgetClass "{5EE163221FB770F8}" {
+     Name "Scale1"
+     Slot LayoutSlot {
+      SizeMode Fill
+     }
+     "Z Order" 1
+     Clipping True
+     {
+      FrameWidgetClass "{5EE163220F477DD4}" : "{24AB584C8785A0B2}ui/layouts/Player Profile/Profile Header.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE163220F477DC7}" {
+       }
+      }
+     }
+    }
+    ScaleWidgetClass "{5EE1632215F6FE7F}" {
+     Name "Scale3"
+     Slot LayoutSlot {
+      SizeMode Fill
+     }
+     "Z Order" 1
+     Clipping True
+     {
+      FrameWidgetClass "{5EE163220AE8B3AA}" : "{C65B80C4095AAF75}ui/layouts/Player Profile/Player Bio.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE163220AE8B381}" {
+       }
+      }
+     }
+    }
+   }
+  }
+  VerticalLayoutWidgetClass "{5EE1632DAA9B08F6}" {
+   Name "VerticalLayout0"
+   Slot FrameWidgetSlot "{5EE1632DAA9B0961}" {
+    Anchor 0.7 0.05 0.95 0.95
+    PositionX 0
+    OffsetLeft 0
+    PositionY -6
+    OffsetTop -6
+    SizeX 0
+    OffsetRight -0
+    SizeY 4
+    OffsetBottom 2
+   }
+   "Fill Origin" Center
+   {
+    ScaleWidgetClass "{5EE1632322DBFAB0}" {
+     Name "Scale0"
+     Slot LayoutSlot {
+      SizeMode Fill
+     }
+     "Z Order" 1
+     Clipping True
+     {
+      FrameWidgetClass "{5EE163230E845BB0}" : "{027FD702DEE65452}ui/layouts/Player Profile/Player Progression.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE1632212488973}" {
+       }
+      }
+     }
+    }
+    ScaleWidgetClass "{5EE1632215530D9A}" {
+     Name "Scale4"
+     Slot LayoutSlot {
+      SizeMode Fill
+     }
+     "Z Order" 1
+     Clipping True
+     {
+      FrameWidgetClass "{5EE1632209557A6D}" : "{E73080584BE3EDCD}ui/layouts/Player Profile/Customization Options.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE1632209557A50}" {
+       }
+      }
+     }
+    }
+    ScaleWidgetClass "{5EE1632218C3712E}" {
+     Name "Scale2"
+     Slot LayoutSlot {
+      SizeMode Fill
+     }
+     "Z Order" 1
+     Clipping True
+     {
+      VerticalLayoutWidgetClass "{5EE163220D7F8DA7}" : "{E18032393BDE7F0B}ui/layouts/Player Profile/Privacy Settings.layout" {
+       Name "VerticalLayout00"
+       Slot AlignableSlot "{5EE163220D7F8EFA}" {
+       }
+      }
+     }
+    }
+   }
+  }
+  ScaleWidgetClass "{5EE16322144396C6}" {
+   Name "Scale5"
+   Slot FrameWidgetSlot "{5EE1632322DBFA91}" {
+    Anchor 0 0 1 1
+    PositionX 72
+    OffsetLeft 72
+    PositionY 376
+    OffsetTop 376
+    SizeX -1336
+    OffsetRight 1264
+    SizeY -760
+    OffsetBottom 384
+   }
+   "Z Order" 1
+   Clipping True
+   {
+    FrameWidgetClass "{5EE1632207F63585}" : "{757F2A028919D8C8}ui/layouts/Player Profile/Community Engagement.layout" {
+     Name "rootFrame0"
+     Slot AlignableSlot "{5EE1632207F63676}" {
+     }
+    }
+   }
+  }
+ }
+}

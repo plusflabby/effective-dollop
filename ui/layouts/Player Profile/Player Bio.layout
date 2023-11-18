@@ -1,0 +1,116 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  VerticalLayoutWidgetClass "{5EE107F7A8C24DDC}" {
+   Name "VerticalLayout0"
+   Slot FrameWidgetSlot "{5EE107F7A8C24E28}" {
+    Anchor 0.1 0 0.9 1
+    PositionX 8
+    OffsetLeft 8
+    PositionY 8
+    OffsetTop 8
+    SizeX -16
+    OffsetRight 8
+    SizeY -16
+    OffsetBottom 8
+   }
+   {
+    HorizontalLayoutWidgetClass "{5EE107F7EAEA9691}" {
+     Name "HorizontalLayout0"
+     Slot LayoutSlot "{5EE107F7EAEA97F7}" {
+      HorizontalAlign 1
+      VerticalAlign 0
+     }
+     {
+      TextWidgetClass "{5EE107F7E7B4FD6A}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE107F79056AEA0}" {
+        HorizontalAlign 1
+        VerticalAlign 0
+        Padding 0 0 10 0
+       }
+       Text "Nick-name |"
+      }
+      TextWidgetClass "{5EE107F7E38CA0F2}" {
+       Name "Text1"
+       Slot LayoutSlot "{5EE107F79056AEA0}" {
+        HorizontalAlign 1
+        VerticalAlign 0
+       }
+       Text "NICKNAME"
+      }
+     }
+    }
+    HorizontalLayoutWidgetClass "{5EE107F728039E5C}" {
+     Name "HorizontalLayout1"
+     Slot LayoutSlot "{5EE107F7EAEA97F7}" {
+      HorizontalAlign 1
+      VerticalAlign 0
+     }
+     {
+      TextWidgetClass "{5EE107F728039E5B}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE107F79056AEA0}" {
+        HorizontalAlign 1
+        VerticalAlign 0
+        Padding 0 0 10 0
+       }
+       Text "Birth-Location |"
+      }
+      TextWidgetClass "{5EE107F728039E5A}" {
+       Name "Text1"
+       Slot LayoutSlot "{5EE107F79056AEA0}" {
+        HorizontalAlign 1
+        VerticalAlign 0
+       }
+       Text "BIRTH LOCATION"
+      }
+     }
+    }
+    HorizontalLayoutWidgetClass "{5EE107F764CEC2ED}" {
+     Name "HorizontalLayout2"
+     Slot LayoutSlot "{5EE107F7EAEA97F7}" {
+      HorizontalAlign 1
+      VerticalAlign 0
+     }
+     {
+      TextWidgetClass "{5EE107F764CEC2EC}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE107F79056AEA0}" {
+        HorizontalAlign 1
+        VerticalAlign 0
+        Padding 0 0 10 0
+       }
+       Text "Quote |"
+      }
+      TextWidgetClass "{5EE107F764CEC2EB}" {
+       Name "Text1"
+       Slot LayoutSlot "{5EE107F79056AEA0}" {
+        HorizontalAlign 1
+        VerticalAlign 0
+       }
+       Text "QUOTE"
+      }
+     }
+    }
+    TextWidgetClass "{5EE107F0AB547F91}" {
+     Name "Text0"
+     Slot LayoutSlot "{5EE107F0AB544073}" {
+      HorizontalAlign 1
+      VerticalAlign 0
+     }
+     Text "| Player Written Description |"
+    }
+    RichTextWidgetClass "{5EE107F7451D50C4}" {
+     Name "RichText0"
+     Slot LayoutSlot {
+      HorizontalAlign 1
+      VerticalAlign 1
+     }
+     Text "DESCRIPTION"
+     Wrap 1
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,66 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  HorizontalLayoutWidgetClass "{5EE107F03A049C61}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE107F03A049C4D}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE107F0338A2187}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE107F0338A227A}" {
+      Padding 5 5 5 5
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE107F02174F628}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE107F02174F6F7}" {
+        HorizontalAlign 1
+        Padding 20 20 20 20
+       }
+       Text "Comments"
+      }
+      TextListboxWidgetClass "{5EE107F1BDFEC465}" {
+       Name "TextListbox0"
+       Slot LayoutSlot "{5EE107F1BDFEC444}" {
+       }
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE107F03521D334}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE107F03521D32C}" {
+      Padding 5 5 5 5
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE107F01FEFCAC3}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE107F01FEFCAA2}" {
+        HorizontalAlign 1
+        Padding 20 20 20 20
+       }
+       Text "Feedback"
+      }
+      TextListboxWidgetClass "{5EE107F051837A6A}" {
+       Name "TextListbox0"
+       Slot LayoutSlot "{5EE107F051837ACE}" {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  VerticalLayoutWidgetClass "{5EE163253AC90677}" {
+   Name "VerticalLayout0"
+   Slot FrameWidgetSlot "{5EE163253AC906DB}" {
+    Anchor 0.15 0 0.85 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   "Fill Origin" Center
+   {
+    TextWidgetClass "{5EE163256AA2850D}" {
+     Name "Text0"
+     Slot LayoutSlot "{5EE163256AA285E8}" {
+      HorizontalAlign 1
+     }
+     Text "Background-Color-Scheme-Theme"
+    }
+    ThreeStateCheckboxWidgetClass "{5EE16325245F462A}" {
+     Name "ThreeStateCheckbox0"
+     Slot LayoutSlot "{5EE16325245F46F2}" {
+     }
+     "Is Visible" 0
+     text "test"
+     checked crossed
+    }
+    CheckBoxWidgetClass "{5EE163251F62AD9E}" {
+     Name "CheckBox0"
+     Slot LayoutSlot "{5EE163251F62AE70}" {
+      HorizontalAlign 1
+     }
+     text "Dark"
+    }
+    CheckBoxWidgetClass "{5EE163254679D0ED}" {
+     Name "CheckBox1"
+     Slot LayoutSlot "{5EE163254679D0CE}" {
+      HorizontalAlign 1
+     }
+     text "Blue"
+    }
+    CheckBoxWidgetClass "{5EE16324B69F82DA}" {
+     Name "CheckBox2"
+     Slot LayoutSlot "{5EE16324B69F82BD}" {
+      HorizontalAlign 1
+     }
+     text "Grey/Gray"
+    }
+   }
+  }
+ }
+}

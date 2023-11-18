@@ -1,0 +1,38 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  HorizontalLayoutWidgetClass "{5EE107F6F4913CA4}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE107F6F4913C8E}" {
+    Anchor 0 0.15 1 0.85
+    PositionX -0
+    OffsetLeft -0
+    PositionY -2
+    OffsetTop -2
+    SizeX 0
+    OffsetRight -0
+    SizeY -4
+    OffsetBottom 6
+   }
+   "Fill Origin" Center
+   {
+    ImageWidgetClass "{5EE107F6D014A05F}" {
+     Name "Image0"
+     Slot LayoutSlot "{5EE107F6D014A035}" {
+     }
+     Texture "{AC7E384FF9D8016A}Common/Textures/placeholder_BCR.edds"
+     Size 256 256
+    }
+    RichTextWidgetClass "{5EE107F6148903CC}" {
+     Name "RichText0"
+     Slot LayoutSlot "{5EE107F6148903AA}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+      Padding 20 0 20 0
+     }
+     Text "USERNAME"
+    }
+   }
+  }
+ }
+}

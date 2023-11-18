@@ -1,0 +1,20 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ProgressBarWidgetClass "{5EE16325877A3CB1}" {
+   Name "ProgressBar0"
+   Slot FrameWidgetSlot "{5EE16325877A3C96}" {
+    Anchor 0 0.2 1 0.8
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY -8
+    OffsetBottom 8
+   }
+   "Z Order" 31
+  }
+ }
+}
