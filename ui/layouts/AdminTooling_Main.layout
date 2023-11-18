@@ -23,10 +23,10 @@ FrameWidgetClass {
       OffsetLeft 0
       PositionY 0
       OffsetTop 0
-      SizeX -0
+      SizeX 0
       OffsetRight 0
       SizeY 0
-      OffsetBottom -0
+      OffsetBottom 0
      }
      "Z Order" -1
      Opacity 0.893
@@ -99,11 +99,6 @@ FrameWidgetClass {
           HorizontalAlign 3
           VerticalAlign 3
           Padding 0 0 0 0
-         }
-         components {
-          SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
-           m_sLabel "CLOSE"
-          }
          }
         }
        }
