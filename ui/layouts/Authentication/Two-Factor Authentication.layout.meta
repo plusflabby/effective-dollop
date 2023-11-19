@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{E8435B567ECEB1D7}ui/layouts/Authentication/Two-Factor Authentication.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,86 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  WindowWidgetClass "{5EE6DB7639094812}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{5EE6DB76390948F7}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   components {
+    SCR_CollapseWidgetComponent "{5EE6DB7656B48030}" {
+     m_eCollapseDirection UP
+    }
+   }
+   style debugUI
+   Title "OAuth and Social Login Integration"
+   "Title Visible" 1
+   "Title Size" 44
+   {
+    HorizontalLayoutWidgetClass "{5EE6DB75DFD5EEC8}" {
+     Name "HorizontalLayout0"
+     Slot FrameWidgetSlot "{5EE6DB74BE422C8A}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 1920
+      OffsetRight -1920
+      SizeY 112
+      OffsetBottom -112
+     }
+     "Fill Origin" Center
+     {
+      ButtonWidgetClass "{5EE6DB75D215E016}" {
+       Name "Button1"
+       Slot LayoutSlot "{5EE6DB75D215E0F6}" {
+        Padding 4 4 4 4
+        SizeMode Fill
+       }
+       style debugUI
+       {
+        TextWidgetClass "{5EE6DB752EB138DC}" {
+         Name "Text0"
+         Slot ButtonWidgetSlot "{5EE6DB752EB13923}" {
+          Padding 2 2 2 2
+         }
+         Text "Google"
+         "Font Size" 36
+         "Min Font Size" 36
+        }
+       }
+      }
+      ButtonWidgetClass "{5EE6DB75D3FF338B}" {
+       Name "Button0"
+       Slot LayoutSlot "{5EE6DB75D3FF3469}" {
+        Padding 4 4 4 4
+        SizeMode Fill
+       }
+       style debugUI
+       {
+        TextWidgetClass "{5EE6DB752CBD50F7}" {
+         Name "Text0"
+         Slot ButtonWidgetSlot "{5EE6DB752CBD50E9}" {
+          Padding 2 2 2 2
+         }
+         Text "Steam"
+         "Font Size" 36
+         "Min Font Size" 36
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

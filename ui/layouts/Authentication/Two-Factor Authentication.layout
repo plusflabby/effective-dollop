@@ -1,0 +1,40 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  EditBoxWidgetClass "{5EE6DB7695F7683A}" {
+   Name "EditBox0"
+   Slot FrameWidgetSlot "{5EE6DB7695F76812}" {
+    Anchor 0 0.05 1 0.15
+    PositionX 0
+    OffsetLeft 0
+    PositionY 2
+    OffsetTop 2
+    SizeX 0
+    OffsetRight 0
+    SizeY -4
+    OffsetBottom 2
+   }
+   "Use placeholder text" 1
+   "Placeholder text" "CODE"
+   "Obfuscation character" "*"
+   "Horizontal alignment" Center
+  }
+  TextWidgetClass "{5EE6DB76B8F0B663}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE6DB76B8F0B643}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight -0
+    SizeY 2
+    OffsetBottom -2
+   }
+   Text "Two-Factor Authentication"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

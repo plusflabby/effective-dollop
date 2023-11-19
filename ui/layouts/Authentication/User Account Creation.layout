@@ -1,0 +1,116 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  HorizontalLayoutWidgetClass "{5EE6D9B8303B8DCF}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE6D9B8303B8DA5}" {
+    Anchor 0 0.05 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 2
+    OffsetTop 2
+    SizeX 0
+    OffsetRight 0
+    SizeY -2
+    OffsetBottom 0
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE6D9B81F5B525C}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE6D9B81F5B523D}" {
+      Padding 5 5 5 5
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE6D9B81B4F99D1}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE6D9B81B4F9A24}" {
+       }
+       Text "Username"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      EditBoxWidgetClass "{5EE6DB4BB33BE99C}" {
+       Name "EditBox0"
+       Slot LayoutSlot "{5EE6DB4BB33BEA67}" {
+       }
+       "Use placeholder text" 1
+       "Placeholder text" "USERNAME"
+       "Horizontal alignment" Center
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE6D9B821B07765}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE6D9B821B07743}" {
+      Padding 5 5 5 5
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE6DB4B8542800D}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE6D9B81B4F9A24}" {
+       }
+       Text "Password"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      EditBoxWidgetClass "{5EE6DB4B854280C2}" {
+       Name "EditBox0"
+       Slot LayoutSlot "{5EE6DB4BB33BEA67}" {
+       }
+       "Use placeholder text" 1
+       "Placeholder text" "PASSWORD"
+       "Obfuscation character" "*"
+       "Horizontal alignment" Center
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE6DB4B36D40CDC}" {
+     Name "VerticalLayout2"
+     Slot LayoutSlot "{5EE6D9B821B07743}" {
+      Padding 5 5 5 5
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE6DB4B36D40CDB}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE6D9B81B4F9A24}" {
+       }
+       Text "Email"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      EditBoxWidgetClass "{5EE6DB4B36D40CDA}" {
+       Name "EditBox0"
+       Slot LayoutSlot "{5EE6DB4BB33BEA67}" {
+       }
+       "Use placeholder text" 1
+       "Placeholder text" "EMAIL"
+       "Obfuscation character" "*"
+       "Horizontal alignment" Center
+      }
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE6D9B8E817A8A2}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE6D9B8E817A9F4}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 2
+    OffsetBottom -2
+   }
+   Text "User Account Creation"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

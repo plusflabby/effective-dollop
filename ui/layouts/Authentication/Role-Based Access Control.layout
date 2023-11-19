@@ -1,0 +1,92 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ Title "Role-Based Access Control"
+ "Title Visible" 1
+ {
+  HorizontalLayoutWidgetClass "{5EE6DB0A6C77CF83}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE6DB0A6C77D07A}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 1920
+    OffsetRight -1920
+    SizeY 1044
+    OffsetBottom -1044
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE6DB09CD084763}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE6DB09CD08474F}" {
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE6DB09C9E7D03C}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE6DB09C9E7D01E}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 3 3 3 3
+       }
+       Text "Privileges"
+      }
+      TextListboxWidgetClass "{5EE6DB0A71390DBC}" {
+       Name "Panel1"
+       Slot LayoutSlot {
+        Padding 6 6 6 6
+        SizeMode Fill
+       }
+       components {
+        SCR_ListBoxComponent "{5EE6DB0B108BAA50}" {
+         m_sElementLayout "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout"
+         m_bMultiSelection 1
+        }
+        SCR_ListBoxElementComponent "{5EE6DB0B07EC3F3F}" {
+        }
+       }
+       lines 0
+       "highlight row" 1
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE6DB093EEC4FC6}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE6DB09CD08474F}" {
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE6DB093EEC4FC4}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE6DB09C9E7D01E}" {
+        HorizontalAlign 1
+        VerticalAlign 1
+        Padding 3 3 3 3
+       }
+       Text "Roles"
+      }
+      TextListboxWidgetClass "{5EE6DB7447BAA675}" {
+       Name "Panel0"
+       Slot LayoutSlot {
+        Padding 6 6 6 6
+        SizeMode Fill
+       }
+       components {
+        SCR_ListBoxComponent "{5EE6DB0B108BAA50}" {
+         m_sElementLayout "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout"
+         m_bMultiSelection 1
+        }
+        SCR_ListBoxElementComponent "{5EE6DB0B07EC3F3F}" {
+        }
+       }
+       lines 0
+       "highlight row" 1
+      }
+     }
+    }
+   }
+  }
+ }
+}

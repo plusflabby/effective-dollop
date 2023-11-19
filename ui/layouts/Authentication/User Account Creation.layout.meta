@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{24A1B0FA0A51FD6A}ui/layouts/Authentication/User Account Creation.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}
