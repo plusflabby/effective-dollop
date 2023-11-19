@@ -1,0 +1,54 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  HorizontalLayoutWidgetClass "{5EE624346B3938A1}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE624346B393883}" {
+    Anchor 0 0.6 1 0.65
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 2
+    OffsetBottom -2
+   }
+   "Fill Origin" Center
+   {
+    EditBoxWidgetClass "{5EE624344031BFDC}" {
+     Name "EditBox0"
+     Slot LayoutSlot "{5EE624344031BFBC}" {
+      Padding 4 4 4 4
+     }
+     text "RECIPIENT EMAIL"
+    }
+    XComboBoxWidgetClass "{5EE624345B27B15B}" {
+     Name "XComboBox0"
+     Slot LayoutSlot "{5EE624345B27B13A}" {
+     }
+     items {
+      "Daily" "Weekly" "Monthly"
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE6243421991FBB}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE6243421991F9F}" {
+    Anchor 0 0.5 1 0.55
+    PositionX 0
+    OffsetLeft 0
+    PositionY -4
+    OffsetTop -4
+    SizeX 0
+    OffsetRight 0
+    SizeY 6
+    OffsetBottom -2
+   }
+   Text "Scheduled Reports"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

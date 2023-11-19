@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{2C3F38162A15BFCB}ui/layouts/Reporting System/Visualization and Analysis.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

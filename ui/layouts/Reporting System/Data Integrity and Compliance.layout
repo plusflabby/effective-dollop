@@ -1,0 +1,95 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  RichTextWidgetClass "{5EE624309665D584}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE624309665D66D}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Text "Compliance Statement"\
+   ""\
+   "[Your Project/Admin Tool Name] is committed to operating in compliance with applicable laws, regulations, and industry standards to ensure the protection of user data and maintain the integrity of our services. We prioritize the following areas of compliance:"\
+   ""\
+   "Data Protection and Privacy"\
+   "We are committed to safeguarding the privacy and confidentiality of user information in accordance with applicable data protection laws and regulations. Our practices adhere to principles of data minimization, security, and transparency in handling user data."\
+   ""\
+   "Security Measures"\
+   "We employ robust security measures to protect user data from unauthorized access, alteration, disclosure, or destruction. Our security protocols aim to ensure the integrity, confidentiality, and availability of data within our systems."\
+   ""\
+   "User Consent and Rights"\
+   "We respect user rights regarding data privacy and consent. Users have the right to access, rectify, or delete their personal information as permitted by applicable laws. We strive to obtain explicit consent for data collection and processing where required."\
+   ""\
+   "Compliance with Applicable Laws"\
+   "[Your Project/Admin Tool Name] adheres to relevant laws and regulations concerning data protection, privacy, and user rights. We continually monitor legal developments to adapt our practices and policies accordingly."\
+   ""\
+   "Transparency and Accountability"\
+   "We are committed to maintaining transparency in our data practices and being accountable for the handling of user data. Our policies and practices aim to ensure users are informed about how their data is collected, used, and shared."\
+   ""\
+   "Continuous Improvement"\
+   "We are dedicated to continually improving our practices, policies, and technical measures to meet evolving compliance requirements and best practices in data protection and user privacy."\
+   ""\
+   "[Your Project/Admin Tool Name] views compliance as an ongoing commitment and strives to uphold these principles to ensure the trust and confidence of our users and stakeholders."\
+   ""\
+   ""\
+   "**Privacy Policy**"\
+   ""\
+   "This Privacy Policy governs the manner in which [Your Project/Admin Tool Name] collects, uses, maintains, and discloses information collected from users (each, a \"User\") of the [Your Project/Admin Tool URL] website (the \"Site\")."\
+   ""\
+   "### Personal Identification Information"\
+   ""\
+   "We may collect personal identification information from Users in various ways, including but not limited to when Users visit our Site, register on the Site, and in connection with other activities, services, features, or resources we make available on our Site. Users may be asked for, as appropriate, name, email address, username, and other relevant information."\
+   ""\
+   "We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personally identification information, except that it may prevent them from engaging in certain Site-related activities."\
+   ""\
+   "### Non-Personal Identification Information"\
+   ""\
+   "We may collect non-personal identification information about Users whenever they interact with our Site. Non-personal identification information may include the browser name, the type of computer or device, and technical information about Users' means of connection to our Site, such as the operating system and the Internet service providers utilized, and other similar information."\
+   ""\
+   "### How We Use Collected Information"\
+   ""\
+   "[Your Project/Admin Tool Name] may collect and use Users' personal information for the following purposes:"\
+   ""\
+   "- **To Provide and Improve Services:** Information you provide helps us operate, maintain, and enhance the functionality of the admin tool and associated services."\
+   "- **To Personalize User Experience:** We may use information in aggregate to understand how our Users as a group use the services and resources provided on our Site."\
+   "- **To Send Periodic Emails:** We may use the email address to send User information and updates pertaining to their activities, including notifications, announcements, and responses to inquiries."\
+   ""\
+   "### How We Protect Your Information"\
+   ""\
+   "We employ appropriate data collection, storage, and processing practices, as well as security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information, username, password, transaction information, and data stored on our Site."\
+   ""\
+   "### Sharing Your Personal Information"\
+   ""\
+   "We do not sell, trade, or rent Users' personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners, trusted affiliates, and advertisers for the purposes outlined above."\
+   ""\
+   "### Compliance with Children's Online Privacy Protection Act"\
+   ""\
+   "Protecting the privacy of young children is especially important. For that reason, we never collect or maintain information on our Site from those we actually know are under 13, and no part of our website is structured to attract anyone under 13."\
+   ""\
+   "### Changes to This Privacy Policy"\
+   ""\
+   "[Your Project/Admin Tool Name] has the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications."\
+   ""\
+   "### Your Acceptance of These Terms"\
+   ""\
+   "By using this Site, you signify your acceptance of this policy. If you do not agree"
+   "Font Size" 15
+   "Min Font Size" 12
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+   "No Localization" 1
+   FontProperties FontProperties "{5EE624303011914F}" {
+    Bold 1
+   }
+   "Line Spacing" 1
+  }
+ }
+}

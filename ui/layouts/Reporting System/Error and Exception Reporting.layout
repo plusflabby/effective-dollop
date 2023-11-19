@@ -1,0 +1,45 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  RichTextWidgetClass "{5EE62431CC3FB9E0}" {
+   Name "RichText0"
+   Slot FrameWidgetSlot "{5EE62431CC3FB9B6}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom -0
+   }
+   Text "Statement on Facilitating Troubleshooting and Resolution"\
+   ""\
+   "At [Your Project/Admin Tool Name], we are dedicated to providing comprehensive and detailed information to facilitate efficient troubleshooting and resolution of issues encountered within our platform. We understand the importance of timely and effective resolution to ensure a seamless user experience. To achieve this goal:"\
+   ""\
+   "Detailed Error Reporting"\
+   "We have implemented robust error reporting mechanisms that capture and log detailed information about encountered errors, exceptions, or system malfunctions. These reports include relevant context, error codes, timestamps, and associated data to provide a comprehensive understanding of the issue."\
+   ""\
+   "Logging of Events and Actions"\
+   "Our system maintains thorough logs of events, actions, and interactions within the platform. These logs are designed to capture relevant information, such as user activities, system events, and transactional data, aiding in the identification and resolution of discrepancies or issues."\
+   ""\
+   "Diagnostic Tools and Data"\
+   "We offer diagnostic tools and utilities that allow administrators or support personnel to gather additional diagnostic data or system information when troubleshooting issues. These tools enable the collection of pertinent data needed for in-depth analysis and problem-solving."\
+   ""\
+   "Collaboration and Support Channels"\
+   "Our support team is equipped with the necessary resources and expertise to analyze reported issues. We encourage open communication and collaboration with users, enabling them to provide specific details and context related to encountered problems, thereby expediting the resolution process."\
+   ""\
+   "Continuous Improvement"\
+   "We are committed to continuous improvement in our troubleshooting and resolution processes. Feedback from users and stakeholders is crucial in identifying areas for enhancement. We actively incorporate user insights and experiences to refine our troubleshooting strategies and tools."\
+   ""\
+   "Transparency and Communication"\
+   "We believe in transparency in our troubleshooting efforts. We keep users informed about the status of reported issues, progress in resolution, and any steps taken to mitigate problems, ensuring a transparent and collaborative approach to issue resolution."\
+   ""\
+   "At [Your Project/Admin Tool Name], our commitment to providing detailed information and robust troubleshooting resources aims to minimize downtime, enhance user satisfaction, and maintain the reliability and integrity of our platform."
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+  }
+ }
+}

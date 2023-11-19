@@ -1,0 +1,106 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  HorizontalLayoutWidgetClass "{5EE624323BEDBDC9}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE624323BEDBD80}" {
+    Anchor 0 0.55 1 0.8
+    PositionX 0
+    OffsetLeft 0
+    PositionY -2
+    OffsetTop -2
+    SizeX 0
+    OffsetRight -0
+    SizeY 2
+    OffsetBottom 0
+    SizeToContent 1
+   }
+   "Fill Origin" Center
+   {
+    ButtonWidgetClass "{5EE62432153CD71B}" {
+     Name "Button0"
+     Slot LayoutSlot "{5EE62432153CD7FB}" {
+      Padding 3 3 3 3
+     }
+     {
+      TextWidgetClass "{5EE624326A2F5404}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE624326A2F54FA}" {
+        Padding 5 5 5 5
+       }
+       Color 0 0 0 1
+       Text "Chart"
+      }
+     }
+    }
+    ButtonWidgetClass "{5EE62432548566CE}" {
+     Name "Button1"
+     Slot LayoutSlot "{5EE62432153CD7FB}" {
+      Padding 3 3 3 3
+     }
+     {
+      TextWidgetClass "{5EE62432548566CD}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE624326A2F54FA}" {
+        Padding 5 5 5 5
+       }
+       Color 0 0 0 1
+       Text "Graph"
+      }
+     }
+    }
+    ButtonWidgetClass "{5EE624324E95D5D3}" {
+     Name "Button2"
+     Slot LayoutSlot "{5EE62432153CD7FB}" {
+      Padding 3 3 3 3
+     }
+     {
+      TextWidgetClass "{5EE624324E95D5D1}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE624326A2F54FA}" {
+        Padding 5 5 5 5
+       }
+       Color 0 0 0 1
+       Text "Table"
+      }
+     }
+    }
+   }
+  }
+  WindowWidgetClass "{5EE62435D7F3CB60}" {
+   Name "SmartPanel0"
+   Slot FrameWidgetSlot "{5EE62435D7F3CB42}" {
+    Anchor 0 0.5 1 0.8
+    PositionX 0
+    OffsetLeft 0
+    PositionY -4
+    OffsetTop -4
+    SizeX 0
+    OffsetRight 0
+    SizeY 4
+    OffsetBottom 0
+   }
+   Color 0 0 0 1
+   "Title Visible" 1
+   "Title Size" 43.6
+   "Is Collapsible" 0
+  }
+  TextWidgetClass "{5EE62435813F7AD0}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE62435813F7AB7}" {
+    Anchor 0 0.5 1 0.55
+    PositionX 0
+    OffsetLeft 0
+    PositionY -4
+    OffsetTop -4
+    SizeX 0
+    OffsetRight 0
+    SizeY 2
+    OffsetBottom 2
+   }
+   Text "Visualization and Analysis"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

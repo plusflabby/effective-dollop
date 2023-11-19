@@ -1,0 +1,198 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{5EE6243F71418562}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE6243F71418544}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 2
+    OffsetBottom -2
+   }
+   Text "Logging and Reporting"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  HorizontalLayoutWidgetClass "{5EE6243C995102C0}" {
+   Name "HorizontalLayout2"
+   Slot FrameWidgetSlot "{5EE6243C995102A5}" {
+    Anchor 0 0.15 1 0.4
+    PositionX 0
+    OffsetLeft 0
+    PositionY -2
+    OffsetTop -2
+    SizeX 0
+    OffsetRight 0
+    SizeY -0
+    OffsetBottom 2
+   }
+   Clipping False
+   "Fill Origin" Center
+   {
+    ScaleWidgetClass "{5EE6243C8485C64C}" {
+     Name "Scale0"
+     Slot LayoutSlot "{5EE6243C8485C62F}" {
+      SizeMode Fill
+     }
+     "Scale Mode" "Scale to fill"
+     {
+      FrameWidgetClass "{5EE6243EF8925634}" : "{2C3F38162A15BFCB}ui/layouts/Reporting System/Visualization and Analysis.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE6243EF8925638}" {
+       }
+      }
+     }
+    }
+    ScaleWidgetClass "{5EE6243CF6FDA5CC}" {
+     Name "Scale1"
+     Slot LayoutSlot "{5EE6243C8485C62F}" {
+      SizeMode Fill
+     }
+     "Scale Mode" "Scale to fill"
+     {
+      FrameWidgetClass "{5EE6243CE6E24DEC}" : "{F54DA38D4E63C598}ui/layouts/Reporting System/Scheduled Reports.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE6243CE6E24DDD}" {
+       }
+       {
+        HorizontalLayoutWidgetClass "{5EE624346B3938A1}" {
+         Prefab "{5EE624346B3938A1}"
+         Name "HorizontalLayout0"
+         Slot FrameWidgetSlot "{5EE624346B393883}" {
+          SizeToContent 1
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  HorizontalLayoutWidgetClass "{5EE6243CBAE07AEF}" {
+   Name "HorizontalLayout1"
+   Slot FrameWidgetSlot "{5EE6243CBAE07AC3}" {
+    Anchor 0 0.45 1 0.7
+    PositionX 0
+    OffsetLeft 0
+    PositionY 2
+    OffsetTop 2
+    SizeX 0
+    OffsetRight 0
+    SizeY -6
+    OffsetBottom 4
+   }
+   "Fill Origin" Center
+   {
+    ScaleWidgetClass "{5EE6243CF5182349}" {
+     Name "Scale1"
+     Slot LayoutSlot "{5EE6243C8485C62F}" {
+      SizeMode Fill
+     }
+     "Scale Mode" "Scale to fill"
+     {
+      FrameWidgetClass "{5EE6243CEA10FD88}" : "{B25F37298373354C}ui/layouts/Reporting System/Report Generation.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE6243CEA10FE7A}" {
+       }
+       {
+        TextWidgetClass "{5EE624362E749F93}" {
+         Prefab "{5EE624362E749F93}"
+         Slot FrameWidgetSlot "{5EE624362E74E074}" {
+          SizeToContent 1
+         }
+        }
+       }
+      }
+     }
+    }
+    ScaleWidgetClass "{5EE6243CF4F91465}" {
+     Name "Scale0"
+     Slot LayoutSlot "{5EE6243C8485C62F}" {
+      SizeMode Fill
+     }
+     "Scale Mode" "Scale to fill"
+     {
+      FrameWidgetClass "{5EE6243CEE731CA3}" : "{E16AEE03AB930790}ui/layouts/Reporting System/Customizable Reporting.layout" {
+       Name "rootFrame0"
+       Slot AlignableSlot "{5EE6243CEE731C9D}" {
+       }
+       {
+        TextWidgetClass "{5EE6243708790EE7}" {
+         Prefab "{5EE6243708790EE7}"
+         Slot FrameWidgetSlot "{5EE6243708790ED2}" {
+          SizeToContent 1
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  HorizontalLayoutWidgetClass "{5EE62431593F58F0}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE62431593F58E9}" {
+    Anchor 0 0.8 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY -0
+    OffsetTop -0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+    SizeToContent 1
+   }
+   "Fill Origin" Center
+   {
+    FrameWidgetClass "{5EE6243EBC56834F}" : "{1C6D4987F4D71C18}ui/layouts/Reporting System/Data Integrity and Compliance.layout" {
+     Name "rootFrame0"
+     Slot LayoutSlot {
+     }
+     "Is Visible" 0
+    }
+    FrameWidgetClass "{5EE6243E868382C0}" : "{24A545866352970F}ui/layouts/Reporting System/Error and Exception Reporting.layout" {
+     Name "rootFrame1"
+     Slot LayoutSlot {
+     }
+     "Is Visible" 0
+    }
+    ScrollLayoutWidgetClass "{5EE6243E11D12B96}" {
+     Name "ScrollLayout0"
+     Slot LayoutSlot {
+      Padding 3 3 3 3
+      SizeMode Fill
+     }
+     {
+      RichTextWidgetClass "{5EE624309665D584}" {
+       Prefab "{5EE624309665D584}"
+       Name "Text0"
+       Slot AlignableSlot "{5EE6243FA8336149}" {
+       }
+      }
+     }
+    }
+    ScrollLayoutWidgetClass "{5EE6243F9328660E}" {
+     Name "ScrollLayout1"
+     Slot LayoutSlot "{5EE6243F932866ED}" {
+      Padding 3 3 3 3
+      SizeMode Fill
+     }
+     {
+      RichTextWidgetClass "{5EE62431CC3FB9E0}" {
+       Prefab "{5EE62431CC3FB9E0}"
+       Name "RichText0"
+       Slot AlignableSlot "{5EE6243F8AF45AD8}" {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

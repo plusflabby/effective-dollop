@@ -1,0 +1,47 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  HorizontalLayoutWidgetClass "{5EE62434BC138E4C}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE62434BC138E00}" {
+    Anchor 0 0.4 1 0.6
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -4
+    OffsetRight 4
+    SizeY -2
+    OffsetBottom 2
+   }
+   "Fill Origin" Center
+   {
+    XComboBoxWidgetClass "{5EE624375B190333}" {
+     Name "XComboBox0"
+     Slot LayoutSlot {
+     }
+     items {
+      "1 Hour" "2 Hours" "4 Hours" "6 Hours" "12 Hours" "1 Day" "1 Week"
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE6243708790EE7}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE6243708790ED2}" {
+    Anchor 0 0.3 1 0.4
+    PositionX 0
+    OffsetLeft 0
+    PositionY -4
+    OffsetTop -4
+    SizeX 0
+    OffsetRight 0
+    SizeY 4
+    OffsetBottom 0
+   }
+   Text "Customizable Reporting"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

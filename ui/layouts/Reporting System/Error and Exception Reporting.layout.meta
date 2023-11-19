@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{24A545866352970F}ui/layouts/Reporting System/Error and Exception Reporting.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,106 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  HorizontalLayoutWidgetClass "{5EE624364B73D12C}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE624364B73D107}" {
+    Anchor 0 0.45 1 0.6
+    PositionX 0
+    OffsetLeft 0
+    PositionY -6
+    OffsetTop -6
+    SizeX 0
+    OffsetRight -0
+    SizeY 6
+    OffsetBottom 0
+   }
+   "Fill Origin" Center
+   {
+    ButtonWidgetClass "{5EE62437B799935C}" {
+     Name "Button0"
+     Slot LayoutSlot "{5EE62437B7999338}" {
+      Padding 5 5 5 5
+     }
+     {
+      TextWidgetClass "{5EE62437ACBA89F5}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE62437ACBA89EB}" {
+        Padding 7 7 7 7
+       }
+       Color 0 0 0 1
+       Text "Activity Summaries"
+      }
+     }
+    }
+    ButtonWidgetClass "{5EE6243786F9EE85}" {
+     Name "Button1"
+     Slot LayoutSlot "{5EE62437B7999338}" {
+      Padding 5 5 5 5
+     }
+     {
+      TextWidgetClass "{5EE6243786F9EE84}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE62437ACBA89EB}" {
+        Padding 7 7 7 7
+       }
+       Color 0 0 0 1
+       Text "Server Performance Analytics"
+      }
+     }
+    }
+    ButtonWidgetClass "{5EE62437ED4C1950}" {
+     Name "Button2"
+     Slot LayoutSlot "{5EE62437B7999338}" {
+      Padding 5 5 5 5
+     }
+     {
+      TextWidgetClass "{5EE62437ED4C195F}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE62437ACBA89EB}" {
+        Padding 7 7 7 7
+       }
+       Color 0 0 0 1
+       Text "Historical Event Logs"
+      }
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE624367551506C}" {
+   Name "Text1"
+   Slot FrameWidgetSlot "{5EE624367551504C}" {
+    Anchor 0.4 0.35 0.55 0.4
+    PositionX 0
+    OffsetLeft 0
+    PositionY -2
+    OffsetTop -2
+    SizeX 0
+    OffsetRight -0
+    SizeY 2
+    OffsetBottom -0
+   }
+   Text "Will save to profile"
+   "Font Size" 20
+   "Min Font Size" 20
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  TextWidgetClass "{5EE624362E749F93}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE624362E74E074}" {
+    Anchor 0.4 0.3 0.55 0.35
+    PositionX 0
+    OffsetLeft 0
+    PositionY -4
+    OffsetTop -4
+    SizeX -0
+    OffsetRight 0
+    SizeY 2
+    OffsetBottom 2
+   }
+   Text "Report Generation"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}
