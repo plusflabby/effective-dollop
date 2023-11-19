@@ -42,6 +42,7 @@ For support or troubleshooting, you can reach out to the following resources:
   - [plusflabby@gmail.com](mailto:plusflabby@gmail.com)
   - [gregery.donahue@gmail.com](mailto:gregery.donahue@gmail.com)
 - Steam Community: [plusflabby's Steam Profile](https://steamcommunity.com/id/plusflabby)
+- Discord: [http://flabby.dev/discord](http://flabby.dev/discord)
 
 ## Contributing
 
