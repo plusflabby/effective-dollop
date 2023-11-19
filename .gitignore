@@ -1,6 +1,9 @@
 # Arma Reforger Core
 core
 
+# Arma Reforger Project's resourceDatabase.rdb
+resourceDatabase.rdb
+
 # Prerequisites
 *.d
 
