@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{7A97E4B70AAD03A5}ui/layouts/Messaging and Notifications/Notifications System/Maintenance and Downtime Alerts.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

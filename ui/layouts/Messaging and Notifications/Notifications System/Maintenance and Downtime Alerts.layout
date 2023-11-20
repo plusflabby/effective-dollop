@@ -1,0 +1,182 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ "Title Visible" 1
+ "Title Size" 50
+ {
+  TextWidgetClass "{5EE816F3C1D899FF}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE77582B8209F9A}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY -56
+    OffsetTop -56
+    SizeX 0
+    OffsetRight 0
+    SizeY 4.8
+    OffsetBottom 51.2
+   }
+   Text "Maintenance and Downtime Alerts"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  HorizontalLayoutWidgetClass "{5EE816F3C1D899FD}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE77580E945BF5C}" {
+    Anchor 0 0.05 1 0.3
+    PositionX 0
+    OffsetLeft 0
+    PositionY -48.2
+    OffsetTop -48.2
+    SizeX 0
+    OffsetRight 0
+    SizeY 19
+    OffsetBottom 29.2
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE816F3C1D899FC}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE77580C33D3E9C}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+      Padding 7 7 7 7
+     }
+     "Fill Origin" Center
+     {
+      TextWidgetClass "{5EE816F3C1D899FB}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE775803F2EEBC7}" {
+        Padding 3 3 3 3
+       }
+       Text "maintenance"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      HorizontalLayoutWidgetClass "{5EE816F3C1D899FA}" {
+       Name "HorizontalLayout0"
+       Slot LayoutSlot "{5EE7758221AEE49D}" {
+       }
+       "Fill Origin" Center
+       {
+        CheckBoxWidgetClass "{5EE816F3C1D899F8}" {
+         Name "CheckBox0"
+         Slot LayoutSlot "{5EE775805FBF3365}" {
+         }
+         text "in-game"
+         checked 1
+        }
+        CheckBoxWidgetClass "{5EE816F3C1D899E7}" {
+         Name "CheckBox1"
+         Slot LayoutSlot "{5EE775804DF54B5E}" {
+         }
+         text "emails"
+        }
+        CheckBoxWidgetClass "{5EE816F3C1D899E6}" {
+         Name "CheckBox2"
+         Slot LayoutSlot "{5EE775804A1795A5}" {
+         }
+         text "push"
+        }
+       }
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE816F3C1D899E5}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE77580C33D3E9C}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+      Padding 7 7 7 7
+     }
+     "Fill Origin" Center
+     {
+      TextWidgetClass "{5EE816F3C1D899E4}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE775803F2EEBC7}" {
+        Padding 3 3 3 3
+       }
+       Text "downtime"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      HorizontalLayoutWidgetClass "{5EE816F3C1D899E3}" {
+       Name "HorizontalLayout0"
+       Slot LayoutSlot "{5EE7758235DF25AD}" {
+       }
+       "Fill Origin" Center
+       {
+        CheckBoxWidgetClass "{5EE816F3C1D899E2}" {
+         Name "CheckBox0"
+         Slot LayoutSlot "{5EE775805FBF3365}" {
+         }
+         text "in-game"
+         checked 1
+        }
+        CheckBoxWidgetClass "{5EE816F3C1D899E1}" {
+         Name "CheckBox1"
+         Slot LayoutSlot "{5EE775804DF54B5E}" {
+         }
+         text "emails"
+        }
+        CheckBoxWidgetClass "{5EE816F3C1D899E0}" {
+         Name "CheckBox2"
+         Slot LayoutSlot "{5EE775804A1795A5}" {
+         }
+         text "push"
+        }
+       }
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE816F3C1D899EF}" {
+     Name "VerticalLayout2"
+     Slot LayoutSlot "{5EE77580C33D3E9C}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+      Padding 7 7 7 7
+     }
+     "Fill Origin" Center
+     {
+      TextWidgetClass "{5EE816F3C1D899ED}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE775803F2EEBC7}" {
+        Padding 3 3 3 3
+       }
+       Text "updates"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      HorizontalLayoutWidgetClass "{5EE816F3C1D899EC}" {
+       Name "HorizontalLayout0"
+       Slot LayoutSlot "{5EE77582C2C41EAD}" {
+       }
+       "Fill Origin" Center
+       {
+        CheckBoxWidgetClass "{5EE816F3C1D899EB}" {
+         Name "CheckBox0"
+         Slot LayoutSlot "{5EE775805FBF3365}" {
+         }
+         text "in-game"
+         checked 1
+        }
+        CheckBoxWidgetClass "{5EE816F3C1D899EA}" {
+         Name "CheckBox1"
+         Slot LayoutSlot "{5EE775804DF54B5E}" {
+         }
+         text "emails"
+        }
+        CheckBoxWidgetClass "{5EE816F3C1D899E9}" {
+         Name "CheckBox2"
+         Slot LayoutSlot "{5EE775804A1795A5}" {
+         }
+         text "push"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

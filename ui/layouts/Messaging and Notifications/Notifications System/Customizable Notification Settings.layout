@@ -1,0 +1,111 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ "Title Visible" 1
+ "Title Size" 50
+ {
+  TextWidgetClass "{5EE816F37B7A2478}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE816F37B7A2450}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY -56
+    OffsetTop -56
+    SizeX 0
+    OffsetRight 0
+    SizeY 4.8
+    OffsetBottom 51.2
+   }
+   Text "Customizable Notification Settings"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  HorizontalLayoutWidgetClass "{5EE816F3526796E8}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE816F3526796C2}" {
+    Anchor 0 0 0 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 1920
+    OffsetRight -1920
+    SizeY 1024
+    OffsetBottom -1024
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE816F2AD7BD9BC}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE816F2AD7BD984}" {
+      SizeMode Fill
+     }
+     {
+      TextWidgetClass "{5EE816F2A8B33EF3}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE816F2A8B33F55}" {
+        Padding 5 5 5 5
+       }
+       Text "frequency"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      XComboBoxWidgetClass "{5EE816F2B7CBABD4}" {
+       Name "XComboBox0"
+       Slot LayoutSlot "{5EE816F2B7CBABB2}" {
+       }
+       items {
+        "FREQUENCY"
+       }
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE816F2CD5344DF}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE816F2CD5344B2}" {
+      SizeMode Fill
+     }
+     "Fill Origin" Center
+     {
+      WindowWidgetClass "{5EE816F2379B0CA8}" : "{904AE6D7131EC5B4}ui/layouts/Messaging and Notifications/Notifications System/Social Interactions.layout" {
+       Name "rootFrame5"
+       Slot LayoutSlot "{5EE816F2379B0C87}" {
+        SizeMode Fill
+       }
+      }
+      WindowWidgetClass "{5EE816F2397A5588}" : "{3CE82BAB78BFD328}ui/layouts/Messaging and Notifications/Notifications System/New Content or Mod Releases.layout" {
+       Name "rootFrame4"
+       Slot LayoutSlot "{5EE816F2397A5667}" {
+        SizeMode Fill
+       }
+      }
+      WindowWidgetClass "{5EE816F23AC61DFA}" : "{7A97E4B70AAD03A5}ui/layouts/Messaging and Notifications/Notifications System/Maintenance and Downtime Alerts.layout" {
+       Name "rootFrame3"
+       Slot LayoutSlot "{5EE816F23AC61DE8}" {
+        SizeMode Fill
+       }
+      }
+      WindowWidgetClass "{5EE816F23CAF5280}" : "{5D4FAEF3ED2351ED}ui/layouts/Messaging and Notifications/Notifications System/Feedback and Community Engagement.layout" {
+       Name "rootFrame2"
+       Slot LayoutSlot "{5EE816F23CAF5371}" {
+        SizeMode Fill
+       }
+      }
+      WindowWidgetClass "{5EE816F2C44A6893}" : "{A98B0748C574B0D2}ui/layouts/Messaging and Notifications/Notifications System/Achievement Unlocks and Progress.layout" {
+       Name "rootFrame0"
+       Slot LayoutSlot "{5EE816F2C44A690B}" {
+        SizeMode Fill
+       }
+      }
+      WindowWidgetClass "{5EE816F23EA197B8}" : "{45A4227122CC866A}ui/layouts/Messaging and Notifications/Notifications System/Event Notifications.layout" {
+       Name "rootFrame1"
+       Slot LayoutSlot "{5EE816F23EA1979C}" {
+        SizeMode Fill
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

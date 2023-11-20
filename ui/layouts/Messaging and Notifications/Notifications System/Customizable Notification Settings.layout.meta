@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{185F119E4E3C7274}ui/layouts/Messaging and Notifications/Notifications System/Customizable Notification Settings.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

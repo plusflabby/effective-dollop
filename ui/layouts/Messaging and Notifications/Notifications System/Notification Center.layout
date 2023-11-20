@@ -1,0 +1,92 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ "Title Visible" 1
+ "Title Size" 50
+ {
+  TextListboxWidgetClass "{5EE8D0855DA56C42}" {
+   Name "TextListbox0"
+   Slot FrameWidgetSlot "{5EE8D0855DA56C26}" {
+    Anchor 0 0.15 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY -49.6
+    OffsetTop -49.6
+    SizeX 0
+    OffsetRight 0
+    SizeY 49.6
+    OffsetBottom 0
+   }
+  }
+  HorizontalLayoutWidgetClass "{5EE8D085CAF6865D}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE8D085CAF68636}" {
+    Anchor 0 0.05 1 0.1
+    PositionX 0
+    OffsetLeft 0
+    PositionY -54
+    OffsetTop -54
+    SizeX 0
+    OffsetRight 0
+    SizeY 7.6
+    OffsetBottom 46.4
+   }
+   "Fill Origin" Center
+   {
+    ButtonWidgetClass "{5EE8D085320156C0}" {
+     Name "Button0"
+     Slot LayoutSlot "{5EE8D085320156A6}" {
+      Padding 4 4 4 4
+     }
+     "Is Enabled" 0
+     {
+      TextWidgetClass "{5EE8D0852FFD69F5}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE8D0852FFD69EE}" {
+        Padding 5 5 5 5
+       }
+       Color 0 0 0 1
+       Text "All"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+     }
+    }
+    ButtonWidgetClass "{5EE8D0850E740757}" {
+     Name "Button1"
+     Slot LayoutSlot "{5EE8D085320156A6}" {
+      Padding 4 4 4 4
+     }
+     {
+      TextWidgetClass "{5EE8D0850E740756}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EE8D0852FFD69EE}" {
+        Padding 5 5 5 5
+       }
+       Color 0 0 0 1
+       Text "Important"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE8D085E49D6BA2}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE8D085E49D6B99}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY -56
+    OffsetTop -56
+    SizeX 0
+    OffsetRight 0
+    SizeY 4.8
+    OffsetBottom 51.2
+   }
+   Text "Notification Center"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

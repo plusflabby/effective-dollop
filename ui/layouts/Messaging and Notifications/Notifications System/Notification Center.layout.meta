@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A6D44329155B51B2}ui/layouts/Messaging and Notifications/Notifications System/Notification Center.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

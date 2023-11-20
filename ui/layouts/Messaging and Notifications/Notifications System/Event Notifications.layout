@@ -1,0 +1,148 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ "Title Visible" 1
+ {
+  HorizontalLayoutWidgetClass "{5EE77580E945BF65}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE77580E945BF5C}" {
+    Anchor 0 0.05 1 0.3
+    PositionX 0
+    OffsetLeft 0
+    PositionY -48.2
+    OffsetTop -48.2
+    SizeX 0
+    OffsetRight -0
+    SizeY 19
+    OffsetBottom 29.2
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE77580C33D3ECE}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE77580C33D3E9C}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+      Padding 4 4 4 4
+     }
+     {
+      TextWidgetClass "{5EE775803F2EEBF8}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE775803F2EEBC7}" {
+        Padding 3 3 3 3
+       }
+       Text "missions"
+      }
+      CheckBoxWidgetClass "{5EE775804A1795C2}" {
+       Name "CheckBox2"
+       Slot LayoutSlot "{5EE775804A1795A5}" {
+       }
+       text "push"
+      }
+      CheckBoxWidgetClass "{5EE775804DF54B71}" {
+       Name "CheckBox1"
+       Slot LayoutSlot "{5EE775804DF54B5E}" {
+       }
+       text "emails"
+      }
+      CheckBoxWidgetClass "{5EE775805FBF3294}" {
+       Name "CheckBox0"
+       Slot LayoutSlot "{5EE775805FBF3365}" {
+       }
+       text "in-game"
+       checked 1
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE77583AC4E4A9F}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE77580C33D3E9C}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+      Padding 4 4 4 4
+     }
+     {
+      TextWidgetClass "{5EE77583AC4E4A9E}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE775803F2EEBC7}" {
+        Padding 3 3 3 3
+       }
+       Text "events"
+      }
+      CheckBoxWidgetClass "{5EE77583AC4E4A9C}" {
+       Name "CheckBox2"
+       Slot LayoutSlot "{5EE775804A1795A5}" {
+       }
+       text "push"
+      }
+      CheckBoxWidgetClass "{5EE77583AC4E4A9B}" {
+       Name "CheckBox1"
+       Slot LayoutSlot "{5EE775804DF54B5E}" {
+       }
+       text "emails"
+      }
+      CheckBoxWidgetClass "{5EE77583AC4E4A9A}" {
+       Name "CheckBox0"
+       Slot LayoutSlot "{5EE775805FBF3365}" {
+       }
+       text "in-game"
+       checked 1
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE77583A6E9A2A4}" {
+     Name "VerticalLayout2"
+     Slot LayoutSlot "{5EE77580C33D3E9C}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+      Padding 4 4 4 4
+     }
+     {
+      TextWidgetClass "{5EE77583A6E9A2A3}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE775803F2EEBC7}" {
+        Padding 3 3 3 3
+       }
+       Text "server updates"
+      }
+      CheckBoxWidgetClass "{5EE77583A6E9A2A2}" {
+       Name "CheckBox2"
+       Slot LayoutSlot "{5EE775804A1795A5}" {
+       }
+       text "push"
+      }
+      CheckBoxWidgetClass "{5EE77583A6E9A2A1}" {
+       Name "CheckBox1"
+       Slot LayoutSlot "{5EE775804DF54B5E}" {
+       }
+       text "emails"
+      }
+      CheckBoxWidgetClass "{5EE77583A6E9A2A0}" {
+       Name "CheckBox0"
+       Slot LayoutSlot "{5EE775805FBF3365}" {
+       }
+       text "in-game"
+       checked 1
+      }
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE77581568A543D}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE77581568A5406}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY -36
+    OffsetTop -36
+    SizeX 0
+    OffsetRight 0
+    SizeY -12.2
+    OffsetBottom 48.2
+   }
+   Text "Event Notifications"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

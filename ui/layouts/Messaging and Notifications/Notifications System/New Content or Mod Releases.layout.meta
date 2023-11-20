@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{3CE82BAB78BFD328}ui/layouts/Messaging and Notifications/Notifications System/New Content or Mod Releases.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}
