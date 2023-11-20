@@ -1,0 +1,92 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ "Title Visible" 1
+ "Title Size" 50
+ {
+  HorizontalLayoutWidgetClass "{5EE938DFD7FDC7AC}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE938DFD7FDC783}" {
+    Anchor 0 0.05 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY -54
+    OffsetTop -54
+    SizeX 0
+    OffsetRight -0
+    SizeY 54
+    OffsetBottom 0
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE938DEB5BFC690}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE938DEB5BFC7F9}" {
+      Padding 5 5 5 5
+     }
+     "Fill Origin" Center
+     {
+      TextWidgetClass "{5EE938DEB2242518}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE938DEB22425E7}" {
+       }
+       Text "Suspicious Activities"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      CheckBoxWidgetClass "{5EE938DEFB24D235}" {
+       Name "CheckBox0"
+       Slot LayoutSlot "{5EE938DEFB24D217}" {
+       }
+       text "true"
+       checked 1
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE938DF3CDF14B0}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE938DF3CDF149D}" {
+      Padding 5 5 5 5
+     }
+     "Fill Origin" Center
+     {
+      TextWidgetClass "{5EE938DF148C3D0B}" {
+       Name "Text1"
+       Slot LayoutSlot "{5EE938DF148C3DEC}" {
+       }
+       Text "After # of attempts"
+       "Font Size" 20
+       "Min Font Size" 20
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      EditBoxWidgetClass "{5EE938DF72B8B51A}" {
+       Name "EditBox0"
+       Slot LayoutSlot "{5EE938DF72B8B5E7}" {
+       }
+       "Use placeholder text" 1
+       "Placeholder text" "NUMBER"
+       "Horizontal alignment" Center
+      }
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE938DFFD006947}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE938DFFD006915}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY -56
+    OffsetTop -56
+    SizeX 0
+    OffsetRight 0
+    SizeY 4.8
+    OffsetBottom 51.2
+   }
+   Text "Account Lockout Policies"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

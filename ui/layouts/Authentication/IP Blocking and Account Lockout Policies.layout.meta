@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{11582745AE77D619}ui/layouts/Authentication/IP Blocking and Account Lockout Policies.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

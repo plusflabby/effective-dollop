@@ -1,0 +1,106 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ "Title Visible" 1
+ "Title Size" 50
+ {
+  HorizontalLayoutWidgetClass "{5EE938DE7E0EC4A7}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5EE938DE7E0EC491}" {
+    Anchor 0 0.05 1 1
+    PositionX -0
+    OffsetLeft -0
+    PositionY -54
+    OffsetTop -54
+    SizeX 0
+    OffsetRight 0
+    SizeY 54
+    OffsetBottom 0
+   }
+   "Fill Origin" Center
+   {
+    VerticalLayoutWidgetClass "{5EE938DE79D5B9E2}" {
+     Name "VerticalLayout0"
+     Slot LayoutSlot "{5EE938DE79D5B9C6}" {
+      Padding 5 5 5 5
+     }
+     "Fill Origin" Center
+     {
+      TextWidgetClass "{5EE938DE7682E70A}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE938DE7682E7E8}" {
+       }
+       Text "privacy settings"
+      }
+      CheckBoxWidgetClass "{5EE938DDFA0B229C}" {
+       Name "CheckBox0"
+       Slot LayoutSlot "{5EE938DDBEA44611}" {
+       }
+       text "Analytics"
+       checked 1
+      }
+      CheckBoxWidgetClass "{5EE938DDF0EA1AC3}" {
+       Name "CheckBox1"
+       Slot LayoutSlot "{5EE938DDBEA44611}" {
+       }
+       text "Reports"
+       checked 1
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5EE938DE55CA9753}" {
+     Name "VerticalLayout1"
+     Slot LayoutSlot "{5EE938DE79D5B9C6}" {
+      Padding 5 5 5 5
+     }
+     "Fill Origin" Center
+     {
+      TextWidgetClass "{5EE938DE55CA9DE5}" {
+       Name "Text0"
+       Slot LayoutSlot "{5EE938DE7682E7E8}" {
+       }
+       Text "shared information"
+      }
+      CheckBoxWidgetClass "{5EE938DDBEA4466C}" {
+       Name "CheckBox0"
+       Slot LayoutSlot "{5EE938DDBEA44611}" {
+       }
+       text "Bohemia UID"
+       checked 1
+      }
+      CheckBoxWidgetClass "{5EE938DDB0127798}" {
+       Name "CheckBox1"
+       Slot LayoutSlot "{5EE938DDBEA44611}" {
+       }
+       text "IPv4"
+       checked 1
+      }
+      CheckBoxWidgetClass "{5EE938DDA8D2D421}" {
+       Name "CheckBox2"
+       Slot LayoutSlot "{5EE938DDBEA44611}" {
+       }
+       text "IPv6"
+       checked 1
+      }
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EE938DE1A1A0FE4}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE938DE1A1A0FC8}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY -56
+    OffsetTop -56
+    SizeX 0
+    OffsetRight 0
+    SizeY 4.8
+    OffsetBottom 51.2
+   }
+   Text "Privacy and Data Protection"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}
