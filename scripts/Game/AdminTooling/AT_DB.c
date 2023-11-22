@@ -23,6 +23,11 @@ class AT_DB
 		return playerData;
 	}
 	
+	static void updatePlayer(AT_Database_Data_Player player, string playerUid)
+	{
+		saveNewPlayer(playerUid, player);
+	}
+	
 	static bool doesAdminConfigExist()
 	{
 		return FileIO.FileExists(m_sAdmin);
@@ -92,6 +97,9 @@ class AT_Database_Data_Player : Managed
 	// ////////////
 	protected string m_sUid = "EMPTY_UID";
 	protected string m_sJoined = "EMPTY_JOINED_DATETIME";
+	private Managed profileElements;
+	private Managed interactions;
+	private Managed preferences;
 
 	// //////////////////////
 	// Getters and setters //
@@ -113,6 +121,11 @@ class AT_Database_Data_Player : Managed
 	void setJoined(string joined)
 	{
 		m_sJoined = joined;
+	}
+	// update profileElements
+	void updateProfileElements(Managed newProfileElements)
+	{
+		profileElements = newProfileElements;
 	}
 }
 class AT_Database_Data_Admins : JsonApiStruct
