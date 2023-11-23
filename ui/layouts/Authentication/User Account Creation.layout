@@ -1,18 +1,44 @@
 FrameWidgetClass {
- Name "rootFrame"
+ Name "Background"
  {
+  ButtonWidgetClass "{5EED716DFA8FB3CC}" {
+   Name "REGISTERBUTTON"
+   Slot FrameWidgetSlot "{5EED716DFA8FB396}" {
+    PositionX 592
+    OffsetLeft 592
+    PositionY 240
+    OffsetTop 240
+    SizeX 360
+    OffsetRight -952
+    SizeY 128
+    OffsetBottom -368
+   }
+   components {
+    SCR_ButtonBaseComponent "{5EED716E342703FB}" {
+    }
+   }
+   {
+    TextWidgetClass "{5EED716DF2C471CF}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{5EED716DF2C471AB}" {
+     }
+     Color 0 0 0 1
+     Text "LOGIN"
+    }
+   }
+  }
   HorizontalLayoutWidgetClass "{5EE6D9B8303B8DCF}" {
    Name "HorizontalLayout0"
    Slot FrameWidgetSlot "{5EE6D9B8303B8DA5}" {
-    Anchor 0 0.05 1 1
+    Anchor 0 0.05 1 0.2
     PositionX 0
     OffsetLeft 0
     PositionY 2
     OffsetTop 2
     SizeX 0
     OffsetRight 0
-    SizeY -2
-    OffsetBottom 0
+    SizeY -18
+    OffsetBottom 16
    }
    "Fill Origin" Center
    {
@@ -31,10 +57,18 @@ FrameWidgetClass {
        "Horizontal Alignment" Center
        "Vertical Alignment" Center
       }
+      ButtonWidgetClass "{5EED71647FAED100}" : "{ECFED677B517422D}UI/layouts/Menus/MainMenu/LoginEditbox.layout" {
+       Name "EditBoxRoot0"
+       Slot LayoutSlot "{5EED7167FD91C39F}" {
+       }
+      }
       EditBoxWidgetClass "{5EE6DB4BB33BE99C}" {
-       Name "EditBox0"
+       Name "EditBox0USERNAME"
        Slot LayoutSlot "{5EE6DB4BB33BEA67}" {
        }
+       "Is Enabled" 0
+       "Is Visible" 0
+       IsPixelPerfect 0
        "Use placeholder text" 1
        "Placeholder text" "USERNAME"
        "Horizontal alignment" Center
@@ -57,13 +91,38 @@ FrameWidgetClass {
        "Vertical Alignment" Center
       }
       EditBoxWidgetClass "{5EE6DB4B854280C2}" {
-       Name "EditBox0"
+       Name "EditBoxPASSWORD"
        Slot LayoutSlot "{5EE6DB4BB33BEA67}" {
        }
+       "Is Enabled" 0
+       "Is Visible" 0
+       IsPixelPerfect 0
        "Use placeholder text" 1
        "Placeholder text" "PASSWORD"
        "Obfuscation character" "*"
        "Horizontal alignment" Center
+      }
+      ButtonWidgetClass "{5EED7167DA11C9C7}" : "{ECFED677B517422D}UI/layouts/Menus/MainMenu/LoginEditbox.layout" {
+       Name "EditBoxRoot01"
+       Slot LayoutSlot "{5EED7167FD91C39F}" {
+       }
+       {
+        SizeLayoutWidgetClass "{58C87E9832A83594}" {
+         Prefab "{58C87E9832A83594}"
+         {
+          OverlayWidgetClass "{55367D8E531FD623}" {
+           Prefab "{55367D8E531FD623}"
+           {
+            EditBoxWidgetClass "{58C87E9832A8359E}" {
+             Prefab "{58C87E9832A8359E}"
+             "Placeholder text" "Password"
+             "Obfuscation character" "*"
+            }
+           }
+          }
+         }
+        }
+       }
       }
      }
     }
@@ -83,7 +142,7 @@ FrameWidgetClass {
        "Vertical Alignment" Center
       }
       EditBoxWidgetClass "{5EE6DB4B36D40CDA}" {
-       Name "EditBox0"
+       Name "EditBoxEMAIL"
        Slot LayoutSlot "{5EE6DB4BB33BEA67}" {
        }
        "Use placeholder text" 1
@@ -111,6 +170,32 @@ FrameWidgetClass {
    Text "User Account Creation"
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
+  }
+  ButtonWidgetClass "{5EED71675ABA7D10}" {
+   Name "REGISTERBUTTON0"
+   Slot FrameWidgetSlot "{5EED716DFA8FB396}" {
+    PositionX 984
+    OffsetLeft 984
+    PositionY 240
+    OffsetTop 240
+    SizeX 360
+    OffsetRight -1344
+    SizeY 128
+    OffsetBottom -368
+   }
+   components {
+    SCR_ButtonBaseComponent "{5EED716E342703FB}" {
+    }
+   }
+   {
+    TextWidgetClass "{5EED71675ABA7D1E}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{5EED716DF2C471AB}" {
+     }
+     Color 0 0 0 1
+     Text "REGISTER"
+    }
+   }
   }
  }
 }
