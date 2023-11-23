@@ -21,6 +21,12 @@ modded class SCR_BaseGameMode
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
 			Debug.ClearKey(KeyCode.KC_F5);
 		};
+		
+		if (Debug.KeyState(KeyCode.KC_F6))
+		{
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PlayerDatabase);
+			Debug.ClearKey(KeyCode.KC_F6);
+		};
 	};
 
 	override void EOnInit(IEntity owner)

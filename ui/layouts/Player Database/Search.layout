@@ -1,0 +1,82 @@
+WindowWidgetClass {
+ Name "rootFrame"
+ style simple
+ "Title Visible" 1
+ "Title Size" 50
+ {
+  ButtonWidgetClass "{5EEF0DF5532C6CF8}" {
+   Name "Button0"
+   Slot FrameWidgetSlot "{5EEF0DF5532C6CDF}" {
+    PositionX 976
+    OffsetLeft 976
+    PositionY 0
+    OffsetTop 0
+    SizeX 944
+    OffsetRight -1920
+    SizeY 30
+    OffsetBottom -30
+   }
+   Color 0.07 0.07 0.07 1
+   components {
+    SCR_ButtonBaseComponent "{5EEF0DF2AD0C48D0}" {
+    }
+   }
+   {
+    TextWidgetClass "{5EEF0DF54B1E57AE}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{5EEF0DF54B1E5781}" {
+     }
+     Text "Search"
+    }
+   }
+  }
+  TextWidgetClass "{5EEF0DF521EE0933}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EEF0DF521EE090A}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY -56
+    OffsetTop -56
+    SizeX 0
+    OffsetRight 0
+    SizeY 4.8
+    OffsetBottom 51.2
+   }
+   Color 0 0 0 1
+   Text "Search Player Database"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  ButtonWidgetClass "{5EEF0DF52F8D7BE7}" : "{ECFED677B517422D}UI/layouts/Menus/MainMenu/LoginEditbox.layout" {
+   Name "EditBoxRoot0"
+   Slot FrameWidgetSlot "{5EEF0DF52F8D7C7C}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 952
+    OffsetRight -952
+    SizeY 30
+    OffsetBottom -30
+   }
+   {
+    SizeLayoutWidgetClass "{58C87E9832A83594}" {
+     Prefab "{58C87E9832A83594}"
+     {
+      OverlayWidgetClass "{55367D8E531FD623}" {
+       Prefab "{55367D8E531FD623}"
+       {
+        EditBoxWidgetClass "{58C87E9832A8359E}" {
+         Prefab "{58C87E9832A8359E}"
+         "Placeholder text" "PlayerUid"
+         "Horizontal alignment" Center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

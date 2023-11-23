@@ -28,6 +28,8 @@ class AT_DB
 		saveNewPlayer(playerUid, player);
 	}
 	
+	// DELETE TODO
+	
 	static bool doesAdminConfigExist()
 	{
 		return FileIO.FileExists(m_sAdmin);
@@ -90,6 +92,7 @@ class AT_Database_Data_Ban : Managed
 	}
 } 
 
+ref AT_Database_Data_Player AT_Database_Data_Player_EMPTY = new ref AT_Database_Data_Player();
 class AT_Database_Data_Player : Managed
 {
 	// ////////////
