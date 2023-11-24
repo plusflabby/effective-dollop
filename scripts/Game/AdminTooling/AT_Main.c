@@ -9,7 +9,7 @@ class AT_MainStatic
 	
 	static string getUid(int playerId)
 	{
-		string playerBiUid = GetGame().GetBackendApi().GetPlayerUID(playerId);
+		string playerBiUid = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
 		if (!playerBiUid)
 		{
 			if (RplSession.Mode() != RplMode.Dedicated)
