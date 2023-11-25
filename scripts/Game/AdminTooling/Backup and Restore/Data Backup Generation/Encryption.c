@@ -1,0 +1,1 @@
+// TODO Incorporate encryption methods to secure sensitive backup data, enhancing data security during storage or transmission

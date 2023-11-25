@@ -3,9 +3,9 @@
 // //////////////////////
 class AT_DB
 {
-	protected static string m_sBan = "$profile:AT_BDB.bin";
-	protected static string m_sPlayer = "$profile:AT_PDB.bin";
-	protected static string m_sAdmin = "$profile:AT_Admin_List.json";
+	protected static string m_sBan = "$profile:AT_BDB.ATbin";
+	protected static string m_sPlayer = "$profile:AT_PDB.ATbin";
+	protected static string m_sAdmin = "$profile:AT_Admin_List.ATjson";
 
 	static void saveNewPlayer(string key, AT_Database_Data_Player data)
 	{

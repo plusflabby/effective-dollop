@@ -1,6 +1,12 @@
 modded class SCR_PlayerController
 {
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void authorityStartMonitoring()
+	{
+		
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void authorityKick(int playerId)
 	{
 		Print("Kicking id:" + playerId);
@@ -29,6 +35,8 @@ modded class SCR_PlayerController
 	{
 		if (Replication.IsClient())
 			GetGame().GetCallqueue().CallLater(loop, 3000, true);
+		//if (Replication.IsServer() && Replication.)
+			
 	}
 	
 	protected void loop()

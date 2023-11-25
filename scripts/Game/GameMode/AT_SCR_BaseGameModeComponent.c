@@ -54,9 +54,12 @@ modded class SCR_BaseGameMode
 		
 		if (!AT_DB.doesAdminConfigExist())
 			AT_DB.createAdminConfig();
+		
+		ServerPerformanceMonitor.startMonitoringWithInterval();
+		BackupAndRestore backupAndRestore = new BackupAndRestore();
 
-		Print("AT_SCR_BaseGameModeComponent->EOnInit | Ready", LogLevel.NORMAL);
 		ready = true;
+		Print("AT_SCR_BaseGameModeComponent->EOnInit | Ready", LogLevel.NORMAL);
 	};
 	
 	override void OnPlayerConnected(int playerId)
