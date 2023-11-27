@@ -6,8 +6,7 @@ GameProject {
   "58D0FB3206B6F859"
  }
  Configurations {
-  GameProjectConfig HEADLESS {
-   WorldFile "{D7009151E6C1BAA7}worlds/entry.ent"
+  GameProjectConfig PC {
   }
   GameProjectConfig XBOX_ONE {
   }
@@ -15,8 +14,7 @@ GameProject {
   }
   GameProjectConfig PS4 {
   }
-  GameProjectConfig PC {
-   PlatformHardware HEADLESS
+  GameProjectConfig HEADLESS {
   }
  }
 }

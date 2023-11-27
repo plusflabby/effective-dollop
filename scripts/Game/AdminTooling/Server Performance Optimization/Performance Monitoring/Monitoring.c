@@ -8,8 +8,8 @@ class Monitoring
 	protected int memoryUsage;
 	// File Size and IO Operations
 	protected string sizeOfDatabase;
-	protected int readOperations;
-	protected int writeOperations;
+	protected int readOperations; //! NOT SCRIPTED
+	protected int writeOperations; //! NOT SCRIPTED
 	// Network Latency
 	protected float networkPingAverageOfPlayers;
 	protected float networkPingMinimumOfPlayers;
@@ -23,12 +23,12 @@ class Monitoring
 	protected int aiCount;
 	protected float aiLoadAverage;
 	// Database Queries
-	protected float databaseAverageResponseTime;
+	protected float databaseAverageResponseTime;//! NOT SCRIPTED
 	// Script Execution Time
-	protected float scriptAverageCompleteInSeconds;
+	protected float scriptAverageCompleteInSeconds;//! NOT SCRIPTED
 	// Server Uptime and Stability
-	protected string serverOnlineAt;
-	protected int serverUptimeInSeconds;
+	protected string serverOnlineAt;//! NOT SCRIPTED
+	protected int serverUptimeInSeconds;//! NOT SCRIPTED
 	// Datetime
 	protected string dateTime = SCR_DateTimeHelper.GetDateTimeLocal();
 	// Interval

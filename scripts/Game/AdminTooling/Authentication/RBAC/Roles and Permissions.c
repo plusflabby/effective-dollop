@@ -13,7 +13,8 @@ ref array<array<string>> Permissions = {
 		"Manage Roles",
 		"Server Configuration",
 		"Access Audit Logs",
-		"Full Access"
+		"Full Access",
+		"Backup Control"
 	},
 	{
 		"moderator",
