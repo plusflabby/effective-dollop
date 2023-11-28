@@ -62,23 +62,23 @@ modded class SCR_BaseGameMode
 		Print("AT_SCR_BaseGameModeComponent->EOnInit | Ready", LogLevel.NORMAL);
 	};
 	
-	override void OnPlayerConnected(int playerId)
+	override void OnPlayerAuditSuccess(int iPlayerID)
 	{
-		super.OnPlayerConnected(playerId);
+		super.OnPlayerAuditSuccess(iPlayerID);
 		if (!Replication.IsServer())
 			return;
 		
-		string playerBiUid = AT_MainStatic.getUid(playerId);
+		string playerBiUid = AT_MainStatic.getUid(iPlayerID);
 		if (!playerBiUid)
 		{
-			Print("AT_SCR_BaseGameModeComponent->OnPlayerConnected | Dedicated server is not correctly configured to connect to the BI backend.", LogLevel.ERROR);
+			//Print("AT_SCR_BaseGameModeComponent->OnPlayerAuditSuccess | Dedicated server is not correctly configured to connect to the BI backend.", LogLevel.ERROR);
 			Debug.Error("Dedicated server is not correctly configured to connect to the BI backend.");
 			return;
 		}
 		
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(iPlayerID);
 		
-		Print("AT_SCR_BaseGameModeComponent->OnPlayerConnected | " + playerName + " | " + playerBiUid, LogLevel.NORMAL);
+		Print("AT_SCR_BaseGameModeComponent->OnPlayerAuditSuccess | " + playerName + " | " + playerBiUid, LogLevel.NORMAL);
 		
 		AT_Database_Data_Player player = AT_DB.getPlayer(playerBiUid);
 		if (!player)
