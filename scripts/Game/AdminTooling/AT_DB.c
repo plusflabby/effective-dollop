@@ -28,8 +28,6 @@ class AT_DB
 		saveNewPlayer(playerUid, player);
 	}
 	
-	// DELETE TODO
-	
 	static bool doesAdminConfigExist()
 	{
 		return FileIO.FileExists(m_sAdmin);

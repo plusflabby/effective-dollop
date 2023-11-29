@@ -69,7 +69,7 @@ class AT_UI_PlayerDatabase : MenuBase
 		string value = uidEditBox.GetValue();
 		//Print(value);
 		
-		search = PlayerDatabaseIntergration.getPlayer(value);
+		search = PlayerDatabaseIntergration.getPlayerFromUID(value);
 		//Print(search.ToString());
 		
 		switch (search.result_code)

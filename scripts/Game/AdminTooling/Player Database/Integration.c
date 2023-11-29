@@ -1,12 +1,7 @@
 class PlayerDatabaseIntergration
 {
-	// TODOs
-	// get player with playerUid
-	// get player with name 
-	// get player with entityId 
-	
-	//! get player
-	static PDI_Result getPlayer(string keyValue)
+	//! get player from bi uid 
+	static PDI_Result getPlayerFromUID(string keyValue)
 	{
 		if (keyValue.Length() < 12)
 			return PDI_Result(PDI_Results.INVALID_SEARCH);
