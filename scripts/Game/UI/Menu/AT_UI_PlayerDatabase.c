@@ -4,20 +4,23 @@ class AT_UI_PlayerDatabase : MenuBase
 	protected static const string TEXT_TITLE = "PlayerDatabaseSearch";
 	protected static const string BUTTON_SEARCH = "Button0";
 	protected static const string EDIT_BOX_PLAYERUID = "EditBoxRoot0";
-	
+
 	Widget rootWidget;
-	
+	SCR_EditBoxComponent uidEditBox;
+	TextWidget resultTextWidget;
+	ref PDI_Result search;
+
 	protected override void OnMenuOpen()
 	{
 		Print("AT_UI_PlayerDatabase->OnMenuOpen: menu opened", LogLevel.SPAM);
-		
+
 		rootWidget = GetRootWidget();
 		if (!rootWidget)
 		{
 			Print("AT_UI_PlayerDatabase->OnMenuOpen: rootWidget layout error", LogLevel.ERROR);
 			return;
 		}
-		
+
 		//setup search button
 		SCR_ButtonBaseComponent searchButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_SEARCH, rootWidget);
 		if (!searchButton)
@@ -26,7 +29,7 @@ class AT_UI_PlayerDatabase : MenuBase
 			return;
 		}
 		searchButton.m_OnClicked.Insert(SearchButton);
-		
+
 		//Set up listeners to close menu
 		InputManager inputManager = GetGame().GetInputManager();
 		if (inputManager)
@@ -41,11 +44,11 @@ class AT_UI_PlayerDatabase : MenuBase
 			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
 #endif
 		}
-		
+
 		//Tell AT_Main this menu is IsOpen
 		AT_MainStatic.setCurrentMenu(TEXT_TITLE);
 	}
-	
+
 	protected override void OnMenuClose()
 	{
 		InputManager inputManager = GetGame().GetInputManager();
@@ -59,18 +62,35 @@ class AT_UI_PlayerDatabase : MenuBase
 #endif
 		}
 	}
-	
-	protected void SearchButton() {
+
+	private void SearchButton() {
+		resultTextWidget = TextWidget.Cast(rootWidget.FindAnyWidget("resulttext"));
+		uidEditBox = SCR_EditBoxComponent.Cast(SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PLAYERUID, rootWidget));
+		string value = uidEditBox.GetValue();
+		//Print(value);
 		
-		SCR_EditBoxComponent uidEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PLAYERUID, rootWidget);
-		if (!uidEditBox)
-		{ 
-			Debug.Error("AT_UI_PlayerDatabase->SearchButton: uidEditBox error");
-			return;
+		search = PlayerDatabaseIntergration.getPlayer(value);
+		//Print(search.ToString());
+		
+		switch (search.result_code)
+		{
+			case PDI_Results.SUCCESS:
+			{
+				resultTextWidget.SetText("SUCCESSFULLY FOUND | Found UID="+search.player.getUid());
+				break;
+			}
+			case PDI_Results.NOT_FOUND:
+			{
+				resultTextWidget.SetText("NOT FOUND");
+				break;
+			}
+			case PDI_Results.INVALID_SEARCH:
+			{
+				resultTextWidget.SetText("INVALID SEARCH VALUE");
+				break;
+			}
 		}
 		
-		string the_search_value = uidEditBox.GetValue();
-		//Debug.Error("AT_UI_PlayerDatabase->SearchButton: the_search_value"+the_search_value);
-		PlayerDatabaseIntergration.getPlayer(the_search_value);
+		resultTextWidget.SetVisible(true);
 	}
 }

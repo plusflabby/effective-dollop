@@ -5,11 +5,11 @@ FrameWidgetClass {
    Name "VerticalLayout1"
    Slot FrameWidgetSlot "{5EE1632DC2F9E3CF}" {
     Anchor 0.35 0 0.65 1
-    PositionX -0
-    OffsetLeft -0
+    PositionX 0
+    OffsetLeft 0
     PositionY 0
     OffsetTop 0
-    SizeX -0
+    SizeX 0
     OffsetRight 0
     SizeY 0
     OffsetBottom 0
@@ -18,7 +18,7 @@ FrameWidgetClass {
    {
     ScaleWidgetClass "{5EE163221FB770F8}" {
      Name "Scale1"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5EF947DB7EE0404D}" {
       SizeMode Fill
      }
      "Z Order" 1
@@ -33,7 +33,7 @@ FrameWidgetClass {
     }
     ScaleWidgetClass "{5EE1632215F6FE7F}" {
      Name "Scale3"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5EF947DB7EE0CA5F}" {
       SizeMode Fill
      }
      "Z Order" 1
@@ -42,6 +42,34 @@ FrameWidgetClass {
       FrameWidgetClass "{5EE163220AE8B3AA}" : "{C65B80C4095AAF75}ui/layouts/Player Profile/Player Bio.layout" {
        Name "rootFrame0"
        Slot AlignableSlot "{5EE163220AE8B381}" {
+       }
+       {
+        VerticalLayoutWidgetClass "{5EE107F7A8C24DDC}" {
+         Prefab "{5EE107F7A8C24DDC}"
+         {
+          HorizontalLayoutWidgetClass "{5EF947DB6CD3E41B}" {
+           Name "HorizontalLayout3"
+           Slot LayoutSlot {
+            HorizontalAlign 1
+            VerticalAlign 1
+           }
+           {
+            TextWidgetClass "{5EF947DB68DDBDCC}" {
+             Name "Text0"
+             Slot LayoutSlot {
+             }
+             Text "Bi UID | "
+            }
+            TextWidgetClass "{5EF947DB68DDBDA2}" {
+             Name "Text1"
+             Slot LayoutSlot {
+             }
+             Text "UID"
+            }
+           }
+          }
+         }
+        }
        }
       }
      }
@@ -57,7 +85,7 @@ FrameWidgetClass {
     PositionY -6
     OffsetTop -6
     SizeX 0
-    OffsetRight -0
+    OffsetRight 0
     SizeY 4
     OffsetBottom 2
    }
@@ -65,7 +93,7 @@ FrameWidgetClass {
    {
     ScaleWidgetClass "{5EE1632322DBFAB0}" {
      Name "Scale0"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5EF947DB7EE3A08B}" {
       SizeMode Fill
      }
      "Z Order" 1
@@ -80,7 +108,7 @@ FrameWidgetClass {
     }
     ScaleWidgetClass "{5EE1632215530D9A}" {
      Name "Scale4"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5EF947DB7EE3B2A2}" {
       SizeMode Fill
      }
      "Z Order" 1
@@ -95,7 +123,7 @@ FrameWidgetClass {
     }
     ScaleWidgetClass "{5EE1632218C3712E}" {
      Name "Scale2"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5EF947DB7EE386D4}" {
       SizeMode Fill
      }
      "Z Order" 1

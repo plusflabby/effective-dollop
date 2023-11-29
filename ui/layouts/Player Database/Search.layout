@@ -4,6 +4,25 @@ WindowWidgetClass {
  "Title Visible" 1
  "Title Size" 50
  {
+  TextWidgetClass "{5EF75B6E08C01CD5}" {
+   Name "resulttext"
+   Slot FrameWidgetSlot "{5EF75B6E08C01CB8}" {
+    Anchor 0.05 0.1 0.95 0.3
+    PositionX 8
+    OffsetLeft 8
+    PositionY -50.8
+    OffsetTop -50.8
+    SizeX -8
+    OffsetRight 0
+    SizeY 10.4
+    OffsetBottom 40.4
+   }
+   "Is Visible" 0
+   "Font Size" 35
+   "Min Font Size" 27
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
   ButtonWidgetClass "{5EEF0DF5532C6CF8}" {
    Name "Button0"
    Slot FrameWidgetSlot "{5EEF0DF5532C6CDF}" {
