@@ -3,7 +3,7 @@ GameProject {
  GUID "5E6E6C1AB0DD9089"
  TITLE "Admin Tooling"
  Dependencies {
-  "58D0FB3206B6F859"
+  "58D0FB3206B6F859" "5D6EA74A94173EDF"
  }
  Configurations {
   GameProjectConfig PC {
