@@ -49,20 +49,20 @@ FrameWidgetClass {
          {
           HorizontalLayoutWidgetClass "{5EF947DB6CD3E41B}" {
            Name "HorizontalLayout3"
-           Slot LayoutSlot {
+           Slot LayoutSlot "{5EFA1BADA1CD98D4}" {
             HorizontalAlign 1
             VerticalAlign 1
            }
            {
             TextWidgetClass "{5EF947DB68DDBDCC}" {
              Name "Text0"
-             Slot LayoutSlot {
+             Slot LayoutSlot "{5EFA1BADA1CD98C1}" {
              }
              Text "Bi UID | "
             }
             TextWidgetClass "{5EF947DB68DDBDA2}" {
              Name "Text1"
-             Slot LayoutSlot {
+             Slot LayoutSlot "{5EFA1BADA1CD98BF}" {
              }
              Text "UID"
             }
@@ -89,6 +89,8 @@ FrameWidgetClass {
     SizeY 4
     OffsetBottom 2
    }
+   "Is Enabled" 0
+   "Is Visible" 0
    "Fill Origin" Center
    {
     ScaleWidgetClass "{5EE1632322DBFAB0}" {
@@ -152,6 +154,8 @@ FrameWidgetClass {
     OffsetBottom 384
    }
    "Z Order" 1
+   "Is Enabled" 0
+   "Is Visible" 0
    Clipping True
    {
     FrameWidgetClass "{5EE1632207F63585}" : "{757F2A028919D8C8}ui/layouts/Player Profile/Community Engagement.layout" {
