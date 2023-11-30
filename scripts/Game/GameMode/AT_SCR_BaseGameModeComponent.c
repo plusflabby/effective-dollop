@@ -52,8 +52,8 @@ modded class SCR_BaseGameMode
 			return;
 		};
 		
-		if (!AT_DB.doesAdminConfigExist())
-			AT_DB.createAdminConfig();
+		//if (!AT_DB.doesAdminConfigExist())
+		//	AT_DB.createAdminConfig();
 		
 		ServerPerformanceMonitor.startMonitoringWithInterval();
 		BackupAndRestore backupAndRestore = new BackupAndRestore();
@@ -80,13 +80,8 @@ modded class SCR_BaseGameMode
 		
 		Print("AT_SCR_BaseGameModeComponent->OnPlayerAuditSuccess | " + playerName + " | " + playerBiUid, LogLevel.NORMAL);
 		
-		AT_Database_Data_Player player = AT_DB.getPlayer(playerBiUid);
-		if (!player)
-		{
-			AT_Database_Data_Player playerDbData = new AT_Database_Data_Player();
-			playerDbData.setUid(playerBiUid);
-			playerDbData.setJoined(SCR_DateTimeHelper.GetDateTimeLocal());
-			AT_DB.saveNewPlayer(playerBiUid, playerDbData);
-		}
+		//AT_Database_Data_Player player = AT_DB.getPlayer(playerBiUid);
+		//if (!player)
+		//	AT_DB.saveNewPlayer(playerBiUid);
 	}
 }
