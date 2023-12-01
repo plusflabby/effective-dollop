@@ -10,7 +10,10 @@ class vScriptExecutionTime
 			Print(var.className + var.timeMiliSecond.ToString());
 		}
 		
-		ServerPerformanceMonitor.scriptAverageCompleteInMiliSecondsUpdate(total / at_scripts.Count());
+		if (at_scripts.Count() > 0)
+			ServerPerformanceMonitor.scriptAverageCompleteInMiliSecondsUpdate(total / at_scripts.Count());
+		else
+			ServerPerformanceMonitor.scriptAverageCompleteInMiliSecondsUpdate(0.0);
 	}
 }
 //ref vScriptExecutionTime vSET = new vScriptExecutionTime();
