@@ -1,4 +1,4 @@
-class vFrameRate
+class vFrameRate : vSetMod
 {
 	// variables 
 	private float fpsServer = 0.0;
@@ -16,6 +16,7 @@ class vFrameRate
 	// deconstructor and constructor
 	void vFrameRate()
 	{
+		vSetModSTART();
 		fpsServer = System.GetFPS();
 		
 		//Print("SERVER FPS"+fpsServer);
@@ -72,6 +73,7 @@ class vFrameRate
 		fpsClientAverage = 0.0;
 		fpsClientMinimum = 0.0;
 		fpsClientMaximum = 0.0;
+		vSetModSTOP();
 	}
 }
 

@@ -1,4 +1,4 @@
-class vNetworkLatency
+class vNetworkLatency : vSetMod
 {
 	//variables
 	private float networkPingAverageOfPlayers = 0.0;
@@ -17,9 +17,11 @@ class vNetworkLatency
 		networkPingAverageOfPlayers = 0.0;
 		networkPingMinimumOfPlayers = 0.0;
 		networkPingMaximumOfPlayers = 0.0;
+		vSetModSTOP();
 	}
 	void vNetworkLatency()
 	{
+		vSetModSTART();
 		array<int> players = new array<int>();
 		GetGame().GetPlayerManager().GetPlayers(players);
 		//players.Compact();

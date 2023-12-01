@@ -3,7 +3,7 @@ class Monitoring
 	// Player Count
 	protected int playerCount;
 	// CPU Usage
-	protected float cpuUsage;
+	protected float cpuUsage; //! NOT SCRIPTED
 	// Memory Usage
 	protected int memoryUsage;
 	// File Size and IO Operations
@@ -21,18 +21,18 @@ class Monitoring
 	protected float fpsClientMaximum;
 	// AI Processing
 	protected int aiCount;
-	protected float aiLoadAverage;
+	protected float aiLoadAverage; //! NOT SCRIPTED
 	// Database Queries
 	protected float databaseAverageResponseTime;//! NOT SCRIPTED
 	// Script Execution Time
-	protected float scriptAverageCompleteInSeconds;//! NOT SCRIPTED
+	protected float scriptAverageCompleteInMiliSeconds;
 	// Server Uptime and Stability
 	protected string serverOnlineAt;//! NOT SCRIPTED
 	protected int serverUptimeInSeconds;//! NOT SCRIPTED
 	// Datetime
 	protected string dateTime = SCR_DateTimeHelper.GetDateTimeLocal();
 	// Interval
-	protected int monitoringIntervalInMinutes = 5;
+	protected int monitoringIntervalInMinutes = 1;
 	
 	private bool started = false;
 	// function to start monitoring at interval 
@@ -55,6 +55,9 @@ class Monitoring
 		vFileSizeAndIoOperations fsioo = new vFileSizeAndIoOperations();
 		vNetworkLatency networkLatency = new vNetworkLatency();
 		vFrameRate frameRate = new vFrameRate();
+		vAiProcessing aiProcessing = new vAiProcessing();
+		vScriptExecutionTime scriptExecTime = new vScriptExecutionTime();
+		at_scripts.Clear(); //! Clean up
 		
 		AT_DB.saveLog(
 			string.Format("AT -> Monitoring -> assess -> done"), 
@@ -93,6 +96,14 @@ class Monitoring
 		fpsClientAverage = fpsClientAverage_;
 		fpsClientMaximum = fpsClientMaximum_;
 		fpsClientMinimum = fpsClientMinimum_;
+	}
+	void aiCountUpdate(int aiCount_)
+	{
+		aiCount = aiCount_;
+	}
+	void scriptAverageCompleteInMiliSecondsUpdate(float scriptAverageCompleteInMiliSeconds_)
+	{
+		scriptAverageCompleteInMiliSeconds = scriptAverageCompleteInMiliSeconds_;
 	}
 }
 ref Monitoring ServerPerformanceMonitor = new ref Monitoring();

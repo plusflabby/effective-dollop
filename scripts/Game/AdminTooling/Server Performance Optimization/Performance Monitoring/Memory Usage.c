@@ -1,4 +1,4 @@
-class vMemoryUsage
+class vMemoryUsage : vSetMod
 {
 	private int memoryUsage = 0;
 	
@@ -9,11 +9,13 @@ class vMemoryUsage
 	
 	void vMemoryUsage()
 	{
+		vSetModSTART();
 		memoryUsage = System.MemoryAllocationKB();
 		setValue();
 	}
 	void ~vMemoryUsage()
 	{
 		memoryUsage = 0;
+		vSetModSTOP();
 	}
 }

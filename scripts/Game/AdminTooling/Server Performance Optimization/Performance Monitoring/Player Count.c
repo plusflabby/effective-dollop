@@ -1,4 +1,4 @@
-class vPlayerCount
+class vPlayerCount : vSetMod
 {
 	private int playerCount = 0;
 	
@@ -11,11 +11,13 @@ class vPlayerCount
 	// 
 	void vPlayerCount()
 	{
+		vSetModSTART();
 		playerCount = GetGame().GetPlayerManager().GetAllPlayerCount();
 		setValue();
 	}
 	void ~vPlayerCount()
 	{
 		playerCount = 0;
+		vSetModSTOP();
 	}
 }

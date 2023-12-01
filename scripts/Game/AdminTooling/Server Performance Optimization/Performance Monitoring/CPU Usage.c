@@ -1,4 +1,4 @@
-class vCpuUsage
+class vCpuUsage : vSetMod
 {
 	private float cpuUsage = 0.0;
 	
@@ -9,11 +9,13 @@ class vCpuUsage
 	
 	void vCpuUsage()
 	{
+		vSetModSTART();
 		cpuUsage = 0.0;
 		setValue();
 	}
 	void ~vCpuUsage()
 	{
 		cpuUsage = 0.0;
+		vSetModSTOP();
 	}
 }

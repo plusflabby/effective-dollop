@@ -1,4 +1,4 @@
-class vFileSizeAndIoOperations
+class vFileSizeAndIoOperations : vSetMod
 {
 	// Variables
 	private string sizeOfDatabase = "0 B";
@@ -14,6 +14,7 @@ class vFileSizeAndIoOperations
 	// constructors
 	void vFileSizeAndIoOperations()
 	{
+		vSetModSTART();
 		//
 		//Print("file", LogLevel.NORMAL);
 		array<string> files = {};
@@ -43,6 +44,7 @@ class vFileSizeAndIoOperations
 	void ~vFileSizeAndIoOperations()
 	{
 		sizeOfDatabase = "0 B";
+		vSetModSTOP();
 	}
 }
 
