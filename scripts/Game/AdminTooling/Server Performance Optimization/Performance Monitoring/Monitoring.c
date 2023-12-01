@@ -55,6 +55,12 @@ class Monitoring
 		vFileSizeAndIoOperations fsioo = new vFileSizeAndIoOperations();
 		vNetworkLatency networkLatency = new vNetworkLatency();
 		vFrameRate frameRate = new vFrameRate();
+		
+		AT_DB.saveLog(
+			string.Format("AT -> Monitoring -> assess -> done"), 
+			LogLevel.SPAM,
+			"Monitoring"
+		);
 	}
 	/* Functions to update the variable */
 	void playerCountUpdate(int variable)

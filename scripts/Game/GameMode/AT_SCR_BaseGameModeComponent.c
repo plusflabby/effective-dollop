@@ -60,6 +60,10 @@ modded class SCR_BaseGameMode
 
 		ready = true;
 		Print("AT_SCR_BaseGameModeComponent->EOnInit | Ready", LogLevel.NORMAL);
+		AT_DB.saveLog(
+			"AT_SCR_BaseGameModeComponent -> EOnInit -> Ready", 
+			LogLevel.NORMAL
+		);
 	};
 	
 	override void OnPlayerAuditSuccess(int iPlayerID)
@@ -79,6 +83,15 @@ modded class SCR_BaseGameMode
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(iPlayerID);
 		
 		Print("AT_SCR_BaseGameModeComponent->OnPlayerAuditSuccess | " + playerName + " | " + playerBiUid, LogLevel.NORMAL);
+		
+		AT_DB.saveLog(
+			string.Format("OnPlayerAuditSuccess -> %1 -> %2 -> %3", iPlayerID, playerName, playerBiUid), 
+			LogLevel.SPAM,
+			playerName,
+			playerBiUid,
+		 	iPlayerID.ToString(),
+			"OnPlayerAuditSuccess"
+		);
 		
 		//AT_Database_Data_Player player = AT_DB.getPlayer(playerBiUid);
 		//if (!player)

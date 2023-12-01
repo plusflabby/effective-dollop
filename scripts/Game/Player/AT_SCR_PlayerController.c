@@ -11,6 +11,13 @@ modded class SCR_PlayerController
 	{
 		Print("Kicking id:" + playerId);
 		GetGame().GetPlayerManager().KickPlayer(playerId, PlayerManagerKickReason.KICK);
+		AT_DB.saveLog(
+			string.Format("AT -> SCR_PlayerController -> authorityKick -> %1", playerId), 
+			LogLevel.WARNING,
+		 	playerId.ToString(),
+			"SCR_PlayerController",
+			"authorityKick"
+		);
 	}
 	void requestKick(int playerId)
 	{
@@ -25,6 +32,14 @@ modded class SCR_PlayerController
 		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		toPosition = toPosition + "0 1 0";
 		SCR_Global.TeleportPlayer(playerId, toPosition, SCR_EPlayerTeleportedReason.DEFAULT);
+		AT_DB.saveLog(
+			string.Format("AT -> SCR_PlayerController -> authorityTeleport -> %1 -> ", playerId, toPosition.ToString()), 
+			LogLevel.WARNING,
+		 	playerId.ToString(),
+		 	toPosition.ToString(),
+			"SCR_PlayerController",
+			"authorityTeleport"
+		);
 	}
 	void requestTeleport(int playerId, vector position)
 	{
