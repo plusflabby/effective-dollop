@@ -1,19 +1,51 @@
-FrameWidgetClass {
+WindowWidgetClass {
  Name "rootFrame"
+ style simple
+ "Title Visible" 1
+ "Title Size" 50
+ "Is Collapsible" 0
  {
+  ButtonWidgetClass "{5F037AA28032EA8C}" {
+   Name "Button0_GEN"
+   Slot FrameWidgetSlot "{5F037AA28032EB6C}" {
+    PositionX 792
+    OffsetLeft 792
+    PositionY 916
+    OffsetTop 916
+    SizeX 328
+    OffsetRight -1120
+    SizeY 56
+    OffsetBottom -972
+   }
+   components {
+    SCR_ButtonComponent "{5F037AA213EF58AA}" {
+    }
+   }
+   {
+    TextWidgetClass "{5F037AA2F6F27946}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{5F037AA2F6F2793D}" {
+      Padding 5 5 5 5
+     }
+     Color 0 0.502 0.502 1
+     Text "GENERATE BUTTON"
+    }
+   }
+  }
   TextWidgetClass "{5EE6243F71418562}" {
    Name "Text0"
    Slot FrameWidgetSlot "{5EE6243F71418544}" {
     Anchor 0 0 1 0.05
     PositionX 0
     OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
+    PositionY -52
+    OffsetTop -52
     SizeX 0
     OffsetRight 0
     SizeY 2
-    OffsetBottom -2
+    OffsetBottom 50
    }
+   Color 0 0 0 1
    Text "Logging and Reporting"
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
@@ -28,7 +60,7 @@ FrameWidgetClass {
     OffsetTop -2
     SizeX 0
     OffsetRight 0
-    SizeY -0
+    SizeY 0
     OffsetBottom 2
    }
    Clipping False
@@ -45,6 +77,13 @@ FrameWidgetClass {
        Name "rootFrame0"
        Slot AlignableSlot "{5EE6243EF8925638}" {
        }
+       {
+        WindowWidgetClass "{5EE62435D7F3CB60}" {
+         Prefab "{5EE62435D7F3CB60}"
+         "Is Enabled" 0
+         "Is Visible" 0
+        }
+       }
       }
      }
     }
@@ -53,6 +92,8 @@ FrameWidgetClass {
      Slot LayoutSlot "{5EE6243C8485C62F}" {
       SizeMode Fill
      }
+     "Is Enabled" 0
+     "Is Visible" 0
      "Scale Mode" "Scale to fill"
      {
       FrameWidgetClass "{5EE6243CE6E24DEC}" : "{F54DA38D4E63C598}ui/layouts/Reporting System/Scheduled Reports.layout" {
@@ -62,7 +103,6 @@ FrameWidgetClass {
        {
         HorizontalLayoutWidgetClass "{5EE624346B3938A1}" {
          Prefab "{5EE624346B3938A1}"
-         Name "HorizontalLayout0"
          Slot FrameWidgetSlot "{5EE624346B393883}" {
           SizeToContent 1
          }
@@ -100,6 +140,21 @@ FrameWidgetClass {
        Slot AlignableSlot "{5EE6243CEA10FE7A}" {
        }
        {
+        HorizontalLayoutWidgetClass "{5EE624364B73D12C}" {
+         Prefab "{5EE624364B73D12C}"
+         {
+          ButtonWidgetClass "{5EE62437B799935C}" {
+           Prefab "{5EE62437B799935C}"
+           "Is Enabled" 0
+           "Is Visible" 0
+          }
+          ButtonWidgetClass "{5EE62437ED4C1950}" {
+           Prefab "{5EE62437ED4C1950}"
+           "Is Enabled" 0
+           "Is Visible" 0
+          }
+         }
+        }
         TextWidgetClass "{5EE624362E749F93}" {
          Prefab "{5EE624362E749F93}"
          Slot FrameWidgetSlot "{5EE624362E74E074}" {
@@ -115,6 +170,8 @@ FrameWidgetClass {
      Slot LayoutSlot "{5EE6243C8485C62F}" {
       SizeMode Fill
      }
+     "Is Enabled" 0
+     "Is Visible" 0
      "Scale Mode" "Scale to fill"
      {
       FrameWidgetClass "{5EE6243CEE731CA3}" : "{E16AEE03AB930790}ui/layouts/Reporting System/Customizable Reporting.layout" {
@@ -140,8 +197,8 @@ FrameWidgetClass {
     Anchor 0 0.8 1 1
     PositionX 0
     OffsetLeft 0
-    PositionY -0
-    OffsetTop -0
+    PositionY 0
+    OffsetTop 0
     SizeX 0
     OffsetRight 0
     SizeY 0
@@ -152,22 +209,24 @@ FrameWidgetClass {
    {
     FrameWidgetClass "{5EE6243EBC56834F}" : "{1C6D4987F4D71C18}ui/layouts/Reporting System/Data Integrity and Compliance.layout" {
      Name "rootFrame0"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5F037AA08D6A8DC1}" {
      }
      "Is Visible" 0
     }
     FrameWidgetClass "{5EE6243E868382C0}" : "{24A545866352970F}ui/layouts/Reporting System/Error and Exception Reporting.layout" {
      Name "rootFrame1"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5F037AA08D6AE5D6}" {
      }
      "Is Visible" 0
     }
     ScrollLayoutWidgetClass "{5EE6243E11D12B96}" {
      Name "ScrollLayout0"
-     Slot LayoutSlot {
+     Slot LayoutSlot "{5F037AA08D6AE59A}" {
       Padding 3 3 3 3
       SizeMode Fill
      }
+     "Is Enabled" 0
+     "Is Visible" 0
      {
       RichTextWidgetClass "{5EE624309665D584}" {
        Prefab "{5EE624309665D584}"
@@ -183,6 +242,8 @@ FrameWidgetClass {
       Padding 3 3 3 3
       SizeMode Fill
      }
+     "Is Enabled" 0
+     "Is Visible" 0
      {
       RichTextWidgetClass "{5EE62431CC3FB9E0}" {
        Prefab "{5EE62431CC3FB9E0}"
