@@ -105,4 +105,30 @@ class PlayerDatabaseIntergration
 	{
 		AT_DB.saveNewPlayer(playerBiUid, playerName);
 	}
+	
+	//! update profile if name change 
+	static void updateProfileNames(string nameChanged, string biUid)
+	{
+		
+		array<ref DB_PlayerProfile> profiles = getProfiles(biUid, 1);
+		DB_PlayerProfile profile = profiles.Get(0);
+		profile.m_aName.Insert(nameChanged);
+		
+		//! If > 99 names saved release first aka oldest
+		if (profile.m_aName.Count() > 99)
+			profile.m_aName.Remove(0);
+		
+		AT_DB.AddOrUpdateProfile(profile);
+	}
+	
+	//! get profile name of player 
+	static string getProfileName(string biUid)
+	{
+		PDI_Result profileRDI = findPlayerProfile(biUid);
+		
+		if (profileRDI.result_code == PDI_Results.SUCCESS)
+			return profileRDI.player.m_sName;
+		else
+			return string.Empty;
+	}
 }

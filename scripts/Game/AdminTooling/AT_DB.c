@@ -48,7 +48,12 @@ class AT_DB
 		
 		DB_PlayerProfile newProfile = DB_PlayerProfile();
 		newProfile.generate(biUid, playersName);
-		atDB.AddOrUpdateAsync(newProfile, variableOne);
+		AddOrUpdateProfile(newProfile);
+	}
+	
+	static void AddOrUpdateProfile(DB_PlayerProfile profile)
+	{
+		atDB.AddOrUpdateAsync(profile, variableOne);
 	}
 
 	static DB_PlayerProfile getPlayer(string biUid)

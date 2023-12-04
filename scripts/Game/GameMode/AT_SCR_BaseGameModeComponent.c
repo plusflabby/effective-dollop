@@ -105,5 +105,13 @@ modded class SCR_BaseGameMode
 		//! create profile if none for player
 		if (!PlayerDatabaseIntergration.findProfile(playerBiUid))
 			PlayerDatabaseIntergration.generateNewProfile(playerBiUid, playerName);
+		else
+		{
+			//! Check if player changed name
+			
+			string playerSavedName = PlayerDatabaseIntergration.getProfileName(playerBiUid);
+			if (playerSavedName != string.Empty && playerSavedName.Compare(playerName, true) != 0)
+				PlayerDatabaseIntergration.updateProfileNames(playerName, playerBiUid);
+		}
 	}
 }
