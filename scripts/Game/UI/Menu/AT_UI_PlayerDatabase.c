@@ -69,14 +69,14 @@ class AT_UI_PlayerDatabase : MenuBase
 		string value = uidEditBox.GetValue();
 		//Print(value);
 		
-		search = PlayerDatabaseIntergration.getPlayerFromUID(value);
+		search = PlayerDatabaseIntergration.getPlayerProfile(value);
 		//Print(search.ToString());
 		
 		switch (search.result_code)
 		{
 			case PDI_Results.SUCCESS:
 			{
-				resultTextWidget.SetText("SUCCESSFULLY FOUND | Found UID="+search.player.getUid());
+				resultTextWidget.SetText("SUCCESSFULLY FOUND | Found UID="+search.player.m_sBiUID);
 				break;
 			}
 			case PDI_Results.NOT_FOUND:

@@ -46,48 +46,51 @@ class AT_DB
 	static void saveNewPlayer(string biUid)
 	{
 		
-		AT_PlayerProfile newProfile = new AT_PlayerProfile();
-		newProfile.setBiUid(biUid);
+		DB_PlayerProfile newProfile = DB_PlayerProfile();
+		newProfile.generate(biUid);
 		atDB.AddOrUpdateAsync(newProfile, variableOne);
 	}
 
-	static AT_Database_Data_Player getPlayer(string biUid)
+	static DB_PlayerProfile getPlayer(string biUid)
 	{
+		
+		
+		
 		//AT_Database_Data_Player playerData;
 		//SCR_BinLoadContext loadContext = new SCR_BinLoadContext();
 		//loadContext.LoadFromFile(m_sPlayer);
 		//loadContext.ReadValue(biUid, playerData);
 
-		EDF_DbFindResultMultiple<EDF_DbEntity> results = atDB.FindAll(
-			EDF_DbEntity/*,
-			EDF_DbFind.Field("m_sBiUid").Equals(biUid)*/
-		);
+//		EDF_DbFindResultMultiple<EDF_DbEntity> results = atDB.FindAll(
+//			EDF_DbEntity/*,
+//			EDF_DbFind.Field("m_sBiUid").Equals(biUid)*/
+//		);
 
-		Print(results.IsSuccess().ToString(), LogLevel.WARNING);
-		Print(results.IsSuccess().ToString(), LogLevel.WARNING);
-		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
-		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
-		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
-		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
-		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
-		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
-		if (!results.IsSuccess())
-			return AT_Database_Data_Player_EMPTY;
-
-		//results.GetEntities
-		array<ref EDF_DbEntity> entities = results.GetEntities();
-		Print("ERRRRRRRRRRRRRRR", LogLevel.WARNING);
-		entities.Debug();
-
-		return AT_Database_Data_Player_EMPTY;
+//		Print(results.IsSuccess().ToString(), LogLevel.WARNING);
+//		Print(results.IsSuccess().ToString(), LogLevel.WARNING);
+//		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
+//		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
+//		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
+//		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
+//		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
+//		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, results.GetStatusCode()), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		Print(results.GetSizeOf().ToString(), LogLevel.WARNING);
+//		if (!results.IsSuccess())
+//			return AT_Database_Data_Player_EMPTY;
+//
+//		//results.GetEntities
+//		array<ref EDF_DbEntity> entities = results.GetEntities();
+//		Print("ERRRRRRRRRRRRRRR", LogLevel.WARNING);
+//		entities.Debug();
+//
+//		return AT_Database_Data_Player_EMPTY;
 	}
 
 	//static void updatePlayer(AT_Database_Data_Player player, string playerUid)
@@ -235,27 +238,27 @@ AT_Database SetUpServerDatabase()
 //! Will be server's connect
 ref AT_Database atDB = SetUpServerDatabase();
 
-class AT_PlayerProfile : EDF_DbEntity
-{
-	//! This will be the bohemia unique identifier
-	string m_sBiUid;
-	//! This will be set at creating by SCR_DateTimeHelper.GetDateTimeLocal()
-	string m_sJoinDateTime;
-
-	void AT_PlayerProfile()
-	{
-		SetId(EDF_DbEntityIdGenerator.Generate());
-		m_sJoinDateTime = SCR_DateTimeHelper.GetDateTimeLocal();
-	}
-
-	void setBiUid(string biUid)
-	{
-		m_sBiUid = biUid;
-	}
-
-
-}
-
+//class AT_PlayerProfile : EDF_DbEntity
+//{
+//	//! This will be the bohemia unique identifier
+//	string m_sBiUid;
+//	//! This will be set at creating by SCR_DateTimeHelper.GetDateTimeLocal()
+//	string m_sJoinDateTime;
+//
+//	void AT_PlayerProfile()
+//	{
+//		SetId(EDF_DbEntityIdGenerator.Generate());
+//		m_sJoinDateTime = SCR_DateTimeHelper.GetDateTimeLocal();
+//	}
+//
+//	void setBiUid(string biUid)
+//	{
+//		m_sBiUid = biUid;
+//	}
+//
+//
+//}
+//
 class callbackAT : EDF_DbOperationStatusOnlyCallback
 {
 	//override void OnSuccess(Managed context)

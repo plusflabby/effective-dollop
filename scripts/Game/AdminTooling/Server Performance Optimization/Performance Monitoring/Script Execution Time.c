@@ -7,7 +7,7 @@ class vScriptExecutionTime
 		foreach (vSetVariable var : at_scripts)
 		{
 			total = total + var.timeMiliSecond;
-			Print(var.className + var.timeMiliSecond.ToString());
+			//Print(var.className + var.timeMiliSecond.ToString());
 		}
 		
 		if (at_scripts.Count() > 0)

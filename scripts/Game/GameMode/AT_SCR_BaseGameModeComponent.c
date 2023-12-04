@@ -88,7 +88,7 @@ modded class SCR_BaseGameMode
 		
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(iPlayerID);
 		
-		Print("AT_SCR_BaseGameModeComponent->OnPlayerAuditSuccess | " + playerName + " | " + playerBiUid, LogLevel.NORMAL);
+		//Print("AT_SCR_BaseGameModeComponent->OnPlayerAuditSuccess | " + playerName + " | " + playerBiUid, LogLevel.SPAM);
 		
 		AT_DB.saveLog(
 			string.Format("OnPlayerAuditSuccess -> %1 -> %2 -> %3", iPlayerID, playerName, playerBiUid), 
@@ -102,5 +102,8 @@ modded class SCR_BaseGameMode
 		//AT_Database_Data_Player player = AT_DB.getPlayer(playerBiUid);
 		//if (!player)
 		//	AT_DB.saveNewPlayer(playerBiUid);
+		//! create profile if none for player
+		if (!PlayerDatabaseIntergration.findProfile(playerBiUid))
+			PlayerDatabaseIntergration.generateNewProfile(playerBiUid);
 	}
 }

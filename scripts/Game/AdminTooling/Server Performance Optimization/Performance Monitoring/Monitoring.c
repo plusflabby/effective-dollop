@@ -64,6 +64,14 @@ class Monitoring
 			LogLevel.SPAM,
 			"Monitoring"
 		);
+		
+		//! Save metrics to db 
+		SPO_Storage saving = SPO_Storage();
+		saving.generate(
+			playerCount, memoryUsage, sizeOfDatabase, networkPingAverageOfPlayers, networkPingMinimumOfPlayers, networkPingMaximumOfPlayers,
+			fpsServer, fpsClientAverage, fpsClientMinimum, fpsClientMaximum, aiCount, scriptAverageCompleteInMiliSeconds, dateTime
+		);
+		atDB.AddOrUpdateAsync(saving, variableOne);
 	}
 	/* Functions to update the variable */
 	void playerCountUpdate(int variable)
