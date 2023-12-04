@@ -32,12 +32,20 @@ class AT_DB
 	{
 		ref AT_LoggingLocalCallback logCallback = new AT_LoggingLocalCallback();
 		atDB.AddOrUpdateAsync(log, logCallback);
-		Print(log.m_sMessage, LogLevel.NORMAL);
+		Print(log.m_sMessage, LogLevel.SPAM);
+	}
+	
+	static void testQuery()
+	{
+		EDF_DbFindResultMultiple<EDF_DbEntity> result = atDB.FindAll(AT_LoggingLocalStorage);
+		
+		Print(result.IsSuccess().ToString(), LogLevel.WARNING);
+		Print(result.GetEntities().Count().ToString(), LogLevel.WARNING);
 	}
 
 	static void saveNewPlayer(string biUid)
 	{
-		ref callbackAT variableOne = new callbackAT();
+		
 		AT_PlayerProfile newProfile = new AT_PlayerProfile();
 		newProfile.setBiUid(biUid);
 		atDB.AddOrUpdateAsync(newProfile, variableOne);
@@ -259,3 +267,4 @@ class callbackAT : EDF_DbOperationStatusOnlyCallback
 		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, statusCode), LogLevel.ERROR);
 	}
 }
+ref callbackAT variableOne = new callbackAT();

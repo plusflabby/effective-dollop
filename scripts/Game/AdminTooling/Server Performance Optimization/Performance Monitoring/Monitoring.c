@@ -32,7 +32,7 @@ class Monitoring
 	// Datetime
 	protected string dateTime = SCR_DateTimeHelper.GetDateTimeLocal();
 	// Interval
-	protected int monitoringIntervalInMinutes = 1;
+	protected int monitoringIntervalInMinutes = 5;
 	
 	private bool started = false;
 	// function to start monitoring at interval 

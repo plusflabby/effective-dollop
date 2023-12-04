@@ -10,9 +10,17 @@ class Account
 			Debug.Error("Account->registration: validate err");
 			return false;
 		}
+		
+		//! Make sure username is not already taken 
+		if (Password_Storage.usernameExists(username))
+		{
+			Debug.Error("Account->registration: username exists");
+			return false;
+		}
+		
 		 
-		Password_Storage_Password password_storing = new Password_Storage_Password(password);
-		passwordStorage.addPasswordToInMemoryCache(username, password_storing);
+		Password_Storage_Password password_storing = new Password_Storage_Password(password, username);
+		Password_Storage.addPasswordToDatabase(password_storing);
 		
 		session = new ref Session_Init();
 		Session_Structure session_data = new Session_Structure();
@@ -51,7 +59,19 @@ class Account
 			return false;
 		}
 		 
-		if (!passwordStorage.compare2(username, password))
+//		typename type = String("Password_Storage_Password").ToType();
+//		EDF_DbFindResultMultiple<EDF_DbEntity> ttttt = atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
+//		array<ref EDF_DbEntity> results = ttttt.GetEntities();
+//		
+//		foreach (EDF_DbEntity result : results)
+//		{
+//			Password_Storage_Password passwordCheck = Password_Storage_Password.Cast(result);
+//			Print(passwordCheck.accountUid);
+//		}
+//		
+//		return true;
+		
+		if (!Password_Storage.compareForLogin(username, password))
 			return false;
 		
 		session = new ref Session_Init();
