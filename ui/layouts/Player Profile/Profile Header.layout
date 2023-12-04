@@ -5,18 +5,18 @@ FrameWidgetClass {
    Name "HorizontalLayout0"
    Slot FrameWidgetSlot "{5EE107F6F4913C8E}" {
     Anchor 0 0.15 1 0.85
-    PositionX -0
-    OffsetLeft -0
+    PositionX 0
+    OffsetLeft 0
     PositionY -2
     OffsetTop -2
     SizeX 0
-    OffsetRight -0
+    OffsetRight 0
     SizeY -4
     OffsetBottom 6
    }
    "Fill Origin" Center
    {
-    ImageWidgetClass "{5EE107F6D014A05F}" {
+    ProfileImageWidgetClass "{5EE107F6D014A05F}" {
      Name "Image0"
      Slot LayoutSlot "{5EE107F6D014A035}" {
      }

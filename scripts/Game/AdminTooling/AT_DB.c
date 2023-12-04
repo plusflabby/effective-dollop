@@ -43,11 +43,11 @@ class AT_DB
 		Print(result.GetEntities().Count().ToString(), LogLevel.WARNING);
 	}
 
-	static void saveNewPlayer(string biUid)
+	static void saveNewPlayer(string biUid, string playersName)
 	{
 		
 		DB_PlayerProfile newProfile = DB_PlayerProfile();
-		newProfile.generate(biUid);
+		newProfile.generate(biUid, playersName);
 		atDB.AddOrUpdateAsync(newProfile, variableOne);
 	}
 

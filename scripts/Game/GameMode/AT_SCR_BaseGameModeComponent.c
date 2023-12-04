@@ -104,6 +104,6 @@ modded class SCR_BaseGameMode
 		//	AT_DB.saveNewPlayer(playerBiUid);
 		//! create profile if none for player
 		if (!PlayerDatabaseIntergration.findProfile(playerBiUid))
-			PlayerDatabaseIntergration.generateNewProfile(playerBiUid);
+			PlayerDatabaseIntergration.generateNewProfile(playerBiUid, playerName);
 	}
 }

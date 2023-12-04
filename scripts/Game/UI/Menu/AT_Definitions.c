@@ -4,5 +4,6 @@ modded enum ChimeraMenuPreset
 	AT_PM,
 	AT_AUTH,
 	AT_PlayerDatabase,
-	AT_Reporting
+	AT_Reporting,
+	AT_PlayerProfile
 }

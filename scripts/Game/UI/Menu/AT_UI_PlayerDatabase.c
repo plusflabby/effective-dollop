@@ -4,23 +4,23 @@ class AT_UI_PlayerDatabase : MenuBase
 	protected static const string TEXT_TITLE = "PlayerDatabaseSearch";
 	protected static const string BUTTON_SEARCH = "Button0";
 	protected static const string EDIT_BOX_PLAYERUID = "EditBoxRoot0";
+	protected static const string WINDOW_RESULTS = "Window0";
+//	protected static const string VLW_RESULTS = "VerticalLayout01101";
+//	protected static const string VLW_RESULT = "Button122";
 
 	Widget rootWidget;
 	SCR_EditBoxComponent uidEditBox;
 	TextWidget resultTextWidget;
 	ref PDI_Result search;
+	WindowWidget windowWidget;
+//	VerticalLayoutWidget vlWidget;
 
 	protected override void OnMenuOpen()
 	{
 		Print("AT_UI_PlayerDatabase->OnMenuOpen: menu opened", LogLevel.SPAM);
 
 		rootWidget = GetRootWidget();
-		if (!rootWidget)
-		{
-			Print("AT_UI_PlayerDatabase->OnMenuOpen: rootWidget layout error", LogLevel.ERROR);
-			return;
-		}
-
+		
 		//setup search button
 		SCR_ButtonBaseComponent searchButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_SEARCH, rootWidget);
 		if (!searchButton)
@@ -69,28 +69,52 @@ class AT_UI_PlayerDatabase : MenuBase
 		string value = uidEditBox.GetValue();
 		//Print(value);
 		
-		search = PlayerDatabaseIntergration.getPlayerProfile(value);
+		search = PlayerDatabaseIntergration.findPlayerProfile(value);
 		//Print(search.ToString());
 		
 		switch (search.result_code)
 		{
 			case PDI_Results.SUCCESS:
 			{
-				resultTextWidget.SetText("SUCCESSFULLY FOUND | Found UID="+search.player.m_sBiUID);
+				if (search.results.Count() > 1)
+				{
+					string header = "SUCCESSFULLY FOUND | Found "+search.results.Count().ToString();
+					
+					foreach (DB_PlayerProfile profile : search.results)
+					{
+						header = header + "\n" + profile.m_sBiUID + " : " + profile.m_sName;
+					}
+					
+					resultTextWidget.SetText(header);
+					resultTextWidget.SetVisible(true);
+					
+					//Text00001273563
+					
+				}
+				else
+				{
+//					resultTextWidget.SetText("SUCCESSFULLY FOUND | Found UID="+search.player.m_sBiUID);
+//					resultTextWidget.SetVisible(true);
+					//! Open player's profile
+					m_sAtUiProfileUID = search.player.m_sBiUID;
+					GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PlayerProfile);
+					Close();
+				}
 				break;
 			}
 			case PDI_Results.NOT_FOUND:
 			{
 				resultTextWidget.SetText("NOT FOUND");
+				resultTextWidget.SetVisible(true);
 				break;
 			}
 			case PDI_Results.INVALID_SEARCH:
 			{
-				resultTextWidget.SetText("INVALID SEARCH VALUE");
+				resultTextWidget.SetText("INVALID SEARCH VALUE, Enter in player's BI UID");
+				resultTextWidget.SetVisible(true);
 				break;
 			}
 		}
 		
-		resultTextWidget.SetVisible(true);
 	}
 }

@@ -4,51 +4,6 @@ WindowWidgetClass {
  "Title Visible" 1
  "Title Size" 50
  {
-  TextWidgetClass "{5EF75B6E08C01CD5}" {
-   Name "resulttext"
-   Slot FrameWidgetSlot "{5EF75B6E08C01CB8}" {
-    Anchor 0.05 0.1 0.95 0.3
-    PositionX 8
-    OffsetLeft 8
-    PositionY -50.8
-    OffsetTop -50.8
-    SizeX -8
-    OffsetRight 0
-    SizeY 10.4
-    OffsetBottom 40.4
-   }
-   "Is Visible" 0
-   "Font Size" 35
-   "Min Font Size" 27
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-  }
-  ButtonWidgetClass "{5EEF0DF5532C6CF8}" {
-   Name "Button0"
-   Slot FrameWidgetSlot "{5EEF0DF5532C6CDF}" {
-    PositionX 976
-    OffsetLeft 976
-    PositionY 0
-    OffsetTop 0
-    SizeX 944
-    OffsetRight -1920
-    SizeY 30
-    OffsetBottom -30
-   }
-   Color 0.07 0.07 0.07 1
-   components {
-    SCR_ButtonBaseComponent "{5EEF0DF2AD0C48D0}" {
-    }
-   }
-   {
-    TextWidgetClass "{5EEF0DF54B1E57AE}" {
-     Name "Text0"
-     Slot ButtonWidgetSlot "{5EEF0DF54B1E5781}" {
-     }
-     Text "Search"
-    }
-   }
-  }
   TextWidgetClass "{5EEF0DF521EE0933}" {
    Name "Text0"
    Slot FrameWidgetSlot "{5EEF0DF521EE090A}" {
@@ -96,6 +51,95 @@ WindowWidgetClass {
      }
     }
    }
+  }
+  ButtonWidgetClass "{5EEF0DF5532C6CF8}" {
+   Name "Button0"
+   Slot FrameWidgetSlot "{5EEF0DF5532C6CDF}" {
+    PositionX 976
+    OffsetLeft 976
+    PositionY 0
+    OffsetTop 0
+    SizeX 944
+    OffsetRight -1920
+    SizeY 30
+    OffsetBottom -30
+   }
+   Color 0.07 0.07 0.07 1
+   components {
+    SCR_ButtonBaseComponent "{5EEF0DF2AD0C48D0}" {
+    }
+   }
+   {
+    TextWidgetClass "{5EEF0DF54B1E57AE}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{5EEF0DF54B1E5781}" {
+     }
+     Text "Search"
+    }
+   }
+  }
+  WindowWidgetClass "{5F0905B7D134D1C4}" {
+   Name "Window0"
+   Slot FrameWidgetSlot "{5F0905B7D134D1B9}" {
+    Anchor 0 0.25 0.5 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY -37
+    OffsetTop -37
+    SizeX 0
+    OffsetRight 0
+    SizeY 37
+    OffsetBottom 0
+   }
+   "Is Enabled" 0
+   "Is Visible" 0
+   Title "results"
+   "Title Visible" 1
+   "Title Size" 50
+   "Is Collapsible" 0
+   {
+    ScrollLayoutWidgetClass "{5F0905B77D07B3AF}" {
+     Name "ScrollLayout0"
+     Slot FrameWidgetSlot "{5F0905B77D07B382}" {
+      Anchor 0 0.05 1 0.95
+      PositionX 0
+      OffsetLeft 0
+      PositionY -21.6
+      OffsetTop -21.6
+      SizeX 0
+      OffsetRight 0
+      SizeY 6
+      OffsetBottom 15.6
+     }
+     "Scrollbar Always Visible" 1
+     {
+      TextWidgetClass "{5F0905A9B552E9E6}" {
+       Name "Text00001273563"
+       Slot AlignableSlot "{5F0905A9B552E9DD}" {
+       }
+      }
+     }
+    }
+   }
+  }
+  TextWidgetClass "{5EF75B6E08C01CD5}" {
+   Name "resulttext"
+   Slot FrameWidgetSlot "{5EF75B6E08C01CB8}" {
+    Anchor 0.05 0.1 0.95 0.3
+    PositionX 8
+    OffsetLeft 8
+    PositionY -50.8
+    OffsetTop -50.8
+    SizeX -8
+    OffsetRight 0
+    SizeY 10.4
+    OffsetBottom 40.4
+   }
+   "Is Visible" 0
+   "Font Size" 35
+   "Min Font Size" 27
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
   }
  }
 }
