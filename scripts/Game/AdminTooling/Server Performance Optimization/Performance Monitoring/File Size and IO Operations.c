@@ -18,7 +18,7 @@ class vFileSizeAndIoOperations : vSetMod
 		//
 		//Print("file", LogLevel.NORMAL);
 		array<string> files = {};
-		System.FindFiles(files.Insert, "$profile:", ".ATbin");
+		System.FindFiles(files.Insert, "$profile:/.db/AdminTooling", ".json");
 		
 		// probably will be limited if size > int
 		int filesSize = 0;

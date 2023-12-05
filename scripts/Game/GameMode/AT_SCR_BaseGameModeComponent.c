@@ -110,8 +110,13 @@ modded class SCR_BaseGameMode
 			//! Check if player changed name
 			
 			string playerSavedName = PlayerDatabaseIntergration.getProfileName(playerBiUid);
-			if (playerSavedName != string.Empty && playerSavedName.Compare(playerName, true) != 0)
+			if (playerSavedName != string.Empty && playerSavedName.Contains(playerName))
 				PlayerDatabaseIntergration.updateProfileNames(playerName, playerBiUid);
 		}
+		
+		//ScriptedChatEntity chat = ScriptedChatEntity.Cast(GetGame().GetChat());
+		//SendMessage
 	}
 }
+
+

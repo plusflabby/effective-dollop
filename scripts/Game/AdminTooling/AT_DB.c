@@ -55,6 +55,11 @@ class AT_DB
 	{
 		atDB.AddOrUpdateAsync(profile, variableOne);
 	}
+	
+	static void AddOrUpdateChat(DB_Chat chat)
+	{
+		atDB.AddOrUpdateAsync(chat, variableOne);
+	}
 
 	static DB_PlayerProfile getPlayer(string biUid)
 	{

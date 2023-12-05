@@ -80,13 +80,13 @@ class PlayerDatabaseIntergration
 //	}
 	
 	//! find player profile(s) 
-	static PDI_Result findPlayerProfile(string biUid)
+	static PDI_Result findPlayerProfile(string biUid, int limitToReturn = 99)
 	{
 //		PDI_Result firstSearch = getPlayerProfile(biUid);
 //		if (firstSearch.result_code == PDI_Results.SUCCESS || firstSearch.result_code == PDI_Results.INVALID_SEARCH)
 //			return firstSearch;
 		
-		array<ref DB_PlayerProfile> secondSearch = getProfiles(biUid, 99);
+		array<ref DB_PlayerProfile> secondSearch = getProfiles(biUid, limitToReturn);
 		if (secondSearch.Count() < 1)
 			return PDI_Result(PDI_Results.NOT_FOUND); 
 		
@@ -109,7 +109,6 @@ class PlayerDatabaseIntergration
 	//! update profile if name change 
 	static void updateProfileNames(string nameChanged, string biUid)
 	{
-		
 		array<ref DB_PlayerProfile> profiles = getProfiles(biUid, 1);
 		DB_PlayerProfile profile = profiles.Get(0);
 		profile.m_aName.Insert(nameChanged);
@@ -131,4 +130,9 @@ class PlayerDatabaseIntergration
 		else
 			return string.Empty;
 	}
+	
+//	static void updateEntireProfile(DB_PlayerProfile profile)
+//	{
+//		
+//	}
 }
