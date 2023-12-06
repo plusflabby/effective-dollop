@@ -120,15 +120,15 @@ class PlayerDatabaseIntergration
 		AT_DB.AddOrUpdateProfile(profile);
 	}
 	
-	//! get profile name of player 
-	static string getProfileName(string biUid)
+	static bool profileNameIsStored(string biUid, string name)
 	{
 		PDI_Result profileRDI = findPlayerProfile(biUid);
 		
 		if (profileRDI.result_code == PDI_Results.SUCCESS)
-			return profileRDI.player.m_sName;
-		else
-			return string.Empty;
+			if (profileRDI.player.m_sName != name)
+				return profileRDI.player.m_aName.Contains(name);
+		
+		return false;
 	}
 	
 //	static void updateEntireProfile(DB_PlayerProfile profile)

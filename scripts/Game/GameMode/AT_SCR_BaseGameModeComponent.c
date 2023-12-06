@@ -1,14 +1,15 @@
 modded class SCR_BaseGameMode
 {
 	private IEntity m_owner;
-	private bool ready;
 	private PlayerManager pm;
-
+	protected bool ready;
+	
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFrame(owner, timeSlice);
-		//if (Replication.IsServer())
-		//	return;
+		
+		if (Replication.IsServer())
+			return;
 		
 		if (Debug.KeyState(KeyCode.KC_F1))
 		{
@@ -20,6 +21,8 @@ modded class SCR_BaseGameMode
 		{
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
 			Debug.ClearKey(KeyCode.KC_F5);
+			Print(ready, LogLevel.WARNING);
+			Print(ready, LogLevel.WARNING);
 		};
 		
 		if (Debug.KeyState(KeyCode.KC_F6))
@@ -38,9 +41,11 @@ modded class SCR_BaseGameMode
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-		if (SCR_Global.IsEditMode())
-			return;
 
+		#ifdef WORKBENCH
+		return;
+		#endif
+		
 		if (!Replication.IsServer())
 			return;
 
@@ -57,9 +62,6 @@ modded class SCR_BaseGameMode
 			Debug.Error("AT_SCR_BaseGameModeComponent->EOnInit !|! Failed to get game mode!");
 			return;
 		};
-		
-		//if (!AT_DB.doesAdminConfigExist())
-		//	AT_DB.createAdminConfig();
 		
 		ServerPerformanceMonitor.startMonitoringWithInterval();
 		BackupAndRestore backupAndRestore = new BackupAndRestore();
@@ -108,9 +110,7 @@ modded class SCR_BaseGameMode
 		else
 		{
 			//! Check if player changed name
-			
-			string playerSavedName = PlayerDatabaseIntergration.getProfileName(playerBiUid);
-			if (playerSavedName != string.Empty && playerSavedName.Contains(playerName))
+			if (!PlayerDatabaseIntergration.profileNameIsStored(playerBiUid, playerName))
 				PlayerDatabaseIntergration.updateProfileNames(playerName, playerBiUid);
 		}
 		
