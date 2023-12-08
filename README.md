@@ -11,6 +11,13 @@ This project aims to provide server administrators using PCs with a suite of too
 ## Installation
 
 Add the addon's GUID to the server mods.
+Include the dependency in server mods also.
+
+## Usage
+
+1. F1 - Opens menu
+2. Create username and password - [Password Criteria](https://github.com/plusflabby/effective-dollop/wiki/AT-Password(s)#password-criteria)
+3. Login now
 
 ## Support and Troubleshooting
 
