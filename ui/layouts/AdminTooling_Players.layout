@@ -24,10 +24,26 @@ FrameWidgetClass : "{58CEE1E87FF62F5A}ui/layouts/AdminTooling_Main.layout" {
         SizeMode Fill
        }
        "title visible" 1
-       colums "Name;50;Group;50;"
+       colums "Name;"
        lines 25
+       "highlight row" 1
       }
      }
+    }
+    ImageWidgetClass "{5E7063A0078AA010}" {
+     Prefab "{5E7063A0078AA010}"
+     "Is Enabled" 0
+     "Is Visible" 0
+    }
+    HorizontalLayoutWidgetClass "{5E86C6FA23888E04}" {
+     Prefab "{5E86C6FA23888E04}"
+     "Is Enabled" 0
+     "Is Visible" 0
+    }
+    HorizontalLayoutWidgetClass "{5E86C6F9114D1F65}" {
+     Prefab "{5E86C6F9114D1F65}"
+     "Is Enabled" 0
+     "Is Visible" 0
     }
    }
   }

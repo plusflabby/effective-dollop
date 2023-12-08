@@ -24,62 +24,25 @@ class AT_UI_AUTH : AT_UI_MENU_BASE
 		loginButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_LOGIN, rootWidget);
 		loginButton.m_OnClicked.Insert(LoginButton);
 		
-		
 		usernameEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_USERNAME, rootWidget);
 		passwordEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PASSWORD, rootWidget);
 	}
-	
-	
-	
 	
 	protected void RegisterButton()
 	{
 		string the_password = passwordEditBox.GetValue();
 		string the_username = usernameEditBox.GetValue();
-		
-		
-		//SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		//pc.Rpc(RpcAsk_ToRegister);
-		
-//		Account account = new Account();
-//		
-//		Print("the_password "+the_password, LogLevel.NORMAL);
-//		Print("the_username "+the_username, LogLevel.NORMAL);
 		array<string> rpc_data = new array<string>();
 		rpc_data.Insert(the_username);
 		rpc_data.Insert(the_password);
-//		account.registration(the_username, the_password);
 		AT_EVENT_CLASS.add(new AT_Event(rpc_data, AT_Events.SessionUpdate, "SessionUpdate"));
 		
 	}
-//	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-//	void RpcAsk_ToRegister()
-//	{
-//		string the_password = passwordEditBox.GetValue();
-//		string the_username = usernameEditBox.GetValue();
-//		
-//		Print(the_password, LogLevel.WARNING);
-//		Print(the_username, LogLevel.WARNING);
-//		Print(Replication.IsServer(), LogLevel.WARNING);
-//		Print(Replication.IsClient(), LogLevel.WARNING);
-//	}
-//	
-	
-	
 	
 	protected void LoginButton()
 	{
 		string the_password = passwordEditBox.GetValue();
 		string the_username = usernameEditBox.GetValue();
-		
-//		Account account = new Account();
-//		bool login = account.login(the_username, the_password);
-//		
-//		Debug.Error("AT_UI_AUTH->LoginButton: login="+login);
-//		
-//		//RPC -> server -> client
-		
-		
 		array<string> rpc_data = new array<string>();
 		rpc_data.Insert(the_username); // testy
 		rpc_data.Insert(the_password); // testyY1234556789

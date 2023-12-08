@@ -7,16 +7,6 @@ modded class SCR_PlayerController
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_Authority_Method(string username, string password)
 	{
-//		if (!m_sSessionUid.IsEmpty()) // prevent useless network messages
-//			return;
-		
-		//Account serverAccount = new Account();
-		
-//		m_sSessionUid = "EMPTY";
-//		
-//		Print(username+Replication.IsServer());
-//		Print(password+Replication.IsClient());
-		
 		// prevent useless network messages
 		if (!Account.validate(password))
 			return;
@@ -49,21 +39,16 @@ modded class SCR_PlayerController
 			// Register Account On Server 
 			Password_Storage_Password password_storing = new Password_Storage_Password(password, username);
 			Password_Storage.addPasswordToDatabase(password_storing);
-			//SESSION_CACHE.AddSession(session.mySessionId, session_data);
 		}
 	}
 	
 	//! called after session id updated 
 	protected void OnSessionIdUpdated()
 	{
-		//Print("proxy-side code");
-		//Print("SessionId Updated");
+		Print("proxy-side code");
+		Print("SessionId Updated");
 	}
-	
-//	void PrintSessionId()
-//	{
-//		Print(m_sSessionUid, LogLevel.WARNING);
-//	}
 }
 
 //!TODO check sessionid against playerId on server
+// example password TEstTest0192837465

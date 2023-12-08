@@ -14,7 +14,7 @@ class Session_Cache
 	void AddSession(string sessionId, Session_Structure data)
 	{
 		sessions.Insert(sessionId, data);
-		Print("Session added successfully");
+		//Print("Session added successfully");
 	}
 	
 	// Function to retrieve session data based on session ID

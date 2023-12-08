@@ -1,50 +1,62 @@
 WindowWidgetClass {
  Name "rootFrame"
- style simple
+ Title "Player Database"
  "Title Visible" 1
  "Title Size" 50
+ "Is Collapsible" 0
  {
-  TextWidgetClass "{5EEF0DF521EE0933}" {
-   Name "Text0"
-   Slot FrameWidgetSlot "{5EEF0DF521EE090A}" {
-    Anchor 0 0 1 0.05
-    PositionX 0
-    OffsetLeft 0
-    PositionY -56
-    OffsetTop -56
-    SizeX 0
-    OffsetRight 0
-    SizeY 4.8
-    OffsetBottom 51.2
-   }
-   Color 0 0 0 1
-   Text "Search Player Database"
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-  }
-  ButtonWidgetClass "{5EEF0DF52F8D7BE7}" : "{ECFED677B517422D}UI/layouts/Menus/MainMenu/LoginEditbox.layout" {
-   Name "EditBoxRoot0"
-   Slot FrameWidgetSlot "{5EEF0DF52F8D7C7C}" {
+  HorizontalLayoutWidgetClass "{5F113A94324DCF33}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{5F113A94324DCFF2}" {
+    Anchor 0 0 1 0.35
     PositionX 0
     OffsetLeft 0
     PositionY 0
     OffsetTop 0
-    SizeX 952
-    OffsetRight -952
-    SizeY 30
-    OffsetBottom -30
+    SizeX 0
+    OffsetRight 0
+    SizeY -194
+    OffsetBottom 194
    }
    {
-    SizeLayoutWidgetClass "{58C87E9832A83594}" {
-     Prefab "{58C87E9832A83594}"
+    ButtonWidgetClass "{5EEF0DF5532C6CF8}" {
+     Name "Button0"
+     Slot LayoutSlot "{5F117444B3E821CF}" {
+      Padding 5 5 5 5
+      SizeMode Fill
+     }
+     Color 0.07 0.07 0.07 1
+     components {
+      SCR_ButtonBaseComponent "{5EEF0DF2AD0C48D0}" {
+      }
+     }
      {
-      OverlayWidgetClass "{55367D8E531FD623}" {
-       Prefab "{55367D8E531FD623}"
+      TextWidgetClass "{5EEF0DF54B1E57AE}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5EEF0DF54B1E5781}" {
+       }
+       Text "Search"
+      }
+     }
+    }
+    ButtonWidgetClass "{5EEF0DF52F8D7BE7}" : "{ECFED677B517422D}UI/layouts/Menus/MainMenu/LoginEditbox.layout" {
+     Name "EditBoxRoot0"
+     Slot LayoutSlot "{5F117444B3E8223F}" {
+      SizeMode Fill
+     }
+     {
+      SizeLayoutWidgetClass "{58C87E9832A83594}" {
+       Prefab "{58C87E9832A83594}"
        {
-        EditBoxWidgetClass "{58C87E9832A8359E}" {
-         Prefab "{58C87E9832A8359E}"
-         "Placeholder text" "PlayerUid"
-         "Horizontal alignment" Center
+        OverlayWidgetClass "{55367D8E531FD623}" {
+         Prefab "{55367D8E531FD623}"
+         {
+          EditBoxWidgetClass "{58C87E9832A8359E}" {
+           Prefab "{58C87E9832A8359E}"
+           "Placeholder text" "PlayerUid"
+           "Horizontal alignment" Center
+          }
+         }
         }
        }
       }
@@ -52,46 +64,19 @@ WindowWidgetClass {
     }
    }
   }
-  ButtonWidgetClass "{5EEF0DF5532C6CF8}" {
-   Name "Button0"
-   Slot FrameWidgetSlot "{5EEF0DF5532C6CDF}" {
-    PositionX 976
-    OffsetLeft 976
-    PositionY 0
-    OffsetTop 0
-    SizeX 944
-    OffsetRight -1920
-    SizeY 30
-    OffsetBottom -30
-   }
-   Color 0.07 0.07 0.07 1
-   components {
-    SCR_ButtonBaseComponent "{5EEF0DF2AD0C48D0}" {
-    }
-   }
-   {
-    TextWidgetClass "{5EEF0DF54B1E57AE}" {
-     Name "Text0"
-     Slot ButtonWidgetSlot "{5EEF0DF54B1E5781}" {
-     }
-     Text "Search"
-    }
-   }
-  }
   WindowWidgetClass "{5F0905B7D134D1C4}" {
    Name "Window0"
    Slot FrameWidgetSlot "{5F0905B7D134D1B9}" {
-    Anchor 0 0.25 0.5 1
+    Anchor 0 0.4 0.5 1
     PositionX 0
     OffsetLeft 0
-    PositionY -37
-    OffsetTop -37
+    PositionY -25.6
+    OffsetTop -25.6
     SizeX 0
     OffsetRight 0
-    SizeY 37
+    SizeY 25.6
     OffsetBottom 0
    }
-   "Is Enabled" 0
    "Is Visible" 0
    Title "results"
    "Title Visible" 1
@@ -125,15 +110,15 @@ WindowWidgetClass {
   TextWidgetClass "{5EF75B6E08C01CD5}" {
    Name "resulttext"
    Slot FrameWidgetSlot "{5EF75B6E08C01CB8}" {
-    Anchor 0.05 0.1 0.95 0.3
+    Anchor 0.05 0.2 0.95 0.4
     PositionX 8
     OffsetLeft 8
-    PositionY -50.8
-    OffsetTop -50.8
+    PositionY -34.4
+    OffsetTop -34.4
     SizeX -8
     OffsetRight 0
     SizeY 10.4
-    OffsetBottom 40.4
+    OffsetBottom 24
    }
    "Is Visible" 0
    "Font Size" 35
