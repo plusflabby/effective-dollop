@@ -8,8 +8,10 @@ modded class SCR_BaseGameMode
 	{
 		super.EOnFrame(owner, timeSlice);
 		
+		#ifndef WORKBENCH
 		if (Replication.IsServer())
 			return;
+		#endif
 		
 		if (Debug.KeyState(KeyCode.KC_F1))
 		{
@@ -17,6 +19,7 @@ modded class SCR_BaseGameMode
 			Debug.ClearKey(KeyCode.KC_F1);
 		};
 		
+		#ifdef WORKBENCH
 		if (Debug.KeyState(KeyCode.KC_F5))
 		{
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
@@ -36,6 +39,7 @@ modded class SCR_BaseGameMode
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_Reporting);
 			Debug.ClearKey(KeyCode.KC_F7);
 		};
+		#endif
 	};
 
 	override void EOnInit(IEntity owner)

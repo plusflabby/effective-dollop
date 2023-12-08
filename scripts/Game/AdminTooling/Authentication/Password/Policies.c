@@ -1,21 +1,21 @@
 class Policy
 {
-	bool easyGuessable(string password)
+	static bool easyGuessable(string password)
 	{
 		return password.IsEmpty();
 	}
 	
-	bool minimumLength(string password)
+	static bool minimumLength(string password)
 	{
 		return password.Length() < 10;
 	}
 	
-	bool maximumLength(string password)
+	static bool maximumLength(string password)
 	{
 		return password.Length() > 128;
 	}
 	
-	bool complexity(string password)
+	static bool complexity(string password)
 	{
 		string charactersUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		string charactersLowercase = "abcdefghijklmnopqrstuvwxyz";

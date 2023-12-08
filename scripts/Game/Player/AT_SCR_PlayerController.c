@@ -1,10 +1,24 @@
 modded class SCR_PlayerController
 {
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void authorityStartMonitoring()
+	/*
+		Session Setup 
+	*/
+	//! Store session's id on client 
+	string atSessionId;
+	
+	//! returns player's session id for admin tooling
+	string getSessionId()
 	{
-		
+		return atSessionId;
 	}
+	//! For server to set session id
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_Method()
+	{
+		atSessionId = "sessionId"; //! get from sever db 
+		Replication.BumpMe();
+	}
+	
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void authorityKick(int playerId)
@@ -48,10 +62,7 @@ modded class SCR_PlayerController
 	
 	override void OnInit(IEntity owner)
 	{
-		if (Replication.IsClient())
-			GetGame().GetCallqueue().CallLater(loop, 3000, true);
-		//if (Replication.IsServer() && Replication.)
-			
+		GetGame().GetCallqueue().CallLater(loop, 3000, true);
 	}
 	
 	protected void loop()
@@ -63,6 +74,7 @@ modded class SCR_PlayerController
 				AT_Event ev = AT_Event.Cast(AT_EVENT_CLASS.getAll().Get(i));
 				if (!ev)
 					return;
+				
 				switch (ev.getName())
 				{
 					case AT_Events.Kick:
@@ -92,6 +104,20 @@ modded class SCR_PlayerController
 						AT_EVENT_CLASS.remove(i);
 						break;
 					}
+					
+					case AT_Events.SessionUpdate:
+					{
+						//Print(ev.getData());
+//						Print(data);
+//						Print("Hello", LogLevel.WARNING);
+//						Print(m_sSessionUid, LogLevel.WARNING);
+						//GetGame().GetCallqueue().CallLater(PrintSessionId, 1500, true);
+						array<string> data = array<string>.Cast(ev.getData());
+						Rpc(RpcAsk_Authority_Method, data.Get(0), data.Get(1));
+						AT_EVENT_CLASS.remove(i);
+						break;
+					}
+					
 					case AT_Events.Spectate:
 					{
 						AT_playerData player = AT_playerData.Cast(ev.getData());

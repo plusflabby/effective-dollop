@@ -1,10 +1,21 @@
-class AT_UI_MENU_BASE : MenuBase
+class AT_UI_MENU_BASE : SCR_SuperMenuBase
 {
 	protected string TEXT_TITLE = "UI_EMPTY";
 	protected Widget rootWidget;
+	protected SCR_PlayerController playerController;
 	
 	protected override void OnMenuOpen()
 	{
+		AT_MainStatic.setCurrentMenu(TEXT_TITLE);
+		playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		
+		//! Check for session, if not login menu and session is set open menu, else close menu and open login 
+		if (TEXT_TITLE != "Auth" && !playerController.m_sSessionUid)
+		{
+			Close();
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
+		}
+		
 		rootWidget = GetRootWidget();
 		
 		//Set up listeners to close menu
@@ -21,8 +32,6 @@ class AT_UI_MENU_BASE : MenuBase
 			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
 #endif
 		}
-		
-		AT_MainStatic.setCurrentMenu(TEXT_TITLE);
 	}
 	
 	protected override void OnMenuClose()

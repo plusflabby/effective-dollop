@@ -35,16 +35,15 @@ class Account
 	}
 	
 	// Validate user credentials before creating a session
-	bool validate(string password)
+	static bool validate(string password)
 	{
-		Policy passwordPolicy = new Policy();
-		if (passwordPolicy.minimumLength(password))
+		if (Policy.minimumLength(password))
 			return false;
-		if (passwordPolicy.maximumLength(password))
+		if (Policy.maximumLength(password))
 			return false;
-		if (passwordPolicy.easyGuessable(password))
+		if (Policy.easyGuessable(password))
 			return false;
-		if (!passwordPolicy.complexity(password))
+		if (!Policy.complexity(password))
 			return false;
 		
 		return true;

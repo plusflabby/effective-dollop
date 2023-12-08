@@ -1,127 +1,96 @@
-class AT_UI_AUTH : MenuBase
+class AT_UI_AUTH : AT_UI_MENU_BASE
 {
 	// Static variables
-	protected static const string TEXT_TITLE = "Auth";
 	protected static const string BUTTON_REGISTER = "REGISTERBUTTON0";
 	protected static const string EDIT_BOX_USERNAME = "EditBoxRoot0";
 	protected static const string EDIT_BOX_PASSWORD = "EditBoxRoot01";
 	protected static const string BUTTON_LOGIN = "REGISTERBUTTON";
 	
-	Widget rootWidget;
+	SCR_ButtonBaseComponent regButton;
+	SCR_ButtonBaseComponent loginButton;
+	SCR_EditBoxComponent usernameEditBox;
+	SCR_EditBoxComponent passwordEditBox;
 	
 	protected override void OnMenuOpen()
 	{
-		Print("AT_UI_AUTH->OnMenuOpen: menu opened", LogLevel.SPAM);
-		
-		
-		rootWidget = GetRootWidget();
-		if (!rootWidget)
-		{
-			Print("AT_UI_AUTH->OnMenuOpen: rootWidget layout error", LogLevel.ERROR);
-			return;
-		}
+		TEXT_TITLE = "Auth";
+		super.OnMenuOpen();
 		
 		//setup register button
-		SCR_ButtonBaseComponent regButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_REGISTER, rootWidget);
-		if (!regButton)
-		{
-			Debug.Error("AT_UI_AUTH->OnMenuOpen: regButton error");
-			return;
-		}
+		regButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_REGISTER, rootWidget);
 		regButton.m_OnClicked.Insert(RegisterButton);
 		
 		//setup login button
-		SCR_ButtonBaseComponent loginButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_LOGIN, rootWidget);
-		if (!loginButton)
-		{
-			Debug.Error("AT_UI_AUTH->OnMenuOpen: loginButton error");
-			return;
-		}
+		loginButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_LOGIN, rootWidget);
 		loginButton.m_OnClicked.Insert(LoginButton);
 		
 		
-		
-		//Set up listeners to close menu
-		InputManager inputManager = GetGame().GetInputManager();
-		if (inputManager)
-		{
-			// this is for the menu/dialog to close when pressing ESC
-			// an alternative is to have a button with the SCR_NavigationButtonComponent component
-			// and its Action Name field set to MenuBack - this would activate the button on ESC press
-			inputManager.AddActionListener("MenuOpen", EActionTrigger.DOWN, Close);
-			inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Close);
-#ifdef WORKBENCH // in Workbench, F10 is used because ESC closes the preview
-			inputManager.AddActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
-			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
-#endif
-		}
-		
-		//Tell AT_Main this menu is IsOpen
-		AT_MainStatic.setCurrentMenu(TEXT_TITLE);
-	}
-
-	protected override void OnMenuClose()
-	{
-		InputManager inputManager = GetGame().GetInputManager();
-		if (inputManager)
-		{
-			inputManager.RemoveActionListener("MenuOpen", EActionTrigger.DOWN, Close);
-			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Close);
-#ifdef WORKBENCH
-			inputManager.RemoveActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
-			inputManager.RemoveActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
-#endif
-		}
+		usernameEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_USERNAME, rootWidget);
+		passwordEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PASSWORD, rootWidget);
 	}
 	
-	protected void RegisterButton() {
-		
-		SCR_EditBoxComponent usernameEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_USERNAME, rootWidget);
-		if (!usernameEditBox)
-		{ 
-			Debug.Error("AT_UI_AUTH->RegisterButton: usernameEditBox error");
-			return;
-		}
-		SCR_EditBoxComponent passwordEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PASSWORD, rootWidget);
-		if (!passwordEditBox)
-		{
-			Debug.Error("AT_UI_AUTH->RegisterButton: passwordEditBox error");
-			return;
-		}
-		
+	
+	
+	
+	protected void RegisterButton()
+	{
 		string the_password = passwordEditBox.GetValue();
 		string the_username = usernameEditBox.GetValue();
 		
-		Account account = new Account();
 		
-		//Print("the_password "+the_password, LogLevel.NORMAL);
-		//Print("the_username "+the_username, LogLevel.NORMAL);
-		account.registration(the_username, the_password);
+		//SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		//pc.Rpc(RpcAsk_ToRegister);
+		
+//		Account account = new Account();
+//		
+//		Print("the_password "+the_password, LogLevel.NORMAL);
+//		Print("the_username "+the_username, LogLevel.NORMAL);
+		array<string> rpc_data = new array<string>();
+		rpc_data.Insert(the_username);
+		rpc_data.Insert(the_password);
+//		account.registration(the_username, the_password);
+		AT_EVENT_CLASS.add(new AT_Event(rpc_data, AT_Events.SessionUpdate, "SessionUpdate"));
+		
+	}
+//	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+//	void RpcAsk_ToRegister()
+//	{
+//		string the_password = passwordEditBox.GetValue();
+//		string the_username = usernameEditBox.GetValue();
+//		
+//		Print(the_password, LogLevel.WARNING);
+//		Print(the_username, LogLevel.WARNING);
+//		Print(Replication.IsServer(), LogLevel.WARNING);
+//		Print(Replication.IsClient(), LogLevel.WARNING);
+//	}
+//	
+	
+	
+	
+	protected void LoginButton()
+	{
+		string the_password = passwordEditBox.GetValue();
+		string the_username = usernameEditBox.GetValue();
+		
+//		Account account = new Account();
+//		bool login = account.login(the_username, the_password);
+//		
+//		Debug.Error("AT_UI_AUTH->LoginButton: login="+login);
+//		
+//		//RPC -> server -> client
+		
+		
+		array<string> rpc_data = new array<string>();
+		rpc_data.Insert(the_username); // testy
+		rpc_data.Insert(the_password); // testyY1234556789
+		AT_EVENT_CLASS.add(new AT_Event(rpc_data, AT_Events.SessionUpdate, "SessionUpdate"));
+		GetGame().GetCallqueue().CallLater(reload, 2500, false);
 	}
 	
-	protected void LoginButton() {
-		
-		SCR_EditBoxComponent usernameEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_USERNAME, rootWidget);
-		if (!usernameEditBox)
-		{ 
-			Debug.Error("AT_UI_AUTH->LoginButton: usernameEditBox error");
-			return;
-		}
-		SCR_EditBoxComponent passwordEditBox = SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PASSWORD, rootWidget);
-		if (!passwordEditBox)
-		{
-			Debug.Error("AT_UI_AUTH->LoginButton: passwordEditBox error");
-			return;
-		}
-		
-		string the_password = passwordEditBox.GetValue(); //Greg01234567890
-		string the_username = usernameEditBox.GetValue(); //greg
-		
-		Account account = new Account();
-		bool login = account.login(the_username, the_password);
-		
-		Debug.Error("AT_UI_AUTH->LoginButton: login="+login);
+	void reload()
+	{
+		Close();
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PM);
 	}
-	
 }
 

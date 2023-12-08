@@ -36,12 +36,13 @@ enum AT_Events
 	Kick,
 	TeleportThere,
 	TeleportHere,
-	Spectate
+	Spectate,
+	SessionUpdate
 }
 
 class AT_Event
 {
-	private Managed data;
+	private ref Managed data;
 	private AT_Events name;
 	private string comparableName;
 	

@@ -132,11 +132,14 @@ FrameWidgetClass {
       Padding 5 5 5 5
       SizeMode Fill
      }
+     "Is Enabled" 0
+     "Is Visible" 0
      {
       TextWidgetClass "{5EE6DB4B36D40CDB}" {
        Name "Text0"
        Slot LayoutSlot "{5EE6D9B81B4F9A24}" {
        }
+       "Is Visible" 0
        Text "Email"
        "Horizontal Alignment" Center
        "Vertical Alignment" Center
@@ -145,6 +148,8 @@ FrameWidgetClass {
        Name "EditBoxEMAIL"
        Slot LayoutSlot "{5EE6DB4BB33BEA67}" {
        }
+       "Is Enabled" 0
+       "Is Visible" 0
        "Use placeholder text" 1
        "Placeholder text" "EMAIL"
        "Obfuscation character" "*"
