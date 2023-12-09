@@ -98,10 +98,7 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 		resultTextWidget = TextWidget.Cast(rootWidget.FindAnyWidget("resulttext"));
 		uidEditBox = SCR_EditBoxComponent.Cast(SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PLAYERUID, rootWidget));
 		string value = uidEditBox.GetValue();
-		//Print(value);
-		
 		search = PlayerDatabaseIntergration.findPlayerProfile(value);
-		//Print(search.ToString());
 		
 		switch (search.result_code)
 		{
@@ -118,14 +115,9 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 					
 					resultTextWidget.SetText(header);
 					resultTextWidget.SetVisible(true);
-					
-					//Text00001273563
-					
 				}
 				else
 				{
-//					resultTextWidget.SetText("SUCCESSFULLY FOUND | Found UID="+search.player.m_sBiUID);
-//					resultTextWidget.SetVisible(true);
 					//! Open player's profile
 					m_sAtUiProfileUID = search.player.m_sBiUID;
 					GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PlayerProfile);
