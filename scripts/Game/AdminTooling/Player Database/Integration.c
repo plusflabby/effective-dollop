@@ -1,14 +1,75 @@
 //! Results
 class PDI_Result
 {
-	ref DB_PlayerProfile player;
-	PDI_Results result_code;
-	ref array<ref DB_PlayerProfile> results = {};
+	static ref DB_PlayerProfile player;
+	static PDI_Results result_code;
+	static ref array<ref DB_PlayerProfile> results = {};
 	
+	static private int sizeTotal;
+	static private int size_player;
+	static private int size_result_code;
+	static private int size_results;
 	
-	void PDI_Result(PDI_Results result_code_)
+	private static int size()
 	{
-		result_code = result_code_;
+		if (player)
+			size_player = player.GetSizeOf();
+		if (results)
+			size_results = results.GetSizeOf();
+		if (result_code)
+			size_result_code = 4;
+		
+		sizeTotal = size_player + size_results + size_result_code;
+		
+		//Print(sizeEx);
+		
+		return sizeTotal;
+	}
+	
+	//! Takes snapshot and encodes it into packet using as few bits as possible.
+	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
+	{
+        snapshot.Serialize(packet, size());
+    }
+
+	//! Takes packet and decodes it into snapshot. Returns true on success or false when an error occurs.
+	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	{
+		return snapshot.Serialize(packet, sizeTotal);
+	}
+
+	//! Compares two snapshots. Returns true when they match or false otherwise.
+	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
+	{
+		return lhs.CompareSnapshots(rhs, sizeTotal);
+	}
+
+	//! Compares instance against snapshot. Returns true when they match or false otherwise.
+	static bool PropCompare(PDI_Result instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
+	{
+		return snapshot.Compare(instance.player, size_player) 
+			&& snapshot.Compare(instance.result_code, size_result_code) 
+			&& snapshot.Compare(instance.results, size_results);
+	}
+
+	//! Writes data from an instance into snapshot. Opposite of Inject().
+	static bool Extract(PDI_Result instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	{
+		snapshot.SerializeBytes(instance.player, size_player);
+		snapshot.SerializeBytes(instance.result_code, size_result_code);
+		snapshot.SerializeBytes(instance.results, size_results);
+
+		return true;
+	}
+
+	//! Writes data from snapshot into instance. Opposite of Extract().
+	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, PDI_Result instance)
+	{
+		snapshot.SerializeBytes(instance.player, size_player);
+		snapshot.SerializeBytes(instance.result_code, size_result_code);
+		snapshot.SerializeBytes(instance.results, size_results);
+		
+		return true;
 	}
 }
 
@@ -19,25 +80,9 @@ enum PDI_Results
 	NOT_FOUND,
 	INVALID_SEARCH
 }
-
 class PlayerDatabaseIntergration
 {
 	private static typename type = String("DB_PlayerProfile").ToType();
-	
-//	//! get player from bi uid  TODO UPDATE
-//	static PDI_Result getPlayerFromUID(string keyValue)
-//	{
-//		if (keyValue.Length() < 12)
-//			return PDI_Result(PDI_Results.INVALID_SEARCH);
-//		
-//		AT_Database_Data_Player findResult = AT_DB.getPlayer(keyValue);
-//		if (!findResult)
-//			return PDI_Result(PDI_Results.NOT_FOUND);
-//		
-//		PDI_Result result = PDI_Result(PDI_Results.SUCCESS);
-//		result.player = findResult;
-//		return result;
-//	}
 	
 	//! player has profile 
 	static bool findProfile(string biUid)
@@ -64,33 +109,18 @@ class PlayerDatabaseIntergration
 		return profiles;
 	}
 	
-//	//! return player profile 
-//	static PDI_Result getPlayerProfile(string biUid)
-//	{
-//		if (biUid.Length() < 12)
-//			return PDI_Result(PDI_Results.INVALID_SEARCH);
-//		if (!findProfile(biUid))
-//			return PDI_Result(PDI_Results.NOT_FOUND);
-//		
-//		array<ref DB_PlayerProfile> foundProfile = getProfiles(biUid);
-//		PDI_Result returnValue = PDI_Result(PDI_Results.SUCCESS);
-//		returnValue.player = foundProfile.Get(0);
-//		returnValue.results = foundProfile;
-//		return returnValue;
-//	}
-	
 	//! find player profile(s) 
 	static PDI_Result findPlayerProfile(string biUid, int limitToReturn = 99)
 	{
-//		PDI_Result firstSearch = getPlayerProfile(biUid);
-//		if (firstSearch.result_code == PDI_Results.SUCCESS || firstSearch.result_code == PDI_Results.INVALID_SEARCH)
-//			return firstSearch;
-		
+		PDI_Result returnValue = PDI_Result();
 		array<ref DB_PlayerProfile> secondSearch = getProfiles(biUid, limitToReturn);
 		if (secondSearch.Count() < 1)
-			return PDI_Result(PDI_Results.NOT_FOUND); 
+		{
+			returnValue.result_code = PDI_Results.NOT_FOUND;
+			return returnValue;
+		}
 		
-		PDI_Result returnValue = PDI_Result(PDI_Results.SUCCESS);
+		returnValue.result_code = PDI_Results.SUCCESS;
 		
 		if (secondSearch.Count() == 1)
 			returnValue.player = secondSearch.Get(0);
@@ -130,9 +160,4 @@ class PlayerDatabaseIntergration
 		
 		return false;
 	}
-	
-//	static void updateEntireProfile(DB_PlayerProfile profile)
-//	{
-//		
-//	}
 }

@@ -2,7 +2,7 @@
 modded class SCR_PlayerController
 {
 	[RplProp(onRplName: "OnSessionIdUpdated")]
-	string m_sSessionUid = "";
+	ref array<string> m_aSessionUid = new array<string>();
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_Authority_Method(string username, string password)
@@ -16,9 +16,10 @@ modded class SCR_PlayerController
 		{
 			//! Attempt login on server credentials 
 			
-			//! false = fail, true = win
-			bool check = Password_Storage.compareForLogin(username, password);
-			if (!check)
+			Print(!Password_Storage.compareForLogin(username, password));
+			
+			//! false = wrong password, true = right password 
+			if (!Password_Storage.compareForLogin(username, password))
 				return;
 			
 			Session_Init session = new ref Session_Init();
@@ -30,8 +31,9 @@ modded class SCR_PlayerController
 			//! Add session to server cache 
 			SESSION_CACHE.AddSession(session.mySessionId, session_data);
 			
+			Print(session.mySessionId);
 			//! Update variable
-			m_sSessionUid = session.mySessionId;
+			m_aSessionUid.Insert(session.mySessionId);
 			Replication.BumpMe(); // tell the Replication system this entity has changes to be broadcast
 		}
 		else 

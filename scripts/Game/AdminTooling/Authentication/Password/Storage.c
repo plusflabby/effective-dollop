@@ -87,7 +87,7 @@ class Password_Storage_Password : EDF_DbEntity
 		string hash = Hashing.performHash(password_).ToString();
 		string password2 = hash + ":" + salt;
 		
-		return password.Compare(password2, true) == 0;
+		return password.Compare(password2) == 0;
 	}
 }
 

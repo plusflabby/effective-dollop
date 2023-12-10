@@ -1,6 +1,6 @@
 class AT_UI_MENU_BASE : SCR_SuperMenuBase
 {
-	protected string TEXT_TITLE = "UI_EMPTY";
+	protected string TEXT_TITLE;
 	protected Widget rootWidget;
 	protected SCR_PlayerController playerController;
 	
@@ -10,10 +10,15 @@ class AT_UI_MENU_BASE : SCR_SuperMenuBase
 		playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		
 		//! Check for session, if not login menu and session is set open menu, else close menu and open login 
-		if (TEXT_TITLE != "Auth" && !playerController.m_sSessionUid)
+		Print(TEXT_TITLE);
+		Print(playerController.m_aSessionUid);
+		if (TEXT_TITLE != "Auth")
 		{
-			Close();
-			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
+			if (playerController.m_aSessionUid.Count() < 1)
+			{
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
+				Close();
+			}
 		}
 		
 		rootWidget = GetRootWidget();

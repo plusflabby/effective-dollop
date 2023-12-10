@@ -17,11 +17,11 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 	protected SCR_ButtonBaseComponent kickButton;
 	protected SCR_ButtonBaseComponent tpThereButton;
 	protected SCR_ButtonBaseComponent tpHereButton;
-	SCR_EditBoxComponent uidEditBox;
-	TextWidget resultTextWidget;
-	ref PDI_Result search;
-	WindowWidget windowWidget;
-	SCR_ButtonBaseComponent searchButton;
+	protected SCR_EditBoxComponent uidEditBox;
+	protected TextWidget resultTextWidget;
+	//protected ref PDI_Result search;
+	protected WindowWidget windowWidget;
+	protected SCR_ButtonBaseComponent searchButton;
 
 	protected override void OnMenuOpen()
 	{
@@ -98,8 +98,23 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 		resultTextWidget = TextWidget.Cast(rootWidget.FindAnyWidget("resulttext"));
 		uidEditBox = SCR_EditBoxComponent.Cast(SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PLAYERUID, rootWidget));
 		string value = uidEditBox.GetValue();
-		search = PlayerDatabaseIntergration.findPlayerProfile(value);
+		//search = PlayerDatabaseIntergration.findPlayerProfile(value); // server should call this and return value to player 
+		array<string> rpc_data = new array<string>();
+		rpc_data.Insert(value);
+		AT_EVENT_CLASS.add(new AT_Event(rpc_data, AT_Events.PlayerDatabaseSearch, "PDB_SEARCH"));
 		
+		GetGame().GetCallqueue().CallLater(processSearch, 2000, false);
+	}
+	
+	protected void processSearch()
+	{
+		if (!playerController.playerDatabaseResult)
+		{
+			resultTextWidget.SetText("INVALID SEARCH VALUE, Enter in player's BI UID");
+			resultTextWidget.SetVisible(true);
+			return;
+		}
+		PDI_Result search = playerController.playerDatabaseResult;
 		switch (search.result_code)
 		{
 			case PDI_Results.SUCCESS:
@@ -138,7 +153,6 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 				break;
 			}
 		}
-		
 	}
 }
 
