@@ -10,8 +10,8 @@ class AT_UI_MENU_BASE : SCR_SuperMenuBase
 		playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		
 		//! Check for session, if not login menu and session is set open menu, else close menu and open login 
-		Print(TEXT_TITLE);
-		Print(playerController.m_aSessionUid);
+		/////Print(TEXT_TITLE);
+		//Print(playerController.m_aSessionUid);
 		if (TEXT_TITLE != "Auth")
 		{
 			if (playerController.m_aSessionUid.Count() < 1)

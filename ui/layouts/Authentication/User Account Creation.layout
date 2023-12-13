@@ -1,6 +1,23 @@
 FrameWidgetClass {
  Name "Background"
  {
+  TextWidgetClass "{5EE6D9B8E817A8A2}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{5EE6D9B8E817A9F4}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 2
+    OffsetBottom -2
+   }
+   Text "ADMIN Account Creation"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
   ButtonWidgetClass "{5EED716DFA8FB3CC}" {
    Name "REGISTERBUTTON"
    Slot FrameWidgetSlot "{5EED716DFA8FB396}" {
@@ -159,23 +176,6 @@ FrameWidgetClass {
     }
    }
   }
-  TextWidgetClass "{5EE6D9B8E817A8A2}" {
-   Name "Text0"
-   Slot FrameWidgetSlot "{5EE6D9B8E817A9F4}" {
-    Anchor 0 0 1 0.05
-    PositionX 0
-    OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
-    SizeX 0
-    OffsetRight 0
-    SizeY 2
-    OffsetBottom -2
-   }
-   Text "User Account Creation"
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-  }
   ButtonWidgetClass "{5EED71675ABA7D10}" {
    Name "REGISTERBUTTON0"
    Slot FrameWidgetSlot "{5EED716DFA8FB396}" {
@@ -201,6 +201,24 @@ FrameWidgetClass {
      Text "REGISTER"
     }
    }
+  }
+  TextWidgetClass "{5F1A2A614B03D466}" {
+   Name "responseTXT"
+   Slot FrameWidgetSlot "{5EE6D9B8E817A9F4}" {
+    Anchor 0 0 1 0.05
+    PositionX 0
+    OffsetLeft 0
+    PositionY 480
+    OffsetTop 480
+    SizeX 0
+    OffsetRight 0
+    SizeY 2
+    OffsetBottom -482
+   }
+   "Is Visible" 0
+   Text ""
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
   }
  }
 }

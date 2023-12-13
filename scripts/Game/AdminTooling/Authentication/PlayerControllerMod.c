@@ -16,8 +16,6 @@ modded class SCR_PlayerController
 		{
 			//! Attempt login on server credentials 
 			
-			Print(!Password_Storage.compareForLogin(username, password));
-			
 			//! false = wrong password, true = right password 
 			if (!Password_Storage.compareForLogin(username, password))
 				return;
@@ -31,7 +29,7 @@ modded class SCR_PlayerController
 			//! Add session to server cache 
 			SESSION_CACHE.AddSession(session.mySessionId, session_data);
 			
-			Print(session.mySessionId);
+			//Print(session.mySessionId);
 			//! Update variable
 			m_aSessionUid.Insert(session.mySessionId);
 			Replication.BumpMe(); // tell the Replication system this entity has changes to be broadcast

@@ -10,7 +10,7 @@ class PDI_Result
 	static private int size_result_code;
 	static private int size_results;
 	
-	private static int size()
+	void PDI_Result()
 	{
 		if (player)
 			size_player = player.GetSizeOf();
@@ -18,56 +18,99 @@ class PDI_Result
 			size_results = results.GetSizeOf();
 		if (result_code)
 			size_result_code = 4;
-		
 		sizeTotal = size_player + size_results + size_result_code;
-		
-		//Print(sizeEx);
-		
-		return sizeTotal;
 	}
 	
 	//! Takes snapshot and encodes it into packet using as few bits as possible.
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
 	{
-        snapshot.Serialize(packet, size());
+		Print("Encode" + sizeTotal);
+        snapshot.Serialize(packet, sizeTotal);
     }
 
 	//! Takes packet and decodes it into snapshot. Returns true on success or false when an error occurs.
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
+		Print("Decode" + sizeTotal);
 		return snapshot.Serialize(packet, sizeTotal);
 	}
 
 	//! Compares two snapshots. Returns true when they match or false otherwise.
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
+		Print("SnapCompare" + sizeTotal);
 		return lhs.CompareSnapshots(rhs, sizeTotal);
 	}
 
 	//! Compares instance against snapshot. Returns true when they match or false otherwise.
 	static bool PropCompare(PDI_Result instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
-		return snapshot.Compare(instance.player, size_player) 
+		Print("PropCompare" + sizeTotal);
+		int sizePlayer = 0;
+		if (instance.player)
+			sizePlayer = instance.player.GetSizeOf();
+		
+		int sizeResultCode = 0;
+		if (instance.result_code)
+			sizeResultCode = size_result_code;
+		
+		int sizeResults = 0;
+		if (instance.results)
+			sizeResults = instance.results.GetSizeOf();
+		
+		return snapshot.Compare(instance.player, sizePlayer) 
 			&& snapshot.Compare(instance.result_code, size_result_code) 
-			&& snapshot.Compare(instance.results, size_results);
+			&& snapshot.Compare(instance.results, sizeResults);
 	}
 
 	//! Writes data from an instance into snapshot. Opposite of Inject().
 	static bool Extract(PDI_Result instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
-		snapshot.SerializeBytes(instance.player, size_player);
-		snapshot.SerializeBytes(instance.result_code, size_result_code);
-		snapshot.SerializeBytes(instance.results, size_results);
+		Print("Extract" + sizeTotal);
+		int sizePlayer = 0;
+		if (instance.player)
+			sizePlayer = instance.player.GetSizeOf();
+		snapshot.SerializeBytes(instance.player, sizePlayer);
+		
+		int sizeResultCode = 0;
+		if (instance.result_code)
+			sizeResultCode = size_result_code;
+		snapshot.SerializeBytes(instance.result_code, sizeResultCode);
+		
+		int sizeResults = 0;
+		if (instance.results)
+			sizeResults = instance.results.GetSizeOf();
+		snapshot.SerializeBytes(instance.results, sizeResults);
 
+		player = instance.player;
+		result_code = instance.result_code;
+		results = instance.results;
+		
 		return true;
 	}
 
 	//! Writes data from snapshot into instance. Opposite of Extract().
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, PDI_Result instance)
 	{
-		snapshot.SerializeBytes(instance.player, size_player);
-		snapshot.SerializeBytes(instance.result_code, size_result_code);
-		snapshot.SerializeBytes(instance.results, size_results);
+		Print("Inject" + sizeTotal);
+		instance.player = player;
+		instance.result_code = result_code;
+		instance.results = results;
+		
+		int sizePlayer = 0;
+		if (instance.player)
+			sizePlayer = instance.player.GetSizeOf();
+		snapshot.SerializeBytes(instance.player, sizePlayer);
+		
+		int sizeResultCode = 0;
+		if (instance.result_code)
+			sizeResultCode = size_result_code;
+		snapshot.SerializeBytes(instance.result_code, sizeResultCode);
+		
+		int sizeResults = 0;
+		if (instance.results)
+			sizeResults = instance.results.GetSizeOf();
+		snapshot.SerializeBytes(instance.results, sizeResults);
 		
 		return true;
 	}

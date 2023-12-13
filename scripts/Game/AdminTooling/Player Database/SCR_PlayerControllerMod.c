@@ -7,7 +7,7 @@ modded class SCR_PlayerController
 	protected void OnPlayerDatabaseUpdated()
 	{
 		Print("proxy-side code");
-		Print(playerDatabaseResult);
+		Print("t"+playerDatabaseResult);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
