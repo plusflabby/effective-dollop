@@ -1,118 +1,69 @@
 //! Results
 class PDI_Result
 {
-	static ref DB_PlayerProfile player;
-	static PDI_Results result_code;
+	static ref DB_PlayerProfile player = null;
+	static PDI_Results result_code = PDI_Results.INVALID_SEARCH;
 	static ref array<ref DB_PlayerProfile> results = {};
+}
+
+
+class PDI_Result_Class
+{
+	int m_iCode;
+	string m_sBiUids;
 	
-	static private int sizeTotal;
-	static private int size_player;
-	static private int size_result_code;
-	static private int size_results;
-	
-	void PDI_Result()
+	//! get bi uids as array 
+	array<string> getUids()
 	{
-		if (player)
-			size_player = player.GetSizeOf();
-		if (results)
-			size_results = results.GetSizeOf();
-		if (result_code)
-			size_result_code = 4;
-		sizeTotal = size_player + size_results + size_result_code;
+		array<string> biUidsArray = new array<string>();
+		m_sBiUids.Split(",", biUidsArray, true);
+		
+		return biUidsArray;
 	}
 	
-	//! Takes snapshot and encodes it into packet using as few bits as possible.
+	static PDI_Result_Class createClass(PDI_Results code, array<string> uids)
+	{
+		PDI_Result_Class returnClass = new PDI_Result_Class();
+		
+		returnClass.m_iCode = code;
+		returnClass.m_sBiUids = uids.ToString();
+		
+		return returnClass;
+	}
+	
+	static bool Extract(PDI_Result_Class instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	{
+		snapshot.SerializeInt(instance.m_iCode);
+		snapshot.SerializeString(instance.m_sBiUids);
+		
+		return true;
+	}
+	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, PDI_Result_Class instance)
+	{
+		snapshot.SerializeInt(instance.m_iCode);
+		snapshot.SerializeString(instance.m_sBiUids);
+		
+		return true;
+	}
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
 	{
-		Print("Encode" + sizeTotal);
-        snapshot.Serialize(packet, sizeTotal);
-    }
-
-	//! Takes packet and decodes it into snapshot. Returns true on success or false when an error occurs.
+		snapshot.EncodeInt(packet);		// m_iCode
+		snapshot.EncodeString(packet);	// m_sBiUids
+	}
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
-		Print("Decode" + sizeTotal);
-		return snapshot.Serialize(packet, sizeTotal);
+		snapshot.DecodeInt(packet);		// m_iCode
+		snapshot.DecodeString(packet);	// m_sBiUids
+		return true;
 	}
-
-	//! Compares two snapshots. Returns true when they match or false otherwise.
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
-		Print("SnapCompare" + sizeTotal);
-		return lhs.CompareSnapshots(rhs, sizeTotal);
+		return lhs.CompareSnapshots(rhs, 4) && lhs.CompareStringSnapshots(rhs);
 	}
-
-	//! Compares instance against snapshot. Returns true when they match or false otherwise.
-	static bool PropCompare(PDI_Result instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
+	static bool PropCompare(PDI_Result_Class instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
-		Print("PropCompare" + sizeTotal);
-		int sizePlayer = 0;
-		if (instance.player)
-			sizePlayer = instance.player.GetSizeOf();
-		
-		int sizeResultCode = 0;
-		if (instance.result_code)
-			sizeResultCode = size_result_code;
-		
-		int sizeResults = 0;
-		if (instance.results)
-			sizeResults = instance.results.GetSizeOf();
-		
-		return snapshot.Compare(instance.player, sizePlayer) 
-			&& snapshot.Compare(instance.result_code, size_result_code) 
-			&& snapshot.Compare(instance.results, sizeResults);
-	}
-
-	//! Writes data from an instance into snapshot. Opposite of Inject().
-	static bool Extract(PDI_Result instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
-	{
-		Print("Extract" + sizeTotal);
-		int sizePlayer = 0;
-		if (instance.player)
-			sizePlayer = instance.player.GetSizeOf();
-		snapshot.SerializeBytes(instance.player, sizePlayer);
-		
-		int sizeResultCode = 0;
-		if (instance.result_code)
-			sizeResultCode = size_result_code;
-		snapshot.SerializeBytes(instance.result_code, sizeResultCode);
-		
-		int sizeResults = 0;
-		if (instance.results)
-			sizeResults = instance.results.GetSizeOf();
-		snapshot.SerializeBytes(instance.results, sizeResults);
-
-		player = instance.player;
-		result_code = instance.result_code;
-		results = instance.results;
-		
-		return true;
-	}
-
-	//! Writes data from snapshot into instance. Opposite of Extract().
-	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, PDI_Result instance)
-	{
-		Print("Inject" + sizeTotal);
-		instance.player = player;
-		instance.result_code = result_code;
-		instance.results = results;
-		
-		int sizePlayer = 0;
-		if (instance.player)
-			sizePlayer = instance.player.GetSizeOf();
-		snapshot.SerializeBytes(instance.player, sizePlayer);
-		
-		int sizeResultCode = 0;
-		if (instance.result_code)
-			sizeResultCode = size_result_code;
-		snapshot.SerializeBytes(instance.result_code, sizeResultCode);
-		
-		int sizeResults = 0;
-		if (instance.results)
-			sizeResults = instance.results.GetSizeOf();
-		snapshot.SerializeBytes(instance.results, sizeResults);
-		
-		return true;
+		return snapshot.CompareInt(instance.m_iCode)
+			&& snapshot.CompareString(instance.m_sBiUids);
 	}
 }
 
@@ -155,7 +106,7 @@ class PlayerDatabaseIntergration
 	//! find player profile(s) 
 	static PDI_Result findPlayerProfile(string biUid, int limitToReturn = 99)
 	{
-		PDI_Result returnValue = PDI_Result();
+		PDI_Result returnValue = new PDI_Result();
 		array<ref DB_PlayerProfile> secondSearch = getProfiles(biUid, limitToReturn);
 		if (secondSearch.Count() < 1)
 		{

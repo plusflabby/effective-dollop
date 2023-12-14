@@ -110,34 +110,29 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 	{
 		if (!playerController.playerDatabaseResult)
 		{
-			resultTextWidget.SetText("INVALID SEARCH VALUE, Enter in player's BI UID");
+			resultTextWidget.SetText("INVALID SEARCH, Enter in player's BI UID");
 			resultTextWidget.SetVisible(true);
 			return;
 		}
-		PDI_Result search = playerController.playerDatabaseResult;
-		switch (search.result_code)
+//		Print(playerController.playerDatabaseResult);
+//		Print(playerController.playerDatabaseResult);
+//		Print(playerController.playerDatabaseResult);
+//		Print(playerController.playerDatabaseResult);
+		PDI_Result_Class search = playerController.playerDatabaseResult;
+		switch (search.m_iCode)
 		{
 			case PDI_Results.SUCCESS:
 			{
-				if (search.results.Count() > 1)
-				{
-					string header = "SUCCESSFULLY FOUND | Found "+search.results.Count().ToString();
+				array<string> arr = search.getUids();
+				string header = "SUCCESSFULLY FOUND | Found "+arr.Count().ToString();
 					
-					foreach (DB_PlayerProfile profile : search.results)
-					{
-						header = header + "\n" + profile.m_sBiUID + " : " + profile.m_sName;
-					}
-					
-					resultTextWidget.SetText(header);
-					resultTextWidget.SetVisible(true);
-				}
-				else
+				foreach (string biUid : arr)
 				{
-					//! Open player's profile
-					m_sAtUiProfileUID = search.player.m_sBiUID;
-					GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PlayerProfile);
-					Close();
+					header = header + "\n" + biUid;
 				}
+					
+				resultTextWidget.SetText(header);
+				resultTextWidget.SetVisible(true);
 				break;
 			}
 			case PDI_Results.NOT_FOUND:
