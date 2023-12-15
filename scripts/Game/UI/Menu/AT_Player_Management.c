@@ -10,6 +10,8 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 	protected static const string BUTTON_SEARCH = "Button0";
 	protected static const string EDIT_BOX_PLAYERUID = "EditBoxRoot0";
 	protected static const string WINDOW_RESULTS = "Window0";
+	protected static const string TEXT_LIST_BOX_RESULTS = "Text00001273563";
+	protected static const string BUTTON_OPEN_PROFILE = "Button011113";
 	
 	// Variables
 	protected TextListboxWidget listbox;
@@ -20,8 +22,10 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 	protected SCR_EditBoxComponent uidEditBox;
 	protected TextWidget resultTextWidget;
 	//protected ref PDI_Result search;
-	protected WindowWidget windowWidget;
 	protected SCR_ButtonBaseComponent searchButton;
+	protected WindowWidget windowWidget;
+	protected TextListboxWidget listboxWidget;
+	protected SCR_ButtonBaseComponent openProfileButton;
 
 	protected override void OnMenuOpen()
 	{
@@ -44,13 +48,24 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 		tpHereButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_TELEPORT_HERE, rootWidget);
 		tpHereButton.m_OnClicked.Insert(TeleportHereButton);
 		
-		//! Here we will setup and populate the players list
-		listbox = TextListboxWidget.Cast(rootWidget.FindAnyWidget(LISTBOX_PLAYERS));
-		loadPlayerListBox();
-		
 		//! setup player database 
 		searchButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_SEARCH, rootWidget);
 		searchButton.m_OnClicked.Insert(SearchButton);
+		
+		resultTextWidget = TextWidget.Cast(rootWidget.FindAnyWidget("resulttext"));
+		uidEditBox = SCR_EditBoxComponent.Cast(SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PLAYERUID, rootWidget));
+		
+		windowWidget = WindowWidget.Cast(rootWidget.FindAnyWidget(WINDOW_RESULTS));
+		listboxWidget = TextListboxWidget.Cast(rootWidget.FindAnyWidget(TEXT_LIST_BOX_RESULTS));
+		openProfileButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_OPEN_PROFILE, rootWidget);
+		openProfileButton.m_OnClicked.Insert(OpenProfile);
+		
+		resultTextWidget.SetVisible(false);
+		windowWidget.SetVisible(false);
+		
+		//! Here we will setup and populate the players list
+		listbox = TextListboxWidget.Cast(rootWidget.FindAnyWidget(LISTBOX_PLAYERS));
+		loadPlayerListBox();
 	}
 	
 	private void loadPlayerListBox()
@@ -95,59 +110,71 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 	}
 	
 	private void SearchButton() {
-		resultTextWidget = TextWidget.Cast(rootWidget.FindAnyWidget("resulttext"));
-		uidEditBox = SCR_EditBoxComponent.Cast(SCR_EditBoxComponent.GetEditBoxComponent(EDIT_BOX_PLAYERUID, rootWidget));
-		string value = uidEditBox.GetValue();
 		//search = PlayerDatabaseIntergration.findPlayerProfile(value); // server should call this and return value to player 
+		string value = uidEditBox.GetValue();
 		array<string> rpc_data = new array<string>();
 		rpc_data.Insert(value);
 		AT_EVENT_CLASS.add(new AT_Event(rpc_data, AT_Events.PlayerDatabaseSearch, "PDB_SEARCH"));
-		
 		GetGame().GetCallqueue().CallLater(processSearch, 2000, false);
+	}
+	
+	private void OpenProfile()
+	{
+		AT_textlistbox_string rowData = AT_textlistbox_string.Cast(listboxWidget.GetItemData(listboxWidget.GetSelectedRow()));
+		m_sAtUiProfileUID = rowData.str;
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PlayerProfile);
+		Close();
 	}
 	
 	protected void processSearch()
 	{
+//		Print(playerController.playerDatabaseResult);
+//		Print(playerController.playerDatabaseResult);
+//		Print(playerController.playerDatabaseResult);
+//		Print(playerController.playerDatabaseResult);
 		if (!playerController.playerDatabaseResult)
 		{
 			resultTextWidget.SetText("INVALID SEARCH, Enter in player's BI UID");
 			resultTextWidget.SetVisible(true);
 			return;
 		}
-//		Print(playerController.playerDatabaseResult);
-//		Print(playerController.playerDatabaseResult);
-//		Print(playerController.playerDatabaseResult);
-//		Print(playerController.playerDatabaseResult);
 		PDI_Result_Class search = playerController.playerDatabaseResult;
 		switch (search.m_iCode)
 		{
 			case PDI_Results.SUCCESS:
 			{
 				array<string> arr = search.getUids();
-				string header = "SUCCESSFULLY FOUND | Found "+arr.Count().ToString();
-					
-				foreach (string biUid : arr)
-				{
-					header = header + "\n" + biUid;
-				}
-					
+				string header = "SUCCESSFULLY FOUND RESULT(S) | #"+arr.Count().ToString();
 				resultTextWidget.SetText(header);
-				resultTextWidget.SetVisible(true);
+				
+				if (arr.Count() > 0)
+				{
+					listboxWidget.ClearItems();
+					foreach (string biUid : arr)
+					{
+						listboxWidget.AddItem(biUid, AT_textlistbox_string(biUid), 0);
+					}
+					listboxWidget.SelectRow(0);
+					windowWidget.SetVisible(true);
+				}
+				
 				break;
 			}
 			case PDI_Results.NOT_FOUND:
 			{
 				resultTextWidget.SetText("NOT FOUND");
-				resultTextWidget.SetVisible(true);
+				windowWidget.SetVisible(false);
 				break;
 			}
 			case PDI_Results.INVALID_SEARCH:
 			{
 				resultTextWidget.SetText("INVALID SEARCH VALUE, Enter in player's BI UID");
-				resultTextWidget.SetVisible(true);
+				windowWidget.SetVisible(false);
+				
 				break;
 			}
 		}
+		resultTextWidget.SetVisible(true);
 	}
 }
 
@@ -156,3 +183,12 @@ class AT_playerData
 	int id;
 }
 
+class AT_textlistbox_string
+{
+	string str;
+	
+	void AT_textlistbox_string(string str_)
+	{
+		str = str_;
+	}
+}

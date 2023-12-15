@@ -15,10 +15,11 @@ class PDI_Result_Class
 	//! get bi uids as array 
 	array<string> getUids()
 	{
-		array<string> biUidsArray = new array<string>();
-		m_sBiUids.Split(",", biUidsArray, true);
-		
-		return biUidsArray;
+		Print(m_sBiUids);
+		array<string> strs = {};
+		m_sBiUids.Split(",", strs, true);
+		Print(strs);
+		return strs;
 	}
 	
 	static PDI_Result_Class createClass(PDI_Results code, array<string> uids)
@@ -26,7 +27,14 @@ class PDI_Result_Class
 		PDI_Result_Class returnClass = new PDI_Result_Class();
 		
 		returnClass.m_iCode = code;
-		returnClass.m_sBiUids = uids.ToString();
+		
+		foreach (string uid : uids)
+		{
+//			if (m_sBiUids)
+//				returnClass.m_sBiUids = string.Format("%1,%2", returnClass.m_sBiUids, uid);
+//			else
+				returnClass.m_sBiUids = string.Format("%1,", uid);
+		}
 		
 		return returnClass;
 	}
@@ -89,11 +97,18 @@ class PlayerDatabaseIntergration
 	}
 	
 	//! get profiles 
-	private static array<ref DB_PlayerProfile> getProfiles(string biUid, int limitToReturn = 1)
+	private static array<ref DB_PlayerProfile> getProfiles(string searchValue, int limitToReturn = 1)
 	{
-		EDF_DbFindResultMultiple<EDF_DbEntity> search = atDB.FindAll(type, EDF_DbFind.Field("m_sBiUID").Contains(biUid), limit : limitToReturn);
-		array<ref EDF_DbEntity> result = search.GetEntities();
+		EDF_DbFindResultMultiple<EDF_DbEntity> search;
+		search = atDB.FindAll(type, EDF_DbFind.Field("m_sBiUID").Contains(searchValue), limit : limitToReturn);
 		
+		// 0 in first search so try names 
+		if (search.GetEntities().Count() == 0)
+		{
+			search = atDB.FindAll(type, EDF_DbFind.Field("m_aName").Contains(searchValue), limit : limitToReturn);
+		}
+		
+		array<ref EDF_DbEntity> result = search.GetEntities();
 		array<ref DB_PlayerProfile> profiles = new array<ref DB_PlayerProfile>();
 		foreach (EDF_DbEntity profile : result)
 		{

@@ -53,7 +53,7 @@ WindowWidgetClass {
          {
           EditBoxWidgetClass "{58C87E9832A8359E}" {
            Prefab "{58C87E9832A8359E}"
-           "Placeholder text" "PlayerUid"
+           "Placeholder text" "UID or Name"
            "Horizontal alignment" Center
           }
          }
@@ -67,43 +67,72 @@ WindowWidgetClass {
   WindowWidgetClass "{5F0905B7D134D1C4}" {
    Name "Window0"
    Slot FrameWidgetSlot "{5F0905B7D134D1B9}" {
-    Anchor 0 0.4 0.5 1
-    PositionX 0
-    OffsetLeft 0
-    PositionY -25.6
-    OffsetTop -25.6
-    SizeX 0
+    Anchor 0.05 0.4 0.95 0.95
+    PositionX -8
+    OffsetLeft -8
+    PositionY -33.6
+    OffsetTop -33.6
+    SizeX 8
     OffsetRight 0
-    SizeY 25.6
-    OffsetBottom 0
+    SizeY 28.8
+    OffsetBottom 4.8
    }
-   "Is Visible" 0
    Title "results"
    "Title Visible" 1
    "Title Size" 50
    "Is Collapsible" 0
    {
-    ScrollLayoutWidgetClass "{5F0905B77D07B3AF}" {
-     Name "ScrollLayout0"
-     Slot FrameWidgetSlot "{5F0905B77D07B382}" {
-      Anchor 0 0.05 1 0.95
-      PositionX 0
-      OffsetLeft 0
-      PositionY -21.6
-      OffsetTop -21.6
-      SizeX 0
-      OffsetRight 0
-      SizeY 6
-      OffsetBottom 15.6
+    ButtonWidgetClass "{5F1E381F49CF5E03}" {
+     Name "Button011113"
+     Slot FrameWidgetSlot "{5F1E381F49CF5EE5}" {
+      Anchor 0 0 1 0.2
+      PositionX -8
+      OffsetLeft -8
+      PositionY 0
+      OffsetTop 0
+      SizeX 32
+      OffsetRight -24
+      SizeY -59.2
+      OffsetBottom 59.2
+      SizeToContent 1
      }
-     "Scrollbar Always Visible" 1
-     {
-      TextWidgetClass "{5F0905A9B552E9E6}" {
-       Name "Text00001273563"
-       Slot AlignableSlot "{5F0905A9B552E9DD}" {
-       }
+     Color 1 1 1 0.544
+     components {
+      SCR_ButtonBaseComponent "{5F1E381E8E258CAB}" {
       }
      }
+     {
+      TextWidgetClass "{5F1E381F43185449}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{5F1E381F4318542F}" {
+       }
+       Color 0 0 0 1
+       Text "CLICK TO OPEN PROFILE"
+       "Horizontal Alignment" Center
+      }
+     }
+    }
+    TextListboxWidgetClass "{5F0905A9B552E9E6}" {
+     Name "Text00001273563"
+     Slot FrameWidgetSlot "{5F1E38167E2DF655}" {
+      Anchor 0 0.15 1 1
+      PositionX 48
+      OffsetLeft 48
+      PositionY -23.6
+      OffsetTop -23.6
+      SizeX -88
+      OffsetRight 40
+      SizeY -0.4
+      OffsetBottom 24
+     }
+     components {
+      SCR_ListBoxComponent "{5F1E381F38F6B5BA}" {
+      }
+     }
+     "title visible" 1
+     colums "Bohemia GUID;"
+     lines 10
+     "highlight row" 1
     }
    }
   }
