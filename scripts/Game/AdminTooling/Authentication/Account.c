@@ -59,7 +59,7 @@ class Account
 		}
 		 
 //		typename type = String("Password_Storage_Password").ToType();
-//		EDF_DbFindResultMultiple<EDF_DbEntity> ttttt = atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
+//		EDF_DbFindResultMultiple<EDF_DbEntity> ttttt = AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
 //		array<ref EDF_DbEntity> results = ttttt.GetEntities();
 //		
 //		foreach (EDF_DbEntity result : results)

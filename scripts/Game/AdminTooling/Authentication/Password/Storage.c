@@ -18,7 +18,7 @@ class Password_Storage
 	
 	static bool compareForLogin(string username, string password)
 	{
-		EDF_DbFindResultMultiple<EDF_DbEntity> search = atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
+		EDF_DbFindResultMultiple<EDF_DbEntity> search = AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
 		array<ref EDF_DbEntity> results = search.GetEntities();
 		if (results.Count() < 1)
 			return false;
@@ -30,7 +30,7 @@ class Password_Storage
 	
 	static bool usernameExists(string username)
 	{
-		EDF_DbFindResultMultiple<EDF_DbEntity> search = atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
+		EDF_DbFindResultMultiple<EDF_DbEntity> search = AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
 		return search.GetEntities().Count() > 0;
 	}
 }
@@ -96,7 +96,7 @@ class Password_Storage_Files
 	
 	static void storeOrUpdatePassword(Password_Storage_Password password)
 	{
-		atDB.AddOrUpdateAsync(password, variableOne);
+		AT_GLOBALS.server.atDB.AddOrUpdateAsync(password, AT_GLOBALS.server.variableOne);
 	}
 	
 }

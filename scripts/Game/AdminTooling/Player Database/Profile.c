@@ -6,16 +6,16 @@ modded class SCR_PlayerController
 	protected void OnProfileInformationUpdate()
 	{
 		Print(profileInformation);
-		Print(profileData);
+		Print(AT_GLOBALS.client.profileData);
 		array<string> info = AT_MainStatic.stringToArray(profileInformation);
 		Print(info);
 		foreach (string data : info)
 		{
-			profileData.Insert(data);
+			AT_GLOBALS.client.profileData.Insert(data);
 		}
 		Print(info);
 		
-		Print(profileData);
+		Print(AT_GLOBALS.client.profileData);
 	}
 	
 	[RplRpc(RplChannel.Unreliable, RplRcver.Server)]

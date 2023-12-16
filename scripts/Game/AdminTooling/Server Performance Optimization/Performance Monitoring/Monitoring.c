@@ -57,7 +57,7 @@ class Monitoring
 		vFrameRate frameRate = new vFrameRate();
 		vAiProcessing aiProcessing = new vAiProcessing();
 		vScriptExecutionTime scriptExecTime = new vScriptExecutionTime();
-		at_scripts.Clear(); //! Clean up
+		AT_GLOBALS.server.at_scripts.Clear(); //! Clean up
 		
 		AT_DB.saveLog(
 			string.Format("AT -> Monitoring -> assess -> done"), 
@@ -71,7 +71,7 @@ class Monitoring
 			playerCount, memoryUsage, sizeOfDatabase, networkPingAverageOfPlayers, networkPingMinimumOfPlayers, networkPingMaximumOfPlayers,
 			fpsServer, fpsClientAverage, fpsClientMinimum, fpsClientMaximum, aiCount, scriptAverageCompleteInMiliSeconds, dateTime
 		);
-		atDB.AddOrUpdateAsync(saving, variableOne);
+		AT_GLOBALS.server.atDB.AddOrUpdateAsync(saving, AT_GLOBALS.server.variableOne);
 	}
 	/* Functions to update the variable */
 	void playerCountUpdate(int variable)

@@ -4,14 +4,14 @@ class vScriptExecutionTime
 	void vScriptExecutionTime()
 	{
 		float total = 0.0;
-		foreach (vSetVariable var : at_scripts)
+		foreach (vSetVariable var : AT_GLOBALS.server.at_scripts)
 		{
 			total = total + var.timeMiliSecond;
 			//Print(var.className + var.timeMiliSecond.ToString());
 		}
 		
-		if (at_scripts.Count() > 0)
-			ServerPerformanceMonitor.scriptAverageCompleteInMiliSecondsUpdate(total / at_scripts.Count());
+		if (AT_GLOBALS.server.at_scripts.Count() > 0)
+			ServerPerformanceMonitor.scriptAverageCompleteInMiliSecondsUpdate(total / AT_GLOBALS.server.at_scripts.Count());
 		else
 			ServerPerformanceMonitor.scriptAverageCompleteInMiliSecondsUpdate(0.0);
 	}
@@ -47,7 +47,7 @@ mhm
 //		vSetVariable script = new vSetVariable();
 //		script.className = ClassName();
 //		script.timeMiliSecond = System.GetTickCount(tick);
-//		at_scripts.Insert(script);
+//		AT_GLOBALS.server.at_scripts.Insert(script);
 //	}
 //}
 
@@ -74,7 +74,7 @@ class vSetMod
 	void vSetModSTOP()
 	{
 		script.timeMiliSecond = System.GetTickCount(tick);
-		at_scripts.Insert(script);
+		AT_GLOBALS.server.at_scripts.Insert(script);
 	}
 }
 

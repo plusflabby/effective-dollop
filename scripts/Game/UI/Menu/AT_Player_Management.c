@@ -89,8 +89,8 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 	private void events(AT_Events event_)
 	{
 		AT_playerData player = AT_playerData.Cast(listbox.GetItemData(listbox.GetSelectedRow()));
-		if (AT_EVENT_CLASS)
-			AT_EVENT_CLASS.add(new AT_Event(player, event_, SCR_Enum.GetEnumName(AT_Events, event_) + "_" + player.id));
+		if (AT_Global.client.AT_EVENT_CLASS)
+			AT_Global.client.AT_EVENT_CLASS.add(new AT_Event(player, event_, SCR_Enum.GetEnumName(AT_Events, event_) + "_" + player.id));
 	}
 	
 	private void KickButton() {
@@ -114,14 +114,14 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 		string value = uidEditBox.GetValue();
 		array<string> rpc_data = new array<string>();
 		rpc_data.Insert(value);
-		AT_EVENT_CLASS.add(new AT_Event(rpc_data, AT_Events.PlayerDatabaseSearch, "PDB_SEARCH"));
+		AT_GLOBALS.client.AT_EVENT_CLASS.add(new AT_Event(rpc_data, AT_Events.PlayerDatabaseSearch, "PDB_SEARCH"));
 		GetGame().GetCallqueue().CallLater(processSearch, 2000, false);
 	}
 	
 	private void OpenProfile()
 	{
 		AT_textlistbox_string rowData = AT_textlistbox_string.Cast(listboxWidget.GetItemData(listboxWidget.GetSelectedRow()));
-		m_sAtUiProfileUID = rowData.str;
+		AT_GLOBALS.client.m_sAtUiProfileUID = rowData.str;
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PlayerProfile);
 		Close();
 	}

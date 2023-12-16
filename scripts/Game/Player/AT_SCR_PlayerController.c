@@ -42,16 +42,27 @@ modded class SCR_PlayerController
 	
 	override void OnInit(IEntity owner)
 	{
-		GetGame().GetCallqueue().CallLater(loop, 1000, true);
+		if (Replication.IsClient())
+			GetGame().GetCallqueue().CallLater(loop, 1000, true);
 	}
+	
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		if (Debug.KeyState(KeyCode.KC_F1))
+		{
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PM);
+			Debug.ClearKey(KeyCode.KC_F1);
+		};
+		super.EOnFrame(owner, timeSlice);
+	};
 	
 	protected void loop()
 	{
-		if (AT_EVENT_CLASS.getAll().Count() > 0)
+		if (AT_Global.client.AT_EVENT_CLASS.getAll().Count() > 0)
 		{
-			for (int i = 0; i < AT_EVENT_CLASS.getAll().Count(); i++)
+			for (int i = 0; i < AT_Global.client.AT_EVENT_CLASS.getAll().Count(); i++)
 			{
-				AT_Event ev = AT_Event.Cast(AT_EVENT_CLASS.getAll().Get(i));
+				AT_Event ev = AT_Event.Cast(AT_Global.client.AT_EVENT_CLASS.getAll().Get(i));
 				if (!ev)
 					return;
 				
@@ -61,7 +72,7 @@ modded class SCR_PlayerController
 					{
 						AT_playerData player = AT_playerData.Cast(ev.getData());
 						requestKick(player.id);
-						AT_EVENT_CLASS.remove(i);
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
 					case AT_Events.TeleportThere:
@@ -71,7 +82,7 @@ modded class SCR_PlayerController
 						SCR_WorldTools.FindEmptyTerrainPosition(position, GetGame().GetPlayerManager().GetPlayerControlledEntity(player.id).GetOrigin(), 5.0, 0.5, 4);
 						
 						requestTeleport(SCR_PlayerController.GetLocalPlayerId(), position);
-						AT_EVENT_CLASS.remove(i);
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
 					case AT_Events.TeleportHere:
@@ -81,20 +92,15 @@ modded class SCR_PlayerController
 						SCR_WorldTools.FindEmptyTerrainPosition(position, SCR_PlayerController.GetLocalMainEntity().GetOrigin(), 3.0, 0.5, 4);
 						
 						requestTeleport(player.id, position);
-						AT_EVENT_CLASS.remove(i);
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
 					
 					case AT_Events.SessionUpdate:
 					{
-						//Print(ev.getData());
-//						Print(data);
-//						Print("Hello", LogLevel.WARNING);
-//						Print(m_sSessionUid, LogLevel.WARNING);
-						//GetGame().GetCallqueue().CallLater(PrintSessionId, 1500, true);
 						array<string> data = array<string>.Cast(ev.getData());
 						Rpc(RpcAsk_Authority_Method, data.Get(0), data.Get(1));
-						AT_EVENT_CLASS.remove(i);
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
 					
@@ -102,7 +108,7 @@ modded class SCR_PlayerController
 					{
 						array<string> data = array<string>.Cast(ev.getData());
 						Rpc(RpcAsk_Authority_Method_PlayerDatabaseSearch, data.Get(0));
-						AT_EVENT_CLASS.remove(i);
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
 					
@@ -113,7 +119,7 @@ modded class SCR_PlayerController
 							AT_MainStatic.stringArayToString(array<string>.Cast(ev.getData()))
 						);
 						
-						AT_EVENT_CLASS.remove(i);
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
 					
@@ -121,23 +127,15 @@ modded class SCR_PlayerController
 					{
 						AT_playerData player = AT_playerData.Cast(ev.getData());
 						
-						// Change localcamera to target camera
-						//PlayerController plc = GetGame().GetPlayerController();
-						//if (plc)
-						//{
-						//	plc.SetCharacterCameraRenderActive(false);
-						//	plc.GetPlayerCamera()
-						//}
-							
-						
-						//CameraBase camera = CameraBase.Cast(GetGame().GetPlayerManager().GetPlayerController(player.id).GetPlayerCamera());
 						GetGame().GetCameraManager().SetCamera(CameraBase.Cast(GetGame().GetPlayerManager().GetPlayerController(player.id).GetControlledEntity()));
 						
-						AT_EVENT_CLASS.remove(i);
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
 				}
 			}
 		}
 	}
+	
+	
 };

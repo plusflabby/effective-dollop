@@ -31,7 +31,7 @@ class AT_DB
 	private static void saveNewLog(notnull AT_LoggingLocalStorage log)
 	{
 //		ref AT_LoggingLocalCallback logCallback = new AT_LoggingLocalCallback();
-//		atDB.AddOrUpdateAsync(log, logCallback);
+//		AT_GLOBALS.server.atDB.AddOrUpdateAsync(log, logCallback);
 //		Print(log.m_sMessage, LogLevel.SPAM);
 	}
 
@@ -45,12 +45,12 @@ class AT_DB
 	
 	static void AddOrUpdateProfile(DB_PlayerProfile profile)
 	{
-		atDB.AddOrUpdateAsync(profile, variableOne);
+		AT_GLOBALS.server.atDB.AddOrUpdateAsync(profile, AT_GLOBALS.server.variableOne);
 	}
 	
 	static void AddOrUpdateChat(DB_Chat chat)
 	{
-		atDB.AddOrUpdateAsync(chat, variableOne);
+		AT_GLOBALS.server.atDB.AddOrUpdateAsync(chat, AT_GLOBALS.server.variableOne);
 	}
 }
 

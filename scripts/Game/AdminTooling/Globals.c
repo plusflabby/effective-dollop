@@ -1,35 +1,44 @@
-/* Global Variables */
+//#define WIP
 
-string m_sAtUiProfileUID = string.Empty;
-ref array<string> profileData = new array<string>();
-ref AT_EventClass AT_EVENT_CLASS = new AT_EventClass();
+#ifndef WIP
 
+#define CLIENT
+#define SERVER
 
-ref array<ref vSetVariable> at_scripts;
-ref AT_Database atDB;
-ref callbackAT variableOne;
+#endif
 
 class AT_Global
 {
-	AT_Server server;
-	AT_Client client;
+	ref AT_Server server;
+	ref static AT_Client client;
 	
 	void AT_Global()
 	{
-		if (Replication.IsRunning() == false)
-			return;
 		
-		if (Replication.IsClient())
-			client = AT_Client();
-			
-		if (Replication.IsServer())
-			server = AT_Server();
+		#ifndef WIP
+		server = new AT_Server();
+		client = new AT_Client();
+		#endif
+		
+		#ifdef WIP
+
+		#ifdef CLIENT
+		client = new AT_Client();
+		#endif
+		#ifdef SERVER
+		server = new AT_Server();
+		#endif
+		
+		#endif
 	}
 }
-void AT_Global();
+ref AT_Global AT_GLOBALS = new AT_Global();
 
 class AT_Server
 {
+	ref array<ref vSetVariable> at_scripts = new array<ref vSetVariable>;
+	ref AT_Database atDB = SetUpServerDatabase();
+	ref callbackAT variableOne = new callbackAT();
 	void AT_Server()
 	{
 		atDB = SetUpServerDatabase();
@@ -40,6 +49,14 @@ class AT_Server
 
 class AT_Client
 {
-
+	string m_sAtUiProfileUID = string.Empty;
+	ref array<string> profileData = new array<string>();
+	ref AT_EventClass AT_EVENT_CLASS = new AT_EventClass();
+	void AT_Client()
+	{
+		m_sAtUiProfileUID = string.Empty;
+		profileData = new array<string>();
+		AT_EVENT_CLASS = new AT_EventClass();
+	}
 }
 

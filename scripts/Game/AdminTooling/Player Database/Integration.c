@@ -89,8 +89,9 @@ class PlayerDatabaseIntergration
 	//! player has profile 
 	static bool findProfile(string biUid)
 	{
-		EDF_DbFindResultMultiple<EDF_DbEntity> search = atDB.FindAll(type, EDF_DbFind.Field("m_sBiUID").Contains(biUid), limit : 1);
-		if (!search.IsSuccess())
+		EDF_DbFindResultMultiple<EDF_DbEntity> search;
+		search = AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Field("m_sBiUID").Contains(biUid), limit : 1);
+		if (search.IsSuccess() == false)
 			return false;
 		
 		return search.GetEntities().Count() > 0;
@@ -100,12 +101,12 @@ class PlayerDatabaseIntergration
 	private static array<ref DB_PlayerProfile> getProfiles(string searchValue, int limitToReturn = 1)
 	{
 		EDF_DbFindResultMultiple<EDF_DbEntity> search;
-		search = atDB.FindAll(type, EDF_DbFind.Field("m_sBiUID").Contains(searchValue), limit : limitToReturn);
+		search = AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Field("m_sBiUID").Contains(searchValue), limit : limitToReturn);
 		
 		// 0 in first search so try names 
 		if (search.GetEntities().Count() == 0)
 		{
-			search = atDB.FindAll(type, EDF_DbFind.Field("m_aName").Contains(searchValue), limit : limitToReturn);
+			search = AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Field("m_aName").Contains(searchValue), limit : limitToReturn);
 		}
 		
 		array<ref EDF_DbEntity> result = search.GetEntities();

@@ -68,10 +68,10 @@ class AT_Chat
 				
 				Print("123888"+returnValue.ToString());
 				Print(chatDbId.IsEmpty().ToString());
-				Print(atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).ToString());
-				Print(atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).GetEntities().ToString());
-				Print(atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).GetEntities().Get(0));
-				return DB_Chat.Cast(atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).GetEntities().Get(0));
+				Print(AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).ToString());
+				Print(AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).GetEntities().ToString());
+				Print(AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).GetEntities().Get(0));
+				return DB_Chat.Cast(AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Id().Equals(chatDbId)).GetEntities().Get(0));
 					
 				break;
 			}
