@@ -43,6 +43,3 @@ modded class SCR_PlayerController
 		}
 	}
 }
-
-string m_sAtUiProfileUID = string.Empty;
-ref array<string> profileData = new array<string>();

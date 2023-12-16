@@ -17,7 +17,6 @@ class vScriptExecutionTime
 	}
 }
 //ref vScriptExecutionTime vSET = new vScriptExecutionTime();
-ref array<ref vSetVariable> at_scripts = new array<ref vSetVariable>;
 
 class vSetVariable
 {

@@ -18,21 +18,21 @@ class AT_DB
 		string meta5 = string.Empty
 	)
 	{
-		ref AT_LoggingLocalStorage logCreation = new AT_LoggingLocalStorage();
-		logCreation.m_sMetaOne = meta1;
-		logCreation.m_sMetaTwo = meta2;
-		logCreation.m_sMetaThree = meta3;
-		logCreation.m_sMetaFour = meta4;
-		logCreation.m_sMetaFive = meta5;
-		logCreation.m_sMessage = message;
-		logCreation.m_sLogLevel = SCR_Enum.GetEnumName(LogLevel, level);
-		saveNewLog(logCreation);
+//		ref AT_LoggingLocalStorage logCreation = new AT_LoggingLocalStorage();
+//		logCreation.m_sMetaOne = meta1;
+//		logCreation.m_sMetaTwo = meta2;
+//		logCreation.m_sMetaThree = meta3;
+//		logCreation.m_sMetaFour = meta4;
+//		logCreation.m_sMetaFive = meta5;
+//		logCreation.m_sMessage = message;
+//		logCreation.m_sLogLevel = SCR_Enum.GetEnumName(LogLevel, level);
+//		saveNewLog(logCreation);
 	}
 	private static void saveNewLog(notnull AT_LoggingLocalStorage log)
 	{
-		ref AT_LoggingLocalCallback logCallback = new AT_LoggingLocalCallback();
-		atDB.AddOrUpdateAsync(log, logCallback);
-		Print(log.m_sMessage, LogLevel.SPAM);
+//		ref AT_LoggingLocalCallback logCallback = new AT_LoggingLocalCallback();
+//		atDB.AddOrUpdateAsync(log, logCallback);
+//		Print(log.m_sMessage, LogLevel.SPAM);
 	}
 
 	static void saveNewPlayer(string biUid, string playersName)
@@ -79,9 +79,6 @@ AT_Database SetUpServerDatabase()
 
 	return null;
 }
-//! Will be server's connect
-ref AT_Database atDB = SetUpServerDatabase();
-
 
 class callbackAT : EDF_DbOperationStatusOnlyCallback
 {
@@ -94,4 +91,3 @@ class callbackAT : EDF_DbOperationStatusOnlyCallback
 		Print(SCR_Enum.GetEnumName(EDF_EDbOperationStatusCode, statusCode), LogLevel.ERROR);
 	}
 }
-ref callbackAT variableOne = new callbackAT();

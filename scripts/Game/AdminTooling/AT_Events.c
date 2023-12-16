@@ -1,4 +1,3 @@
-ref AT_EventClass AT_EVENT_CLASS = new AT_EventClass();
 class AT_EventClass
 {
 	protected ref array<ref AT_Event> events = {};
