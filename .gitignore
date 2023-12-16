@@ -5,6 +5,8 @@ core
 resourceDatabase.rdb
 ## EnfusionDatabaseFramework_5D6EA74A94173EDF
 EnfusionDatabaseFramework_5D6EA74A94173EDF
+## license
+license.txt
 
 # Prerequisites
 *.d

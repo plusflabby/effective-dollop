@@ -38,7 +38,8 @@ enum AT_Events
 	TeleportHere,
 	Spectate,
 	SessionUpdate,
-	PlayerDatabaseSearch
+	PlayerDatabaseSearch,
+	PlayerProfileGetData
 }
 
 class AT_Event

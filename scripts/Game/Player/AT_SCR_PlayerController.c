@@ -106,6 +106,17 @@ modded class SCR_PlayerController
 						break;
 					}
 					
+					case AT_Events.PlayerProfileGetData:
+					{
+						Rpc(
+							RpcAsk_Authority_Method_PlayerProfile,
+							AT_MainStatic.stringArayToString(array<string>.Cast(ev.getData()))
+						);
+						
+						AT_EVENT_CLASS.remove(i);
+						break;
+					}
+					
 					case AT_Events.Spectate:
 					{
 						AT_playerData player = AT_playerData.Cast(ev.getData());

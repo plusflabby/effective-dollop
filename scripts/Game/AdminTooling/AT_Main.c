@@ -20,5 +20,22 @@ class AT_MainStatic
 		
 		return playerBiUid;
 	}
+	
+	static string stringArayToString(array<string> arr)
+	{
+		string rtn = string.Empty;
+		foreach (string item : arr)
+		{
+			rtn = rtn + string.Format("%1,", item);
+		}
+		return rtn;
+	}
+	
+	static array<string> stringToArray(string str)
+	{
+		array<string> strs = {};
+		str.Split(",", strs, true);
+		return strs;
+	}
 }
 
