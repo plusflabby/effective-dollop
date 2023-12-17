@@ -1,12 +1,3 @@
-//#define WIP
-
-#ifndef WIP
-
-#define CLIENT
-#define SERVER
-
-#endif
-
 class AT_Global
 {
 	ref AT_Server server;
@@ -14,22 +5,8 @@ class AT_Global
 	
 	void AT_Global()
 	{
-		
-		#ifndef WIP
 		server = new AT_Server();
 		client = new AT_Client();
-		#endif
-		
-		#ifdef WIP
-
-		#ifdef CLIENT
-		client = new AT_Client();
-		#endif
-		#ifdef SERVER
-		server = new AT_Server();
-		#endif
-		
-		#endif
 	}
 }
 ref AT_Global AT_GLOBALS = new AT_Global();
