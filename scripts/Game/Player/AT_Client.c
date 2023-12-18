@@ -1,5 +1,20 @@
 modded class SCR_PlayerController
 {
+	override void EOnInit(IEntity owner)
+	{
+		GetGame().GetCallqueue().CallLater(loop, 1000, true);
+		GetGame().GetInputManager().AddActionListener("AdminTooling", EActionTrigger.VALUE, openAdminToolingMenu);
+	};
+
+	private void openAdminToolingMenu()
+	{
+		if (Debug.KeyState(KeyCode.KC_F1))
+		{
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_DASHBOARD);
+			Debug.ClearKey(KeyCode.KC_F1);
+		};
+	}
+	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void authorityKick(int playerId)
 	{
@@ -12,10 +27,6 @@ modded class SCR_PlayerController
 			"SCR_PlayerController",
 			"authorityKick"
 		);
-	}
-	void requestKick(int playerId)
-	{
-		Rpc(authorityKick, playerId);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -35,28 +46,8 @@ modded class SCR_PlayerController
 			"authorityTeleport"
 		);
 	}
-	void requestTeleport(int playerId, vector position)
-	{
-		Rpc(authorityTeleport, playerId, position);
-	}
 	
-	override void OnInit(IEntity owner)
-	{
-		if (Replication.IsClient())
-			GetGame().GetCallqueue().CallLater(loop, 1000, true);
-	}
-	
-	override void EOnFrame(IEntity owner, float timeSlice)
-	{
-		if (Debug.KeyState(KeyCode.KC_F1))
-		{
-			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PM);
-			Debug.ClearKey(KeyCode.KC_F1);
-		};
-		super.EOnFrame(owner, timeSlice);
-	};
-	
-	protected void loop()
+	private void loop()
 	{
 		if (AT_Global.client.AT_EVENT_CLASS.getAll().Count() > 0)
 		{
@@ -71,7 +62,7 @@ modded class SCR_PlayerController
 					case AT_Events.Kick:
 					{
 						AT_playerData player = AT_playerData.Cast(ev.getData());
-						requestKick(player.id);
+						Rpc(authorityKick, player.id);
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
@@ -81,7 +72,7 @@ modded class SCR_PlayerController
 						vector position;
 						SCR_WorldTools.FindEmptyTerrainPosition(position, GetGame().GetPlayerManager().GetPlayerControlledEntity(player.id).GetOrigin(), 5.0, 0.5, 4);
 						
-						requestTeleport(SCR_PlayerController.GetLocalPlayerId(), position);
+						Rpc(authorityTeleport, SCR_PlayerController.GetLocalPlayerId(), position);
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
@@ -91,7 +82,7 @@ modded class SCR_PlayerController
 						vector position;
 						SCR_WorldTools.FindEmptyTerrainPosition(position, SCR_PlayerController.GetLocalMainEntity().GetOrigin(), 3.0, 0.5, 4);
 						
-						requestTeleport(player.id, position);
+						Rpc(authorityTeleport, player.id, position);
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
@@ -139,3 +130,4 @@ modded class SCR_PlayerController
 	
 	
 };
+
