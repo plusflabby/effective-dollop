@@ -7,7 +7,7 @@ class CheckRolesAndPermission
 			return false;
 		
 		bool hasThePermissionYet = false;
-		foreach (array<string> permissions : Permissions)
+		foreach (array<string> permissions : AT_GLOBALS.server.Permissions)
 		{
 			if (permissions.Get(0) == role) {
 				hasThePermissionYet = permissions.Contains(permission);
@@ -22,7 +22,7 @@ class CheckRolesAndPermission
 	// do have role 
 	static bool hasRole(string role)
 	{
-		return myRolesClass.myRoles.Contains(role);
+		return AT_GLOBALS.server.myRolesClass.myRoles.Contains(role);
 	}
 	
 	///

@@ -5,6 +5,7 @@ Upon successful authentication, generate a session identifier (session token or 
 class Session_Init
 {
 	string mySessionId;
+	//string myAssignedRole;
 	
 	void Session_Init()
 	{
@@ -34,5 +35,11 @@ class Session_Init
 		}
 		
 		return sessionId;
+	}
+	
+	//! return will be the role saved to username's profile 
+	string getRoleFromUsername(string username)
+	{
+		return AT_GLOBALS.server.rbac_STORAGE.get(username);
 	}
 }

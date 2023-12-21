@@ -7,17 +7,16 @@ class Account
 	{
 		if (!validate(password))
 		{
-			Debug.Error("Account->registration: validate err");
+			Print("Account->registration: validate err");
 			return false;
 		}
 		
 		//! Make sure username is not already taken 
 		if (Password_Storage.usernameExists(username))
 		{
-			Debug.Error("Account->registration: username exists");
+			Print("Account->registration: username exists");
 			return false;
 		}
-		
 		 
 		Password_Storage_Password password_storing = new Password_Storage_Password(password, username);
 		Password_Storage.addPasswordToDatabase(password_storing);
@@ -27,9 +26,9 @@ class Account
 		session_data.sessionId = session.mySessionId;
 		session_data.data = username;
 		session_data.lastAccessed = SCR_DateTimeHelper.GetDateTimeLocal();
-		SESSION_CACHE.AddSession(session.mySessionId, session_data);
+		AT_GLOBALS.server.SESSION_CACHE.AddSession(session.mySessionId, session_data);
 		
-		myRolesClass.assign("user");
+		//myRolesClass.assign("user");
 		
 		return true;
 	}
@@ -54,21 +53,9 @@ class Account
 	{
 		if (!validate(password))
 		{
-			Debug.Error("Account->login: validate err");
+			Print("Account->login: validate err");
 			return false;
 		}
-		 
-//		typename type = String("Password_Storage_Password").ToType();
-//		EDF_DbFindResultMultiple<EDF_DbEntity> ttttt = AT_GLOBALS.server.atDB.FindAll(type, EDF_DbFind.Field("accountUid").Contains(username));
-//		array<ref EDF_DbEntity> results = ttttt.GetEntities();
-//		
-//		foreach (EDF_DbEntity result : results)
-//		{
-//			Password_Storage_Password passwordCheck = Password_Storage_Password.Cast(result);
-//			Print(passwordCheck.accountUid);
-//		}
-//		
-//		return true;
 		
 		if (!Password_Storage.compareForLogin(username, password))
 			return false;
@@ -78,9 +65,9 @@ class Account
 		session_data.sessionId = session.mySessionId;
 		session_data.data = username;
 		session_data.lastAccessed = SCR_DateTimeHelper.GetDateTimeLocal();
-		SESSION_CACHE.AddSession(session.mySessionId, session_data);
+		AT_GLOBALS.server.SESSION_CACHE.AddSession(session.mySessionId, session_data);
 		
-		myRolesClass.assign("user");
+		//myRolesClass.assign("user");
 		return true;
 	}
 }

@@ -137,21 +137,28 @@ FrameWidgetClass {
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{5F20029D557A209C}" {
-     Name "RichText0110"
-     Slot FrameWidgetSlot "{5F20029D557A2101}" {
-      Anchor 0 0.45 1 1
+    ScrollLayoutWidgetClass "{5F2A85A225D32A0E}" {
+     Name "ScrollLayout0"
+     Slot FrameWidgetSlot "{5F2A85A225D32AC6}" {
+      Anchor 0 0.45 0.3 1
       PositionX 0
       OffsetLeft 0
       PositionY -35.2
       OffsetTop -35.2
-      SizeX -8
-      OffsetRight 8
+      SizeX 1.6
+      OffsetRight -1.6
       SizeY 35.2
-      OffsetBottom 0
+      OffsetBottom -0
      }
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
+     {
+      TextWidgetClass "{5F20029D557A209C}" {
+       Name "RichText0110"
+       Slot AlignableSlot "{5F2A85A225E050CD}" {
+       }
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+     }
     }
    }
   }

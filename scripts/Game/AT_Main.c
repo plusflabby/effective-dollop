@@ -37,5 +37,43 @@ class AT_MainStatic
 		str.Split(",", strs, true);
 		return strs;
 	}
+	
+	// server fnc 
+	static bool verifySession(string sessionId)
+	{
+		if (sessionId.IsEmpty())
+			return false;
+		if (AT_GLOBALS.server.SESSION_CACHE.GetSessionData(sessionId) == AT_GLOBALS.server.Session_Structure_EMPTY)
+			return false;
+//		if (AT_GLOBALS.server.SESSION_CACHE.GetSessionData(sessionId).sessionId.IsEmpty())
+//			return false;
+		
+		return true;
+		
+		// session id that's not empty
+//		if (sessionId.IsEmpty())
+//		{
+//			Print("AT -> AT_MainStatic -> verifySession -> Empty sessionId");
+//			return false;
+//		}
+//		Session_Structure sessionGet = AT_GLOBALS.server.SESSION_CACHE.GetSessionData(sessionId);
+//		if (!sessionGet)
+//			return false;
+//		if (sessionGet.sessionId)
+//		{
+//			if (sessionGet.sessionId.IsEmpty())
+//			{
+//				Print("AT -> AT_MainStatic -> verifySession -> sessionGet -> Empty sessionId");
+//				return false;
+//			}
+//			else
+//				return true;
+//		}
+//		else
+//		{
+//			Print("AT -> AT_MainStatic -> verifySession -> sessionGet -> sessionId null");
+//			return false;
+//		}
+	}
 }
 

@@ -9,6 +9,6 @@ class RBAC_Get
 	// display my roles 
 	static array<string> getRoles()
 	{
-		return myRolesClass.myRoles;
+		return AT_GLOBALS.server.myRolesClass.myRoles;
 	}
 }

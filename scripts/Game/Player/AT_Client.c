@@ -16,8 +16,12 @@ modded class SCR_PlayerController
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void authorityKick(int playerId)
+	void authorityKick(int playerId, string sessionId)
 	{
+		if (AT_MainStatic.verifySession(sessionId) == false)
+			return;
+			
+		
 		Print("Kicking id:" + playerId);
 		GetGame().GetPlayerManager().KickPlayer(playerId, PlayerManagerKickReason.KICK);
 		AT_DB.saveLog(
@@ -30,8 +34,11 @@ modded class SCR_PlayerController
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void authorityTeleport(int playerId, vector toPosition)
+	void authorityTeleport(int playerId, vector toPosition, string sessionId)
 	{
+		if (AT_MainStatic.verifySession(sessionId) == false)
+			return;
+		
 		Print("Teleporting id:" + playerId);
 		Print("Teleporting toPosition:" + toPosition.ToString());
 		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
@@ -62,7 +69,7 @@ modded class SCR_PlayerController
 					case AT_Events.Kick:
 					{
 						AT_playerData player = AT_playerData.Cast(ev.getData());
-						Rpc(authorityKick, player.id);
+						Rpc(authorityKick, player.id, AT_GLOBALS.client.sessionId);
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
@@ -72,7 +79,7 @@ modded class SCR_PlayerController
 						vector position;
 						SCR_WorldTools.FindEmptyTerrainPosition(position, GetGame().GetPlayerManager().GetPlayerControlledEntity(player.id).GetOrigin(), 5.0, 0.5, 4);
 						
-						Rpc(authorityTeleport, SCR_PlayerController.GetLocalPlayerId(), position);
+						Rpc(authorityTeleport, SCR_PlayerController.GetLocalPlayerId(), position, AT_GLOBALS.client.sessionId);
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
@@ -82,7 +89,7 @@ modded class SCR_PlayerController
 						vector position;
 						SCR_WorldTools.FindEmptyTerrainPosition(position, SCR_PlayerController.GetLocalMainEntity().GetOrigin(), 3.0, 0.5, 4);
 						
-						Rpc(authorityTeleport, player.id, position);
+						Rpc(authorityTeleport, player.id, position, AT_GLOBALS.client.sessionId);
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
@@ -90,7 +97,7 @@ modded class SCR_PlayerController
 					case AT_Events.SessionUpdate:
 					{
 						array<string> data = array<string>.Cast(ev.getData());
-						Rpc(RpcAsk_Authority_Method, data.Get(0), data.Get(1));
+						Rpc(RpcAsk_Authority_Method, data.Get(0), data.Get(1), GetPlayerId());
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
@@ -107,7 +114,8 @@ modded class SCR_PlayerController
 					{
 						Rpc(
 							RpcAsk_Authority_Method_PlayerProfile,
-							AT_MainStatic.stringArayToString(array<string>.Cast(ev.getData()))
+							AT_MainStatic.stringArayToString(array<string>.Cast(ev.getData())),
+							AT_GLOBALS.client.sessionId
 						);
 						
 						AT_Global.client.AT_EVENT_CLASS.remove(i);

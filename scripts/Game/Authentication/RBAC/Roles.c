@@ -27,4 +27,3 @@ enum RolesModify
 	REMOVE
 }
 
-ref RolesClass myRolesClass = new RolesClass();

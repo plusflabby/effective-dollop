@@ -19,8 +19,11 @@ modded class SCR_PlayerController
 	}
 	
 	[RplRpc(RplChannel.Unreliable, RplRcver.Server)]
-	protected void RpcAsk_Authority_Method_PlayerProfile(string request)
+	protected void RpcAsk_Authority_Method_PlayerProfile(string request, string sessionId)
 	{
+		if (AT_MainStatic.verifySession(sessionId) == false)
+			return;
+		
 		array<string> arrayRequest = AT_MainStatic.stringToArray(request);
 		Print(arrayRequest);
 		string biUid;

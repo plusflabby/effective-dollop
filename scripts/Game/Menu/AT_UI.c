@@ -11,10 +11,11 @@ class AT_UI_MENU_BASE : SCR_SuperMenuBase
 		
 		//! Check for session, if not login menu and session is set open menu, else close menu and open login 
 		/////Print(TEXT_TITLE);
-		//Print(playerController.m_aSessionUid);
+		//Print(playerController.m_aSessionUid); 
 		if (TEXT_TITLE != "Auth")
 		{
-			if (playerController.m_aSessionUid.Count() < 1)
+			//if (playerController.m_aSessionUid.Count() < 1)
+			if (AT_GLOBALS.client.sessionId.IsEmpty())
 			{
 				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
 				Close();
