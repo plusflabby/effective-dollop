@@ -1,20 +1,20 @@
 modded class SCR_PlayerController
 {
-	[RplProp(onRplName: "OnProfileInformationUpdate")]
-	string profileInformation = string.Empty;
+	[RplProp(onRplName: "OnProfileNamesUpdate")]
+	string profileNames = string.Empty;
+	[RplProp(onRplName: "OnProfilePlaytimeUpdate")]
+	string profilePlaytime = string.Empty;
 	
-	protected void OnProfileInformationUpdate()
+	protected void OnProfilePlaytimeUpdate()
 	{
-		Print(profileInformation);
+		AT_GLOBALS.client.profileData.Insert(AT_MainStatic.stringToArray(profilePlaytime));
+	}
+	
+	protected void OnProfileNamesUpdate()
+	{
+		Print(profileNames);
 		Print(AT_GLOBALS.client.profileData);
-		array<string> info = AT_MainStatic.stringToArray(profileInformation);
-		Print(info);
-		foreach (string data : info)
-		{
-			AT_GLOBALS.client.profileData.Insert(data);
-		}
-		Print(info);
-		
+		AT_GLOBALS.client.profileData.Insert(AT_MainStatic.stringToArray(profileNames));
 		Print(AT_GLOBALS.client.profileData);
 	}
 	
@@ -32,15 +32,28 @@ modded class SCR_PlayerController
 		string dataToGet;
 		dataToGet = arrayRequest.Get(1);
 		
+		string dataToReturnTo;
+		dataToReturnTo = arrayRequest.Get(2);
+		
 		PDI_Result getProfile = PlayerDatabaseIntergration.findPlayerProfile(biUid, 1);
 		Print(getProfile.result_code == PDI_Results.SUCCESS);
 		if (getProfile.result_code == PDI_Results.SUCCESS)
 		{
-			Print(dataToGet.Contains("Names"));
 			if (dataToGet.Contains("Names"))
 			{
-				profileInformation = AT_MainStatic.stringArayToString(getProfile.player.m_aName);
-				Print(profileInformation);
+				array<string> names = getProfile.player.m_aName;
+				names.InsertAt(dataToReturnTo, 0);
+				profileNames = AT_MainStatic.stringArayToString(names);
+				Print(profileNames);
+				Replication.BumpMe();
+			}
+			else if (dataToGet.Contains("PlayTime"))
+			{
+				array<string> playtime = new array<string>();
+				playtime.Insert(dataToReturnTo);
+				playtime.Insert(getProfile.player.m_sPlayTime);
+				profilePlaytime = AT_MainStatic.stringArayToString(playtime);
+				Print(profilePlaytime);
 				Replication.BumpMe();
 			}
 		}

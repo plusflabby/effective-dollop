@@ -19,6 +19,27 @@ FrameWidgetClass {
    "Title Size" 50
    "Is Collapsible" 0
    {
+    ScrollLayoutWidgetClass "{5F2A85A5C77D8B59}" {
+     Name "ScrollLayout1"
+     Slot FrameWidgetSlot "{5F2A85A5C77D8B20}" {
+      Anchor 0.75 0.45 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY -27.2
+      OffsetTop -27.2
+      SizeX -8
+      OffsetRight 8
+      SizeY 19.2
+      OffsetBottom 8
+     }
+     {
+      RichTextWidgetClass "{5F2A85A531C75BB4}" {
+       Name "RichText00001"
+       Slot AlignableSlot "{5F2A85A531C75BAC}" {
+       }
+      }
+     }
+    }
     VerticalLayoutWidgetClass "{5EE1632DC2F9E3E4}" {
      Name "VerticalLayout1"
      Slot FrameWidgetSlot "{5EE1632DC2F9E3CF}" {
@@ -32,6 +53,7 @@ FrameWidgetClass {
       SizeY 18.8
       OffsetBottom 28.8
      }
+     "Is Visible" 0
      "Fill Origin" Center
      {
       ScaleWidgetClass "{5EE163221FB770F8}" {
@@ -157,6 +179,50 @@ FrameWidgetClass {
        }
        "Horizontal Alignment" Center
        "Vertical Alignment" Center
+      }
+     }
+    }
+    ScrollLayoutWidgetClass "{5F2A85A520FA40AC}" {
+     Name "ScrollLayout2"
+     Slot FrameWidgetSlot "{5F2A85A5C77D8B20}" {
+      Anchor 0.75 0.45 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY -27.2
+      OffsetTop -27.2
+      SizeX -8
+      OffsetRight 8
+      SizeY 19.2
+      OffsetBottom 8
+     }
+     "Is Enabled" 0
+     "Is Visible" 0
+     {
+      RichTextWidgetClass "{5F2A85A520FA40AB}" {
+       Name "RichText00001"
+       Slot AlignableSlot "{5F2A85A531C75BAC}" {
+       }
+      }
+     }
+    }
+    ScrollLayoutWidgetClass "{5F2A85A51AE22F8B}" {
+     Name "ScrollLayout3"
+     Slot FrameWidgetSlot "{5F2A85A5C77D8B20}" {
+      Anchor 0.4 0.45 0.65 1
+      PositionX -3.2
+      OffsetLeft -3.2
+      PositionY -35.2
+      OffsetTop -35.2
+      SizeX -0
+      OffsetRight 3.2
+      SizeY 27.2
+      OffsetBottom 8
+     }
+     {
+      RichTextWidgetClass "{5F2A85A51AE22F8A}" {
+       Name "RichText11001"
+       Slot AlignableSlot "{5F2A85A531C75BAC}" {
+       }
       }
      }
     }

@@ -33,7 +33,7 @@ class AT_MainStatic
 	
 	static array<string> stringToArray(string str)
 	{
-		array<string> strs = {};
+		array<string> strs = new array<string>();
 		str.Split(",", strs, true);
 		return strs;
 	}

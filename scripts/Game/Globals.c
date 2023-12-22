@@ -110,13 +110,14 @@ class AT_Server
 class AT_Client
 {
 	string m_sAtUiProfileUID = string.Empty;
-	ref array<string> profileData = new array<string>();
+	//ref array<string> profileItem = new array<string>();
+	ref array<ref array<string>> profileData = new array<ref array<string>>();
 	ref AT_EventClass AT_EVENT_CLASS = new AT_EventClass();
 	string sessionId = string.Empty;
 	void AT_Client()
 	{
 		m_sAtUiProfileUID = string.Empty;
-		profileData = new array<string>();
+		profileData = new array<ref array<string>>();
 		AT_EVENT_CLASS = new AT_EventClass();
 		sessionId = string.Empty;
 	}
