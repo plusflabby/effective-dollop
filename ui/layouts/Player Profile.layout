@@ -1,24 +1,123 @@
-FrameWidgetClass {
+WindowWidgetClass {
  Name "rootFrame"
  {
   WindowWidgetClass "{5F0905BFB85F643E}" {
    Name "Window0"
    Slot FrameWidgetSlot "{5F0905BFB85F6406}" {
-    Anchor 0.05 0.05 0.95 0.95
-    PositionX 0
-    OffsetLeft 0
-    PositionY 10
-    OffsetTop 10
-    SizeX 0
-    OffsetRight 0
-    SizeY -20
-    OffsetBottom 10
+    Anchor 0 0 1 1
+    PositionX 88
+    OffsetLeft 88
+    PositionY 120
+    OffsetTop 120
+    SizeX -184
+    OffsetRight 96
+    SizeY -264
+    OffsetBottom 144
    }
    Title "Player Profile"
    "Title Visible" 1
    "Title Size" 50
    "Is Collapsible" 0
    {
+    WindowWidgetClass "{5F2D61E9331701A9}" {
+     Name "Window0"
+     Slot FrameWidgetSlot "{5F2D61E933170173}" {
+      PositionX 304
+      OffsetLeft 304
+      PositionY 16
+      OffsetTop 16
+      SizeX 488
+      OffsetRight -792
+      SizeY 224
+      OffsetBottom -240
+     }
+     Title "Bohemia Interactive Unique Identifier"
+     "Title Visible" 1
+     "Title Size" 20.3
+     {
+      TextWidgetClass "{5F2D61E86ACF75D0}" {
+       Name "Text3"
+       Slot FrameWidgetSlot "{5F2D61E955BE33FA}" {
+        Anchor 0 0 0 0
+        PositionX 200
+        OffsetLeft 200
+        PositionY 85.7
+        OffsetTop 85.7
+        SizeX 100
+        OffsetRight -300
+        SizeY -151.7
+        OffsetBottom 66
+        SizeToContent 1
+       }
+       Text "loading"
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       Wrap 1
+       "No Localization" 1
+      }
+     }
+    }
+    ScaleWidgetClass "{5F2D61E9F7424138}" {
+     Name "Scale0"
+     Slot FrameWidgetSlot "{5F2D61E9F74246F5}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 1728
+      OffsetRight -1728
+      SizeY 30
+      OffsetBottom -30
+     }
+    }
+    TextWidgetClass "{5F2D61E890B8DBEC}" {
+     Name "Text0"
+     Slot FrameWidgetSlot "{5F2D61E890B8DBC4}" {
+      PositionX 200
+      OffsetLeft 200
+      PositionY 256
+      OffsetTop 256
+      SizeX 80
+      OffsetRight -280
+      SizeY 30
+      OffsetBottom -286
+     }
+     Text "Names"
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{5F2D61E8F1F79D60}" {
+     Name "Text2"
+     Slot FrameWidgetSlot "{5F2D61E8F1F79D59}" {
+      PositionX 800
+      OffsetLeft 800
+      PositionY 248
+      OffsetTop 248
+      SizeX 184
+      OffsetRight -984
+      SizeY 30
+      OffsetBottom -278
+     }
+     Text "PlayerLogins"
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{5F2D61E8F33865EC}" {
+     Name "Text1"
+     Slot FrameWidgetSlot "{5F2D61E8F33865C6}" {
+      PositionX 1416
+      OffsetLeft 1416
+      PositionY 264
+      OffsetTop 264
+      SizeX 192
+      OffsetRight -1608
+      SizeY 30
+      OffsetBottom -294
+     }
+     Text "AdminActions"
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
     ScrollLayoutWidgetClass "{5F2A85A5C77D8B59}" {
      Name "ScrollLayout1"
      Slot FrameWidgetSlot "{5F2A85A5C77D8B20}" {
@@ -37,127 +136,31 @@ FrameWidgetClass {
        Name "RichText00001"
        Slot AlignableSlot "{5F2A85A531C75BAC}" {
        }
+       Text "loading..."
       }
      }
     }
-    VerticalLayoutWidgetClass "{5EE1632DC2F9E3E4}" {
-     Name "VerticalLayout1"
-     Slot FrameWidgetSlot "{5EE1632DC2F9E3CF}" {
-      Anchor 0 0.05 1 0.55
-      PositionX 0
-      OffsetLeft 0
-      PositionY -47.6
-      OffsetTop -47.6
+    ScrollLayoutWidgetClass "{5F2A85A51AE22F8B}" {
+     Name "ScrollLayout3"
+     Slot FrameWidgetSlot "{5F2A85A5C77D8B20}" {
+      Anchor 0.4 0.45 0.65 1
+      PositionX -3.2
+      OffsetLeft -3.2
+      PositionY -35.2
+      OffsetTop -35.2
       SizeX 0
-      OffsetRight 0
-      SizeY 18.8
-      OffsetBottom 28.8
+      OffsetRight 3.2
+      SizeY 27.2
+      OffsetBottom 8
      }
-     "Is Visible" 0
-     "Fill Origin" Center
      {
-      ScaleWidgetClass "{5EE163221FB770F8}" {
-       Name "Scale1"
-       Slot LayoutSlot "{5EF947DB7EE0404D}" {
-        SizeMode Fill
+      RichTextWidgetClass "{5F2A85A51AE22F8A}" {
+       Name "RichText11001"
+       Slot AlignableSlot "{5F2A85A531C75BAC}" {
        }
-       "Z Order" 1
-       Clipping True
-       {
-        FrameWidgetClass "{5EE163220F477DD4}" : "{24AB584C8785A0B2}ui/layouts/Player Profile/Profile Header.layout" {
-         Name "rootFrame0"
-         Slot AlignableSlot "{5EE163220F477DC7}" {
-         }
-        }
-       }
-      }
-      ScaleWidgetClass "{5EE1632215F6FE7F}" {
-       Name "Scale3"
-       Slot LayoutSlot "{5EF947DB7EE0CA5F}" {
-        SizeMode Fill
-       }
-       "Z Order" 1
-       Clipping True
-       {
-        FrameWidgetClass "{5EE163220AE8B3AA}" : "{C65B80C4095AAF75}ui/layouts/Player Profile/Player Bio.layout" {
-         Name "rootFrame0"
-         Slot AlignableSlot "{5EE163220AE8B381}" {
-         }
-         {
-          VerticalLayoutWidgetClass "{5EE107F7A8C24DDC}" {
-           Prefab "{5EE107F7A8C24DDC}"
-           {
-            HorizontalLayoutWidgetClass "{5EF947DB6CD3E41B}" {
-             Name "HorizontalLayout3"
-             Slot LayoutSlot "{5EFA1BADA1CD98D4}" {
-              HorizontalAlign 1
-              VerticalAlign 1
-             }
-             {
-              TextWidgetClass "{5EF947DB68DDBDCC}" {
-               Name "Text0"
-               Slot LayoutSlot "{5EFA1BADA1CD98C1}" {
-               }
-               Text "Bi UID | "
-              }
-              TextWidgetClass "{5EF947DB68DDBDA2}" {
-               Name "PlssayerBiUid"
-               Slot LayoutSlot "{5EFA1BADA1CD98BF}" {
-               }
-               Text "UID"
-              }
-             }
-            }
-            HorizontalLayoutWidgetClass "{5EE107F7EAEA9691}" {
-             Prefab "{5EE107F7EAEA9691}"
-             "Is Enabled" 0
-             "Is Visible" 0
-            }
-            HorizontalLayoutWidgetClass "{5EE107F728039E5C}" {
-             Prefab "{5EE107F728039E5C}"
-             "Is Enabled" 0
-             "Is Visible" 0
-            }
-            HorizontalLayoutWidgetClass "{5EE107F764CEC2ED}" {
-             Prefab "{5EE107F764CEC2ED}"
-             "Is Enabled" 0
-             "Is Visible" 0
-            }
-            TextWidgetClass "{5EE107F0AB547F91}" {
-             Prefab "{5EE107F0AB547F91}"
-             "Is Enabled" 0
-             "Is Visible" 0
-            }
-            RichTextWidgetClass "{5EE107F7451D50C4}" {
-             Prefab "{5EE107F7451D50C4}"
-             "Is Enabled" 0
-             "Is Visible" 0
-            }
-           }
-          }
-         }
-        }
-       }
+       Text "loading..."
       }
      }
-    }
-    TextWidgetClass "{5F200299213B4F59}" {
-     Name "PlayerBiUid"
-     Slot FrameWidgetSlot "{5F200299213B4F33}" {
-      Anchor 0.05 0.55 0.95 0.9
-      PositionX 1513.6
-      OffsetLeft 1513.6
-      PositionY 292.1
-      OffsetTop 292.1
-      SizeX -3043.2
-      OffsetRight 1529.6
-      SizeY -594.3
-      OffsetBottom 302.2
-     }
-     "Is Enabled" 0
-     "Is Visible" 0
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
     }
     ScrollLayoutWidgetClass "{5F2A85A225D32A0E}" {
      Name "ScrollLayout0"
@@ -170,149 +173,17 @@ FrameWidgetClass {
       SizeX 1.6
       OffsetRight -1.6
       SizeY 35.2
-      OffsetBottom -0
+      OffsetBottom 0
      }
      {
       TextWidgetClass "{5F20029D557A209C}" {
        Name "RichText0110"
        Slot AlignableSlot "{5F2A85A225E050CD}" {
        }
+       Text "loading..."
        "Horizontal Alignment" Center
        "Vertical Alignment" Center
       }
-     }
-    }
-    ScrollLayoutWidgetClass "{5F2A85A520FA40AC}" {
-     Name "ScrollLayout2"
-     Slot FrameWidgetSlot "{5F2A85A5C77D8B20}" {
-      Anchor 0.75 0.45 1 1
-      PositionX 0
-      OffsetLeft 0
-      PositionY -27.2
-      OffsetTop -27.2
-      SizeX -8
-      OffsetRight 8
-      SizeY 19.2
-      OffsetBottom 8
-     }
-     "Is Enabled" 0
-     "Is Visible" 0
-     {
-      RichTextWidgetClass "{5F2A85A520FA40AB}" {
-       Name "RichText00001"
-       Slot AlignableSlot "{5F2A85A531C75BAC}" {
-       }
-      }
-     }
-    }
-    ScrollLayoutWidgetClass "{5F2A85A51AE22F8B}" {
-     Name "ScrollLayout3"
-     Slot FrameWidgetSlot "{5F2A85A5C77D8B20}" {
-      Anchor 0.4 0.45 0.65 1
-      PositionX -3.2
-      OffsetLeft -3.2
-      PositionY -35.2
-      OffsetTop -35.2
-      SizeX -0
-      OffsetRight 3.2
-      SizeY 27.2
-      OffsetBottom 8
-     }
-     {
-      RichTextWidgetClass "{5F2A85A51AE22F8A}" {
-       Name "RichText11001"
-       Slot AlignableSlot "{5F2A85A531C75BAC}" {
-       }
-      }
-     }
-    }
-   }
-  }
-  VerticalLayoutWidgetClass "{5EE1632DAA9B08F6}" {
-   Name "VerticalLayout0"
-   Slot FrameWidgetSlot "{5EE1632DAA9B0961}" {
-    Anchor 0.7 0.05 0.95 0.95
-    PositionX 0
-    OffsetLeft 0
-    PositionY -6
-    OffsetTop -6
-    SizeX 0
-    OffsetRight 0
-    SizeY 4
-    OffsetBottom 2
-   }
-   "Is Enabled" 0
-   "Is Visible" 0
-   "Fill Origin" Center
-   {
-    ScaleWidgetClass "{5EE1632322DBFAB0}" {
-     Name "Scale0"
-     Slot LayoutSlot "{5EF947DB7EE3A08B}" {
-      SizeMode Fill
-     }
-     "Z Order" 1
-     Clipping True
-     {
-      FrameWidgetClass "{5EE163230E845BB0}" : "{027FD702DEE65452}ui/layouts/Player Profile/Player Progression.layout" {
-       Name "rootFrame0"
-       Slot AlignableSlot "{5EE1632212488973}" {
-       }
-      }
-     }
-    }
-    ScaleWidgetClass "{5EE1632215530D9A}" {
-     Name "Scale4"
-     Slot LayoutSlot "{5EF947DB7EE3B2A2}" {
-      SizeMode Fill
-     }
-     "Z Order" 1
-     Clipping True
-     {
-      FrameWidgetClass "{5EE1632209557A6D}" : "{E73080584BE3EDCD}ui/layouts/Player Profile/Customization Options.layout" {
-       Name "rootFrame0"
-       Slot AlignableSlot "{5EE1632209557A50}" {
-       }
-      }
-     }
-    }
-    ScaleWidgetClass "{5EE1632218C3712E}" {
-     Name "Scale2"
-     Slot LayoutSlot "{5EF947DB7EE386D4}" {
-      SizeMode Fill
-     }
-     "Z Order" 1
-     Clipping True
-     {
-      VerticalLayoutWidgetClass "{5EE163220D7F8DA7}" : "{E18032393BDE7F0B}ui/layouts/Player Profile/Privacy Settings.layout" {
-       Name "VerticalLayout00"
-       Slot AlignableSlot "{5EE163220D7F8EFA}" {
-       }
-      }
-     }
-    }
-   }
-  }
-  ScaleWidgetClass "{5EE16322144396C6}" {
-   Name "Scale5"
-   Slot FrameWidgetSlot "{5EE1632322DBFA91}" {
-    Anchor 0 0 1 1
-    PositionX 72
-    OffsetLeft 72
-    PositionY 376
-    OffsetTop 376
-    SizeX -1336
-    OffsetRight 1264
-    SizeY -760
-    OffsetBottom 384
-   }
-   "Z Order" 1
-   "Is Enabled" 0
-   "Is Visible" 0
-   Clipping True
-   {
-    FrameWidgetClass "{5EE1632207F63585}" : "{757F2A028919D8C8}ui/layouts/Player Profile/Community Engagement.layout" {
-     Name "rootFrame0"
-     Slot AlignableSlot "{5EE1632207F63676}" {
      }
     }
    }
