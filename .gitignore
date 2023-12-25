@@ -3,16 +3,15 @@
 core
 ## Arma Reforger Project's resourceDatabase.rdb
 resourceDatabase.rdb
-## EnfusionDatabaseFramework_5D6EA74A94173EDF
-EnfusionDatabaseFramework_5D6EA74A94173EDF
+## EnfusionDatabaseFramework
 ## license
-license.txt
+
 ## worlds dir
 worlds
-
+.github
 # Prerequisites
 *.d
-
+tests
 # Object files
 *.o
 *.ko
@@ -23,11 +22,11 @@ worlds
 *.ilk
 *.map
 *.exp
-
+docs
 # Precompiled Headers
 *.gch
 *.pch
-
+WorkbenchGame
 # Libraries
 *.lib
 *.a
