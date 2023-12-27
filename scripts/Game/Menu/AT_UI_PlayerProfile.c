@@ -4,8 +4,8 @@ class AT_UI_PlayerProfile : AT_UI_MENU_BASE
 	private TextWidget playerNames;
 	
 	
-	private static const string m_sTextBoxNames = "RichText11001";
-	private static const string m_sTextBoxPlaytime = "RichText00001";
+	private static const string m_sTextBoxNames = "RichText00001";
+	private static const string m_sTextBoxPlaytime = "RichText11001";
 	
 	private void requestData(string dataName, string textWidgetToPlaceData)
 	{
@@ -21,7 +21,7 @@ class AT_UI_PlayerProfile : AT_UI_MENU_BASE
 		TEXT_TITLE = "UI_PlayerProfile";
 		super.OnMenuOpen();
 		
-		playerNames = TextWidget.Cast(rootWidget.FindAnyWidget(m_sTextBoxPlayerNames));
+		playerNames = TextWidget.Cast(rootWidget.FindAnyWidget("Text3"));
 		playerNames.SetText(AT_GLOBALS.client.m_sAtUiProfileUID);
 		
 		requestData("Names", m_sTextBoxNames);
