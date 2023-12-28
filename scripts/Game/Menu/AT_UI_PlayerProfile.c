@@ -1,11 +1,8 @@
 class AT_UI_PlayerProfile : AT_UI_MENU_BASE
 {
-	private static const string m_sTextBoxPlayerNames = "RichText0110";
-	private TextWidget playerNames;
-	
-	
-	private static const string m_sTextBoxNames = "RichText00001";
-	private static const string m_sTextBoxPlaytime = "RichText11001";
+	private static const string m_sTextBoxNames = "RichText0110";
+	private static const string m_sTextPlaytime = "Text3111"; 
+	private static const string m_sTextBiGuid = "Text333"; 
 	
 	private void requestData(string dataName, string textWidgetToPlaceData)
 	{
@@ -21,13 +18,13 @@ class AT_UI_PlayerProfile : AT_UI_MENU_BASE
 		TEXT_TITLE = "UI_PlayerProfile";
 		super.OnMenuOpen();
 		
-		playerNames = TextWidget.Cast(rootWidget.FindAnyWidget("Text3"));
+		TextWidget playerNames = TextWidget.Cast(rootWidget.FindAnyWidget(m_sTextBiGuid));
 		playerNames.SetText(AT_GLOBALS.client.m_sAtUiProfileUID);
 		
 		requestData("Names", m_sTextBoxNames);
 		GetGame().GetCallqueue().CallLater(processData, 3000, false);
 		
-		requestData("PlayTime", m_sTextBoxPlaytime);
+		requestData("PlayTime", m_sTextPlaytime);
 		GetGame().GetCallqueue().CallLater(processPlayTime, 2500, false);
 	}
 	
@@ -39,7 +36,7 @@ class AT_UI_PlayerProfile : AT_UI_MENU_BASE
 				return;
 			
 			string dataGet = dataToProcess.Get(0);
-			if (dataGet != m_sTextBoxPlaytime)
+			if (dataGet != m_sTextPlaytime)
 				return;
 			
 			string dataPlaytime = dataToProcess.Get(1);
