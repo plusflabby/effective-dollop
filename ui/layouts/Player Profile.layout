@@ -22,14 +22,14 @@ WindowWidgetClass {
     WindowWidgetClass "{5F2D61E9331701A9}" {
      Name "Window0"
      Slot FrameWidgetSlot "{5F2D61E933170173}" {
-      PositionX 64
-      OffsetLeft 64
-      PositionY 8
-      OffsetTop 8
+      PositionX 288
+      OffsetLeft 288
+      PositionY 16
+      OffsetTop 16
       SizeX 488
-      OffsetRight -552
+      OffsetRight -776
       SizeY 224
-      OffsetBottom -232
+      OffsetBottom -240
      }
      Title "Bohemia Interactive Unique Identifier"
      "Title Visible" 1
@@ -38,15 +38,15 @@ WindowWidgetClass {
       TextWidgetClass "{5F2D61E86ACF75D0}" {
        Name "Text333"
        Slot FrameWidgetSlot "{5F2D61E955BE33FA}" {
-        Anchor 0 0 0 0
-        PositionX 200
-        OffsetLeft 200
-        PositionY 85.7
-        OffsetTop 85.7
-        SizeX 100
-        OffsetRight -300
-        SizeY -151.7
-        OffsetBottom 66
+        Anchor 0 0.15 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY -23.955
+        OffsetTop -23.955
+        SizeX 0
+        OffsetRight 0
+        SizeY 23.955
+        OffsetBottom 0
         SizeToContent 1
        }
        Text "loading"
@@ -189,12 +189,12 @@ WindowWidgetClass {
     WindowWidgetClass "{5F38C2F5718EF8FE}" {
      Name "Window1"
      Slot FrameWidgetSlot "{5F2D61E933170173}" {
-      PositionX 600
-      OffsetLeft 600
+      PositionX 952
+      OffsetLeft 952
       PositionY 8
       OffsetTop 8
       SizeX 488
-      OffsetRight -1088
+      OffsetRight -1440
       SizeY 224
       OffsetBottom -232
      }
@@ -205,15 +205,15 @@ WindowWidgetClass {
       TextWidgetClass "{5F38C2F5718EF8FC}" {
        Name "Text3111"
        Slot FrameWidgetSlot "{5F2D61E955BE33FA}" {
-        Anchor 0 0 0 0
-        PositionX 200
-        OffsetLeft 200
-        PositionY 85.7
-        OffsetTop 85.7
-        SizeX 100
-        OffsetRight -300
-        SizeY -151.7
-        OffsetBottom 66
+        Anchor 0 0.15 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY -23.955
+        OffsetTop -23.955
+        SizeX 0
+        OffsetRight 0
+        SizeY 23.955
+        OffsetBottom 0
         SizeToContent 1
        }
        Text "loading"

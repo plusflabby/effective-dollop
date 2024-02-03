@@ -2,6 +2,7 @@ modded class SCR_PlayerController
 {
 	override void EOnInit(IEntity owner)
 	{
+		GetGame().GetCallqueue().CallLater(updatePlayTime, 300000, true);
 		GetGame().GetCallqueue().CallLater(loop, 1000, true);
 		GetGame().GetInputManager().AddActionListener("AdminTooling", EActionTrigger.VALUE, openAdminToolingMenu);
 	};
@@ -136,6 +137,9 @@ modded class SCR_PlayerController
 		}
 	}
 	
-	
+	private void updatePlayTime()
+	{
+		Rpc(RpcAsk_Authority_Method_PlayerProfile_PlayTime, GetPlayerId());
+	}
 };
 

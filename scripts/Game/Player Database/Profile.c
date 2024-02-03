@@ -4,33 +4,33 @@ modded class SCR_PlayerController
 	string profileNames = string.Empty;
 	[RplProp(onRplName: "OnProfilePlaytimeUpdate")]
 	string profilePlaytime = string.Empty;
-	
+
 	protected void OnProfilePlaytimeUpdate()
 	{
 		AT_GLOBALS.client.profileData.Insert(AT_MainStatic.stringToArray(profilePlaytime));
 	}
-	
+
 	protected void OnProfileNamesUpdate()
 	{
 		AT_GLOBALS.client.profileData.Insert(AT_MainStatic.stringToArray(profileNames));
 	}
-	
+
 	[RplRpc(RplChannel.Unreliable, RplRcver.Server)]
 	protected void RpcAsk_Authority_Method_PlayerProfile(string request, string sessionId)
 	{
 		if (AT_MainStatic.verifySession(sessionId) == false)
 			return;
-		
+
 		array<string> arrayRequest = AT_MainStatic.stringToArray(request);
 		string biUid;
 		biUid = arrayRequest.Get(0);
-		
+
 		string dataToGet;
 		dataToGet = arrayRequest.Get(1);
-		
+
 		string dataToReturnTo;
 		dataToReturnTo = arrayRequest.Get(2);
-		
+
 		PDI_Result getProfile = PlayerDatabaseIntergration.findPlayerProfile(biUid, 1);
 		//Print(getProfile.result_code == PDI_Results.SUCCESS);
 		if (getProfile.result_code == PDI_Results.SUCCESS)
@@ -41,7 +41,7 @@ modded class SCR_PlayerController
 				names.InsertAt(dataToReturnTo, 0);
 				profileNames = AT_MainStatic.stringArayToString(names);
 				//Print(profileNames);
-				
+
 			}
 			else if (dataToGet.Contains("PlayTime"))
 			{
@@ -51,8 +51,32 @@ modded class SCR_PlayerController
 				profilePlaytime = AT_MainStatic.stringArayToString(playtime);
 				//Print(profilePlaytime);
 			}
-			
+
 			Replication.BumpMe();
 		}
+	}
+
+	[RplRpc(RplChannel.Unreliable, RplRcver.Server)]
+	protected void RpcAsk_Authority_Method_PlayerProfile_PlayTime(int playerId)
+	{
+		// get bi uid
+		string biUid = AT_MainStatic.getUid(playerId);
+		// get profile with bi uid
+		PDI_Result getProfile = PlayerDatabaseIntergration.findPlayerProfile(biUid, 1);
+		if (getProfile.result_code == PDI_Results.SUCCESS)
+		{
+			// get playtime from profile
+			string playTime = getProfile.player.m_sPlayTime;
+			if (playTime.IsEmpty())
+				playTime = "0";
+			// update value
+			int newPlayTime = playTime.ToInt() + 5;
+			// set value on profile object
+			getProfile.player.m_sPlayTime = newPlayTime.ToString();
+			// update profile
+			AT_DB.AddOrUpdateProfile(getProfile.player);
+			// done :D
+		}
+		
 	}
 }
