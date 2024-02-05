@@ -52,6 +52,24 @@ class AT_DB
 	{
 		AT_GLOBALS.server.atDB.AddOrUpdateAsync(chat, AT_GLOBALS.server.variableOne);
 	}
+	
+	static void storeAdminAction(string action, string playerBiUid)
+	{
+		// get profile with bi uid
+		PDI_Result getProfile = PlayerDatabaseIntergration.findPlayerProfile(playerBiUid, 1);
+		if (getProfile.result_code == PDI_Results.SUCCESS)
+		{
+			// get admin actions from profile 
+			array<string> adminActions = array<string>.Cast(getProfile.player.m_aAdminActions.Clone());
+			// add action to end of array 
+			adminActions.Insert(action);
+			// set value on profile object
+			getProfile.player.m_aAdminActions = adminActions;
+			// update profile
+			AT_DB.AddOrUpdateProfile(getProfile.player);
+			// done :D
+		}
+	}
 }
 
 // ////////////////////

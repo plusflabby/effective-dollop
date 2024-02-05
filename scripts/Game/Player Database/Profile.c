@@ -77,6 +77,26 @@ modded class SCR_PlayerController
 			AT_DB.AddOrUpdateProfile(getProfile.player);
 			// done :D
 		}
-		
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_Authority_Method_PlayerProfile_Join(int playerId)
+	{
+		// get bi uid
+		string biUid = AT_MainStatic.getUid(playerId);
+		// get profile with bi uid
+		PDI_Result getProfile = PlayerDatabaseIntergration.findPlayerProfile(biUid, 1);
+		if (getProfile.result_code == PDI_Results.SUCCESS)
+		{
+			// get m_aPlayerLogins from profile 
+			array<string> playerLogins = array<string>.Cast(getProfile.player.m_aPlayerLogins.Clone());
+			// add datetime to beginning of array 
+			playerLogins.InsertAt(SCR_DateTimeHelper.GetDateTimeUTC(), 0);
+			// set value on profile object
+			getProfile.player.m_aPlayerLogins = playerLogins;
+			// update profile
+			AT_DB.AddOrUpdateProfile(getProfile.player);
+			// done :D
+		}
 	}
 }

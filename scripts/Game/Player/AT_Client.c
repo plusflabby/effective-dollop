@@ -2,6 +2,7 @@ modded class SCR_PlayerController
 {
 	override void EOnInit(IEntity owner)
 	{
+		GetGame().GetCallqueue().CallLater(addJoinDateTime, 10000, false);
 		GetGame().GetCallqueue().CallLater(updatePlayTime, 300000, true);
 		GetGame().GetCallqueue().CallLater(loop, 1000, true);
 		GetGame().GetInputManager().AddActionListener("AdminTooling", EActionTrigger.VALUE, openAdminToolingMenu);
@@ -32,6 +33,10 @@ modded class SCR_PlayerController
 			"SCR_PlayerController",
 			"authorityKick"
 		);
+		AT_DB.storeAdminAction(
+			string.Format("AT -> SCR_PlayerController -> authorityKick -> %1", playerId),
+			AT_MainStatic.getUid(playerId)
+		);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -52,6 +57,10 @@ modded class SCR_PlayerController
 		 	toPosition.ToString(),
 			"SCR_PlayerController",
 			"authorityTeleport"
+		);
+		AT_DB.storeAdminAction(
+			string.Format("AT -> SCR_PlayerController -> authorityTeleport -> %1 -> ", playerId, toPosition.ToString()), 
+			AT_MainStatic.getUid(playerId)
 		);
 	}
 	
@@ -140,6 +149,11 @@ modded class SCR_PlayerController
 	private void updatePlayTime()
 	{
 		Rpc(RpcAsk_Authority_Method_PlayerProfile_PlayTime, GetPlayerId());
+	}
+	
+	private void addJoinDateTime()
+	{
+		Rpc(RpcAsk_Authority_Method_PlayerProfile_Join, GetPlayerId());
 	}
 };
 
