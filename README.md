@@ -2,7 +2,7 @@
 
 # Arma Reforger - Admin Tooling
 
-This project aims to provide server administrators using PCs with a suite of tools for effective server management in Arma Reforger.
+This project aims to provide server administrators using Computer PCs with a suite of tools for effective server management in Arma Reforger.
 
 ## Features
 
@@ -33,7 +33,5 @@ For assistance or troubleshooting, connect with us through the following channel
 ## License
 
 This project is licensed under the MIT License.
-
-For any additional assistance or inquiries related to the project, feel free to reach out to me directly through [OpenAI](https://openai.com/)!
 
 --- 
