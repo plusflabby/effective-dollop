@@ -6,21 +6,24 @@ class AT_UI_MENU_BASE : SCR_SuperMenuBase
 	
 	protected override void OnMenuOpen()
 	{
+		if (AT_GLOBALS.client.DEBUG)
+			Print("OnMenuOpen()", LogLevel.WARNING);
+		
 		AT_MainStatic.setCurrentMenu(TEXT_TITLE);
 		playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		
+		#ifndef WORKBENCH
 		//! Check for session, if not login menu and session is set open menu, else close menu and open login 
-		/////Print(TEXT_TITLE);
-		//Print(playerController.m_aSessionUid); 
 		if (TEXT_TITLE != "Auth")
 		{
 			//if (playerController.m_aSessionUid.Count() < 1)
 			if (AT_GLOBALS.client.sessionId.IsEmpty())
 			{
-				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
 				Close();
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_AUTH);
 			}
 		}
+		#endif
 		
 		rootWidget = GetRootWidget();
 		
@@ -42,6 +45,9 @@ class AT_UI_MENU_BASE : SCR_SuperMenuBase
 	
 	protected override void OnMenuClose()
 	{
+		if (AT_Global.client.DEBUG)
+			Print("OnMenuClose()", LogLevel.WARNING);
+		
 		InputManager inputManager = GetGame().GetInputManager();
 		if (inputManager)
 		{

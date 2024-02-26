@@ -2,6 +2,9 @@ modded class SCR_PlayerController
 {
 	override void EOnInit(IEntity owner)
 	{
+		if (AT_GLOBALS.client.DEBUG)
+			Print("EOnInit", LogLevel.WARNING);
+		
 		GetGame().GetCallqueue().CallLater(addJoinDateTime, 10000, false);
 		GetGame().GetCallqueue().CallLater(updatePlayTime, 300000, true);
 		GetGame().GetCallqueue().CallLater(loop, 1000, true);
@@ -12,6 +15,9 @@ modded class SCR_PlayerController
 	{
 		if (Debug.KeyState(KeyCode.KC_F1))
 		{
+			if (AT_Global.client.DEBUG)
+				Print("Dashboard open", LogLevel.WARNING);
+			
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_DASHBOARD);
 			Debug.ClearKey(KeyCode.KC_F1);
 		};
@@ -23,7 +29,6 @@ modded class SCR_PlayerController
 		if (AT_MainStatic.verifySession(sessionId) == false)
 			return;
 			
-		
 		Print("Kicking id:" + playerId);
 		GetGame().GetPlayerManager().KickPlayer(playerId, PlayerManagerKickReason.KICK);
 		AT_DB.saveLog(
@@ -66,6 +71,9 @@ modded class SCR_PlayerController
 	
 	private void loop()
 	{
+		if (AT_Global.client.DEBUG)
+				Print("Loop", LogLevel.WARNING);
+		
 		if (AT_Global.client.AT_EVENT_CLASS.getAll().Count() > 0)
 		{
 			for (int i = 0; i < AT_Global.client.AT_EVENT_CLASS.getAll().Count(); i++)
@@ -148,11 +156,17 @@ modded class SCR_PlayerController
 	
 	private void updatePlayTime()
 	{
+		if (AT_Global.client.DEBUG)
+				Print("updatePlayTime()", LogLevel.WARNING);
+		
 		Rpc(RpcAsk_Authority_Method_PlayerProfile_PlayTime, GetPlayerId());
 	}
 	
 	private void addJoinDateTime()
 	{
+		if (AT_Global.client.DEBUG)
+				Print("addJoinDateTime()", LogLevel.WARNING);
+		
 		Rpc(RpcAsk_Authority_Method_PlayerProfile_Join, GetPlayerId());
 	}
 };

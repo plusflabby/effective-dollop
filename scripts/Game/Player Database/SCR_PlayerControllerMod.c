@@ -6,8 +6,8 @@ modded class SCR_PlayerController
 	//! called after playerDatabaseResult is updated 
 	protected void OnPlayerDatabaseUpdated()
 	{
-		Print("proxy-side code");
-		Print("t"+playerDatabaseResult);
+		if (AT_GLOBALS.client.DEBUG)
+			Print("OnPlayerDatabaseUpdated()"+playerDatabaseResult, LogLevel.WARNING);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

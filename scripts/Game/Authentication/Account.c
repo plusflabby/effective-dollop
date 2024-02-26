@@ -36,6 +36,9 @@ class Account
 	// Validate user credentials before creating a session
 	static bool validate(string password)
 	{
+		if (AT_GLOBALS.client.DEBUG)
+			Print("validate()", LogLevel.WARNING);
+		
 		if (Policy.minimumLength(password))
 			return false;
 		if (Policy.maximumLength(password))

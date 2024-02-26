@@ -4,20 +4,37 @@ modded class SCR_PlayerController
 	string profileNames = string.Empty;
 	[RplProp(onRplName: "OnProfilePlaytimeUpdate")]
 	string profilePlaytime = string.Empty;
+	[RplProp(onRplName: "OnProfileLoginsUpdate")]
+	string profileLogins = string.Empty;
 
 	protected void OnProfilePlaytimeUpdate()
 	{
+		if (AT_GLOBALS.client.DEBUG)
+			Print("OnProfilePlaytimeUpdate()", LogLevel.WARNING);
+		
 		AT_GLOBALS.client.profileData.Insert(AT_MainStatic.stringToArray(profilePlaytime));
 	}
-
 	protected void OnProfileNamesUpdate()
 	{
+		if (AT_Global.client.DEBUG)
+			Print("OnProfileNamesUpdate()", LogLevel.WARNING);
+		
 		AT_GLOBALS.client.profileData.Insert(AT_MainStatic.stringToArray(profileNames));
+	}
+	protected void OnProfileLoginsUpdate()
+	{
+		if (AT_Global.client.DEBUG)
+			Print("OnProfileLoginsUpdate()", LogLevel.WARNING);
+		
+		AT_GLOBALS.client.profileData.Insert(AT_MainStatic.stringToArray(profileLogins));
 	}
 
 	[RplRpc(RplChannel.Unreliable, RplRcver.Server)]
 	protected void RpcAsk_Authority_Method_PlayerProfile(string request, string sessionId)
 	{
+		if (AT_GLOBALS.server.DEBUG)
+			Print("RpcAsk_Authority_Method_PlayerProfile() start", LogLevel.ERROR);
+		
 		if (AT_MainStatic.verifySession(sessionId) == false)
 			return;
 
@@ -33,30 +50,58 @@ modded class SCR_PlayerController
 
 		PDI_Result getProfile = PlayerDatabaseIntergration.findPlayerProfile(biUid, 1);
 		//Print(getProfile.result_code == PDI_Results.SUCCESS);
+		
+		if (AT_GLOBALS.server.DEBUG)
+			Print(
+				"RpcAsk_Authority_Method_PlayerProfile() getProfile.result_code="+getProfile.result_code,
+				LogLevel.ERROR
+			);
+		
 		if (getProfile.result_code == PDI_Results.SUCCESS)
 		{
-			if (dataToGet.Contains("Names"))
+			if (AT_GLOBALS.server.DEBUG)
+				Print(
+					"RpcAsk_Authority_Method_PlayerProfile() dataToGet="+dataToGet,
+					LogLevel.ERROR
+				);
+			
+			if (dataToGet == "Names")
 			{
 				array<string> names = getProfile.player.m_aName;
 				names.InsertAt(dataToReturnTo, 0);
 				profileNames = AT_MainStatic.stringArayToString(names);
-				//Print(profileNames);
+				Print(profileNames);
+
+				Replication.BumpMe();
 
 			}
-			else if (dataToGet.Contains("PlayTime"))
+			else if (dataToGet == "PlayTime")
 			{
 				array<string> playtime = new array<string>();
 				playtime.Insert(dataToReturnTo);
 				playtime.Insert(getProfile.player.m_sPlayTime);
 				profilePlaytime = AT_MainStatic.stringArayToString(playtime);
-				//Print(profilePlaytime);
-			}
+				Print(profilePlaytime);
 
-			Replication.BumpMe();
+				Replication.BumpMe();
+			}
+			else if (dataToGet == "Logins")
+			{
+				array<string> logins = getProfile.player.m_aPlayerLogins;
+				logins.InsertAt(dataToReturnTo, 0);
+				profileLogins = AT_MainStatic.stringArayToString(logins);
+				Print(profileLogins);
+
+				Replication.BumpMe();
+			}
 		}
+		
+		if (AT_GLOBALS.server.DEBUG)
+			Print("RpcAsk_Authority_Method_PlayerProfile() end", LogLevel.ERROR);
+		
 	}
 
-	[RplRpc(RplChannel.Unreliable, RplRcver.Server)]
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_Authority_Method_PlayerProfile_PlayTime(int playerId)
 	{
 		// get bi uid

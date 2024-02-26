@@ -1,3 +1,5 @@
+ref AT_Global AT_GLOBALS = new AT_Global();
+
 class AT_Global
 {
 	ref AT_Server server;
@@ -9,7 +11,6 @@ class AT_Global
 		client = new AT_Client();
 	}
 }
-ref AT_Global AT_GLOBALS = new AT_Global();
 
 class AT_Server
 {
@@ -58,53 +59,11 @@ class AT_Server
 	};
 	ref RolesClass myRolesClass = new RolesClass();
 	ref atRBAC_STORAGE rbac_STORAGE = new atRBAC_STORAGE();
-
-	void AT_Server()
-	{
-		atDB = SetUpServerDatabase();
-		rbac_STORAGE = new atRBAC_STORAGE();
-		variableOne = new callbackAT();
-		at_scripts = new array<ref vSetVariable>;
-		myRolesClass = new RolesClass();
-		Roles = {
-			"administrator",
-			"moderator",
-			"user",
-			"Guest/Visitor"
-		};
-		Permissions = {
-			{
-				"administrator",
-				
-				"Manage Users",
-				"Manage Roles",
-				"Server Configuration",
-				"Access Audit Logs",
-				"Full Access",
-				"Backup Control"
-			},
-			{
-				"moderator",
-				
-				"Manage Players",
-				"Content Moderation",
-				"Access Reports"
-			},
-			{
-				"user",
-				
-				"Edit Profile",
-				"Access Forums or Community Features",
-				"View Server Information"
-			},
-			{
-				"Guest/Visitor",
-				
-				"View Public Content",
-				"Limited Access"
-			}
-		};
-	}
+	ref AT_Network network = new AT_Network();
+	bool DEBUG = true;
+	ref AT_Network_2 net_2 = new AT_Network_2();
+	string API_SERVER = "http://127.0.0.1:8787/";
+	//string API_SERVER = "http://15.204.134.11:8787/";
 }
 
 class AT_Client
@@ -114,12 +73,5 @@ class AT_Client
 	ref array<ref array<string>> profileData = new array<ref array<string>>();
 	ref AT_EventClass AT_EVENT_CLASS = new AT_EventClass();
 	string sessionId = string.Empty;
-	void AT_Client()
-	{
-		m_sAtUiProfileUID = string.Empty;
-		profileData = new array<ref array<string>>();
-		AT_EVENT_CLASS = new AT_EventClass();
-		sessionId = string.Empty;
-	}
+	bool DEBUG = true;
 }
-

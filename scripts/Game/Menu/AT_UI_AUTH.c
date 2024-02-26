@@ -15,6 +15,9 @@ class AT_UI_AUTH : AT_UI_MENU_BASE
 	
 	protected override void OnMenuOpen()
 	{
+		if (AT_GLOBALS.client.DEBUG)
+			Print("OnMenuOpen()Auth", LogLevel.WARNING);
+		
 		TEXT_TITLE = "Auth";
 		super.OnMenuOpen();
 		
@@ -33,6 +36,9 @@ class AT_UI_AUTH : AT_UI_MENU_BASE
 	
 	protected void RegisterButton()
 	{
+		if (AT_Global.client.DEBUG)
+			Print("RegisterButton()", LogLevel.WARNING);
+		
 		string the_password = passwordEditBox.GetValue();
 		string the_username = usernameEditBox.GetValue();
 		array<string> rpc_data = new array<string>();
@@ -44,6 +50,9 @@ class AT_UI_AUTH : AT_UI_MENU_BASE
 	
 	protected void LoginButton()
 	{
+		if (AT_Global.client.DEBUG)
+			Print("LoginButton()", LogLevel.WARNING);
+		
 		string the_password = passwordEditBox.GetValue();
 		string the_username = usernameEditBox.GetValue();
 		array<string> rpc_data = new array<string>();
@@ -55,6 +64,9 @@ class AT_UI_AUTH : AT_UI_MENU_BASE
 	
 	void reload()
 	{
+		if (AT_Global.client.DEBUG)
+			Print("reload()", LogLevel.WARNING);
+		
 		Close();
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.AT_PM);
 	}

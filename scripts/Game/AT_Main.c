@@ -41,6 +41,10 @@ class AT_MainStatic
 	// server fnc 
 	static bool verifySession(string sessionId)
 	{
+		#ifdef WORKBENCH
+		return true;
+		#endif
+		
 		if (sessionId.IsEmpty())
 			return false;
 		if (AT_GLOBALS.server.SESSION_CACHE.GetSessionData(sessionId) == AT_GLOBALS.server.Session_Structure_EMPTY)
