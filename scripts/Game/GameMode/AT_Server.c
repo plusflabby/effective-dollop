@@ -54,13 +54,19 @@ modded class SCR_BaseGameModeComponent
 				AT_GLOBALS.server.network.SetUp();
 
 			//! Game -> API, every 10 seconds
-			GetGame().GetCallqueue().CallLater(sendPlayerListToAPI, 10000, true);
+			GetGame().GetCallqueue().CallLater(sendPlayerListToAPI, 15000, true);
+			
+			//! Game -> API -> Game, every 10 seconds, for tasks like kick
+			GetGame().GetCallqueue().CallLater(runTasksFromAPI, 10000, true);
 		}
 	}
 
 	//! Server function to ..
 	private void sendPlayerListToAPI()
 	{
+		if (!AT_GLOBALS.server.network.isSetUp())
+			return;
+		
 		if (GetGame().GetPlayerManager().GetPlayerCount() == 0)
 			return;
 		
@@ -80,5 +86,13 @@ modded class SCR_BaseGameModeComponent
 		AT_GLOBALS.server.net_2.POST_without_response(pl_str, API_Post_Types.PlayerList);
 		//! Debug 
 		//AT_GLOBALS.server.net_2.POST_with_response(pl_str, API_Post_Types.DEBUG);
+	}
+	
+	private void runTasksFromAPI()
+	{
+		if (!AT_GLOBALS.server.network.isSetUp())
+			return;
+		
+		AT_GLOBALS.server.net_3.getTaskList();
 	}
 }

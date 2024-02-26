@@ -62,8 +62,9 @@ class AT_Server
 	ref AT_Network network = new AT_Network();
 	bool DEBUG = true;
 	ref AT_Network_2 net_2 = new AT_Network_2();
-	//string API_SERVER = "http://127.0.0.1:8787/";
-	string API_SERVER = "http://15.204.134.11:8787/";
+	ref AT_Network_3 net_3 = new AT_Network_3();
+	string API_SERVER = "http://127.0.0.1:8787/";
+	//string API_SERVER = "http://15.204.134.11:8787/";
 }
 
 class AT_Client

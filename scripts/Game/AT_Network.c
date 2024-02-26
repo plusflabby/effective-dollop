@@ -206,7 +206,7 @@ class AT_Network_2 : Managed
 		return true;
 	}
 	//! Function that returns server's id hash, that is stored
-	private string getServerRemoteId()
+	string getServerRemoteId()
 	{
 		//! Read current values 
 		SCR_JsonLoadContext readJsonBi = new SCR_JsonLoadContext();
@@ -320,4 +320,119 @@ enum API_Post_Types
 enum API_Post_Response_Types
 {
 	DEBUG
+}
+
+// ! Network part 3 - Getting task(s) from API and executing them 
+class AT_Network_3 : Managed
+{
+	// !
+	// ! Network Variables (static/non-static)
+	// !
+	private const string FILE = "$profile:AT_NETWORK.json";
+	private const bool LOGS = AT_GLOBALS.server.DEBUG;
+	// !
+	// ! Network Constructor(s)
+	// !
+	void AT_Network_3()
+	{
+	}
+	void ~AT_Network_3()
+	{
+	}
+	// !
+	// ! Network Functions
+	// !
+	// ! Get task(s) from API 
+	void getTaskList()
+	{
+		//! Get net remote id 
+		string network_id = AT_GLOBALS.server.net_2.getServerRemoteId();
+		
+		RestContext restContext = GetGame().GetRestApi().GetContext(AT_GLOBALS.server.API_SERVER);
+		
+		if (!restContext)
+		{
+			Print("AT_Network_3 SetUp, Failed, to get RestAPI context. Unable to send data", LogLevel.ERROR);
+			return;
+		}
+		
+		string resposne = restContext.GET_now("api/v1/task?s=" + network_id);
+		//Print(resposne, LogLevel.ERROR);
+		
+		SCR_JsonLoadContext dataReader = new SCR_JsonLoadContext(true);
+		dataReader.ImportFromString(resposne);
+		
+		//! Read tasks variable
+		array<string> API_Response_Tasks = new array<string>();
+		dataReader.ReadValue("tasks", API_Response_Tasks);
+		
+		foreach (string task : API_Response_Tasks)
+		{
+			//Print(task, LogLevel.ERROR);
+			SCR_JsonLoadContext taskReader = new SCR_JsonLoadContext(true);
+			taskReader.ImportFromString(task);
+			//! Read username variable
+			string username = string.Empty;
+			taskReader.ReadValue("username", username);
+			//! Read password variable
+			string password = string.Empty;
+			taskReader.ReadValue("password", password);
+			//! Read task execute variable
+			string taskExec = string.Empty;
+			taskReader.ReadValue("task", taskExec);
+			
+			// verify username & password 
+			if (!Account.validate(password))
+			{
+				if (LOGS) Print("AT_Network_3 failed to validate password", LogLevel.ERROR);
+				continue;
+			}
+			if (!Password_Storage.usernameExists(username))
+			{
+				if (LOGS) Print("AT_Network_3 failed to find username", LogLevel.ERROR);
+				continue;
+			}		
+			if (!Password_Storage.compareForLogin(username, password))
+			{
+				if (LOGS) Print("AT_Network_3 failed to compare user & pass", LogLevel.ERROR);
+				continue;
+			}
+			
+			// Execute a task
+			AT_GLOBALS.server.net_3.executeTask(taskExec);
+		}
+	}
+	
+	// ! Execute a single task (ex. param = "KICK;1;")
+	void executeTask(string task_str)
+	{
+		array<string> variables = new array<string>();
+		task_str.Split(";", variables, true);
+		string action = variables.Get(0);
+		string playerId = variables.Get(1);
+		string playerNetId = variables.Get(2);
+		Print(variables, LogLevel.ERROR);
+		Print(action, LogLevel.ERROR);
+		Print(playerId, LogLevel.ERROR);
+		Print(playerNetId, LogLevel.ERROR);
+		
+//		int playerIdToUse = playerId;
+//		
+//		if (!playerNetId.IsEmpty())
+//		{
+//			GetGame().GetPlayerManager().GetPlayer
+//		}
+		
+		switch(action)
+		{
+			case "KICK":
+					GetGame().GetPlayerManager().KickPlayer(playerId.ToInt(), PlayerManagerKickReason.KICK);
+				break;
+	
+			default:
+				Print(string.Format("AT_Network_3 action(%1) is not valid", action), LogLevel.ERROR);
+				break;
+		}
+		return;
+	}
 }
