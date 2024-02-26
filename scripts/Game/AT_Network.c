@@ -32,11 +32,11 @@ class AT_Network : Managed
 		saveJsonBi.EnableTypeDiscriminator();
 		saveJsonBi.WriteValue(
 			"AT_NETWORK_ID",
-			string.Format("AT_NETWORK_ID_%1", Math.RandomFloat(100.00, 999.999).ToString().Hash())
+			string.Format("%1", Math.RandomFloat(100.00, 999.999).ToString().Hash())
 		);
 		saveJsonBi.WriteValue(
 			"AT_NETWORK_DATETIME",
-			string.Format("AT_NETWORK_DATETIME_%1", SCR_DateTimeHelper.GetDateTimeUTC())
+			string.Format("%1", SCR_DateTimeHelper.GetDateTimeUTC())
 		);
 		saveJsonBi.SaveToFile(FILE);
 		
@@ -51,7 +51,7 @@ class AT_Network : Managed
 		}
 		
 		restContext.SetHeaders("Content-Type,application/json");
-		restContext.POST(m_jsonCallback, "api/setup", saveJsonBi.ExportToString());
+		restContext.POST(m_jsonCallback, "api/v1/setup", saveJsonBi.ExportToString());
 		restContext = null;
 	}
 	
@@ -72,7 +72,7 @@ class AT_Network : Managed
 		saveJsonBi.EnableTypeDiscriminator();
 		saveJsonBi.WriteValue(
 			"AT_NETWORK_REMOTE_ID",
-			string.Format("AT_NETWORK_REMOTE_ID_%1", id)
+			string.Format("%1", id)
 		);
 		saveJsonBi.WriteValue(
 			"AT_NETWORK_ID",
@@ -157,7 +157,7 @@ class AT_Network_2 : Managed
 	// ! Network Functions
 	// !
 	//! function will send a post to /api/sendingdata
-	void POST(SCR_JsonSaveContext data, bool respond)
+	void POST(SCR_JsonSaveContext data, API_Post_Types type = API_Post_Types.DEBUG)
 	{
 		//! Add server network id to request
 		string Net_ID = AT_GLOBALS.server.net_2.getServerRemoteId();
@@ -168,9 +168,14 @@ class AT_Network_2 : Managed
 		}
 		data.WriteValue(
 			"AT_NETWORK_REMOTE_ID",
-			string.Format("%1", )
+			string.Format("%1", Net_ID)
 		);
 		
+		//! Add the type of request
+		data.WriteValue(
+			"AT_DATA_TYPE",
+			string.Format("%1", type)
+		);
 		RestContext restContext = GetGame().GetRestApi().GetContext(AT_GLOBALS.server.API_SERVER);
 		
 		if (!restContext)
@@ -180,11 +185,12 @@ class AT_Network_2 : Managed
 		}
 		
 		restContext.SetHeaders("Content-Type,application/json");
-		restContext.POST(m_jsonCallback_NO_RES, "api/sendingdata", data.ExportToString());
+		restContext.POST(m_jsonCallback_NO_RES, "api/v1/sendingdata", data.ExportToString());
 		restContext = null;
 	}
+	
 	//! function to get data-to-send as string with/without getting response from api 
-	bool POST_without_response(string str)
+	bool POST_without_response(string str, API_Post_Types type = API_Post_Types.DEBUG)
 	{
 		ref SCR_JsonSaveContext saveJsonBi = new SCR_JsonSaveContext();
 		saveJsonBi.EnableTypeDiscriminator();
@@ -195,7 +201,7 @@ class AT_Network_2 : Managed
 		
 		if (LOGS) Print("AT_Network_2 post without response, sending, string size =" + str.Length(), LogLevel.WARNING);
 		
-		AT_GLOBALS.server.net_2.POST(saveJsonBi, false);
+		AT_GLOBALS.server.net_2.POST(saveJsonBi, type);
 		
 		return true;
 	}
@@ -210,8 +216,67 @@ class AT_Network_2 : Managed
 		readJsonBi.ReadValue("AT_NETWORK_REMOTE_ID", AT_NETWORK_REMOTE_ID);
 		return AT_NETWORK_REMOTE_ID;
 	}
+	
+	//! post req with response
+	string POST_SYNC(SCR_JsonSaveContext data, API_Post_Response_Types type = API_Post_Response_Types.DEBUG)
+	{
+		//! Add server network id to request
+		string Net_ID = AT_GLOBALS.server.net_2.getServerRemoteId();
+		if (Net_ID.IsEmpty())
+		{
+			Print("AT_Network_2 POST, Failed, to get Remote Network Id. Unable to send data", LogLevel.ERROR);
+			return string.Empty;
+		}
+		data.WriteValue(
+			"AT_NETWORK_REMOTE_ID",
+			string.Format("%1", Net_ID)
+		);
+		
+		//! Add the type of request
+		data.WriteValue(
+			"AT_DATA_TYPE",
+			string.Format("%1", type)
+		);
+		RestContext restContext = GetGame().GetRestApi().GetContext(AT_GLOBALS.server.API_SERVER);
+		
+		if (!restContext)
+		{
+			Print("AT_Network_2 POST, Failed, to get RestAPI context. Unable to send data", LogLevel.ERROR);
+			return string.Empty;
+		}
+		
+		
+		restContext.SetHeaders("Content-Type,application/json");
+		return restContext.POST_now("api/v1/sendingdata", data.ExportToString());
+	}
+	
 	//! Function to exchange data with API
-	void POST_with_response(string str);
+	void POST_with_response(string str, API_Post_Response_Types type = API_Post_Response_Types.DEBUG)
+	{
+		ref SCR_JsonSaveContext saveJsonBi = new SCR_JsonSaveContext();
+		saveJsonBi.EnableTypeDiscriminator();
+		saveJsonBi.WriteValue(
+			"AT_DATA_TO_GIVE",
+			string.Format("%1", str)
+		);
+		
+		if (LOGS) Print("AT_Network_2 post response, sending, string size =" + str.Length(), LogLevel.WARNING);
+		
+		string resposne = AT_GLOBALS.server.net_2.POST_SYNC(saveJsonBi, type);
+		
+		SCR_JsonLoadContext dataReader = new SCR_JsonLoadContext(true);
+		dataReader.ImportFromString(resposne);
+		
+		//! Read success variable
+		bool API_Response_Success = false;
+		dataReader.ReadValue("success", API_Response_Success);
+		if (AT_GLOBALS.server.DEBUG) Print("AT_NETWORK_2_RestCallback response_success=" + API_Response_Success.ToString(), LogLevel.WARNING);
+		
+		// Read str variable
+		string API_Response_Str = "";
+		dataReader.ReadValue("str", API_Response_Str);
+		Print(string.Format("API RESPONSE=%1", API_Response_Str));
+	}
 
 }
 
@@ -245,3 +310,14 @@ class AT_NETWORK_2_RestCallback_NR: RestCallback
 		
     };
 };
+
+enum API_Post_Types
+{
+	DEBUG,
+	PlayerList
+}
+
+enum API_Post_Response_Types
+{
+	DEBUG
+}

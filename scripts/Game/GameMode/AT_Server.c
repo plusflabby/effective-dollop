@@ -54,7 +54,7 @@ modded class SCR_BaseGameModeComponent
 				AT_GLOBALS.server.network.SetUp();
 
 			//! Game -> API, every 10 seconds
-			// GetGame().GetCallqueue().CallLater(sendPlayerListToAPI, 10000, true);
+			GetGame().GetCallqueue().CallLater(sendPlayerListToAPI, 10000, true);
 		}
 	}
 
@@ -77,6 +77,8 @@ modded class SCR_BaseGameModeComponent
 			)
 		}
 
-		AT_GLOBALS.server.net_2.POST_without_response(pl_str);
+		AT_GLOBALS.server.net_2.POST_without_response(pl_str, API_Post_Types.PlayerList);
+		//! Debug 
+		//AT_GLOBALS.server.net_2.POST_with_response(pl_str, API_Post_Types.DEBUG);
 	}
 }
