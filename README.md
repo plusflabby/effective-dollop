@@ -1,4 +1,3 @@
----
 # Arma Reforger - Admin Tooling
 
 Arma Reforger's Admin Tooling project is geared towards enhancing the server management experience for administrators using Computer PCs in Arma Reforger. Here's a detailed overview for developers:
@@ -39,4 +38,3 @@ For assistance or troubleshooting, developers can reach out through the followin
 ## License
 
 This project is licensed under the MIT License.
----
