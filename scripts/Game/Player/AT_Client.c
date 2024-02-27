@@ -1,9 +1,26 @@
-modded class SCR_PlayerController
+modded class SCR_PlayerController : PlayerController
 {
 	override void EOnInit(IEntity owner)
 	{
 		if (AT_GLOBALS.client.DEBUG)
 			Print("EOnInit", LogLevel.WARNING);
+		
+		if (!Replication.IsClient())
+		{
+			Print("Failed to be client in AT_Client", LogLevel.ERROR);
+			return;
+		}
+		
+		/*
+		
+		RplComponent rpl = RplComponent.Cast(controlledEntity.FindComponent(RplComponent));
+		if (rpl)
+		{
+			rpl.GiveExt(RplIdentity.Local(), false);
+			m_MainEntityID = rpl.Id();
+		}
+		
+		*/
 		
 		GetGame().GetCallqueue().CallLater(addJoinDateTime, 10000, false);
 		GetGame().GetCallqueue().CallLater(updatePlayTime, 300000, true);
@@ -71,8 +88,8 @@ modded class SCR_PlayerController
 	
 	private void loop()
 	{
-		if (AT_Global.client.DEBUG)
-				Print("Loop", LogLevel.WARNING);
+//		if (AT_Global.client.DEBUG)
+//				Print("Loop", LogLevel.WARNING);
 		
 		if (AT_Global.client.AT_EVENT_CLASS.getAll().Count() > 0)
 		{

@@ -22,7 +22,7 @@ class AT_Network : Managed
 	bool isSetUp()
 	{
 		bool check = FileIO.FileExists(FILE);
-		if (LOGS) Print("AT_Network network isSetUp=" + check.ToString(), LogLevel.WARNING);
+		// if (LOGS) Print("AT_Network network isSetUp=" + check.ToString(), LogLevel.WARNING);
 		return check;
 	}
 	// ! Public function to init... for the first time

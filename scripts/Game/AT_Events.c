@@ -4,8 +4,8 @@ class AT_EventClass
 	
 	ref array<ref AT_Event> getAll()
 	{
-		if (AT_GLOBALS.client.DEBUG)
-			Print("AT_EventClass getAll()", LogLevel.WARNING);
+//		if (AT_GLOBALS.client.DEBUG)
+//			Print("AT_EventClass getAll()", LogLevel.WARNING);
 		
 		return events;
 	}
