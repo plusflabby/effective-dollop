@@ -406,27 +406,37 @@ class AT_Network_3 : Managed
 	// ! Execute a single task (ex. param = "KICK;1;")
 	void executeTask(string task_str)
 	{
+		if (LOGS) Print(task_str, LogLevel.ERROR);
 		array<string> variables = new array<string>();
-		task_str.Split(";", variables, true);
+		task_str.Split(";", variables, false);
 		string action = variables.Get(0);
 		string playerId = variables.Get(1);
-		string playerNetId = variables.Get(2);
-		Print(variables, LogLevel.ERROR);
-		Print(action, LogLevel.ERROR);
-		Print(playerId, LogLevel.ERROR);
-		Print(playerNetId, LogLevel.ERROR);
-		
-//		int playerIdToUse = playerId;
-//		
-//		if (!playerNetId.IsEmpty())
-//		{
-//			GetGame().GetPlayerManager().GetPlayer
-//		}
+		string playerNetId = string.Empty;
+		if (variables.Count() > 2) playerNetId = variables.Get(2);
+		string banSeconds = string.Empty;
+		if (variables.Count() > 3) banSeconds = variables.Get(3);
 		
 		switch(action)
 		{
 			case "KICK":
 					GetGame().GetPlayerManager().KickPlayer(playerId.ToInt(), PlayerManagerKickReason.KICK);
+				break;
+			case "BAN":
+					if (LOGS) Print(string.Format("Adding ban for %1_seconds", banSeconds), LogLevel.ERROR);
+					if (playerNetId)
+						GetGame().GetBackendApi().GetBanServiceApi().CreateBanIdentityId(
+							AT_GLOBALS.server.banCallback,
+							playerNetId,
+							"Admin Tooling Ban",
+							banSeconds.ToInt() || 60
+						);
+					else
+						GetGame().GetBackendApi().GetBanServiceApi().CreateBanPlayerId(
+							AT_GLOBALS.server.banCallback,
+							playerId.ToInt(),
+							"Admin Tooling Ban",
+							banSeconds.ToInt() || 60
+						);
 				break;
 	
 			default:
@@ -435,4 +445,34 @@ class AT_Network_3 : Managed
 		}
 		return;
 	}
+}
+
+class BanCallback : BackendCallback
+{
+	/**
+	\brief Request finished with error result
+	\param code Error code is type of EBackendError
+	*/
+	override void OnError( int code, int restCode, int apiCode )
+	{
+		Print("[BackendCallback] OnError: "+ g_Game.GetBackendApi().GetErrorCode(code));
+	}
+
+	/**
+	\brief Request finished with success result
+	\param code Code is type of EBackendRequest
+	*/
+	override void OnSuccess( int code )
+	{
+		Print("[BackendCallback] OnSuccess()");
+	}
+
+	/**
+	\brief Request not finished due to timeout
+	*/
+	override void OnTimeout()
+	{
+		Print("[BackendCallback] OnTimeout");
+	}
+
 }
