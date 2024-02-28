@@ -76,4 +76,5 @@ class AT_Client
 	ref AT_EventClass AT_EVENT_CLASS = new AT_EventClass();
 	string sessionId = string.Empty;
 	bool DEBUG = true;
+	// AT_UI_AUTH auth_menu = new AT_UI_AUTH();
 }

@@ -40,37 +40,29 @@ modded class SCR_BaseGameModeComponent
 	{
 		if (!pl_srv)
 		{
-			RplComponent rpl = RplComponent.Cast(m_pGameMode.FindComponent(RplComponent));
-
-			if (!rpl || rpl.IsProxy())
-			{
-				Print("Failed to get rpl in AT_server", LogLevel.ERROR);
+			if (!Replication.IsServer())
 				return;
-			}
-			SCR_BaseGameModeComponent.pl_srv = true;
 
+			Print("AT_Server Starting...", LogLevel.WARNING);
+			
+			SCR_BaseGameModeComponent.pl_srv = true;
 
 			if (!AT_GLOBALS.server.network.isSetUp())
 				AT_GLOBALS.server.network.SetUp();
 
+			Print("Starting Game <-> API loop(s)", LogLevel.WARNING);
+			
 			//! Game -> API, every 10 seconds
 			GetGame().GetCallqueue().CallLater(sendPlayerListToAPI, 15000, true);
 			
 			//! Game -> API -> Game, every 10 seconds, for tasks like kick
-			GetGame().GetCallqueue().CallLater(runTasksFromAPI, 10000, true);
-			Print("runTasksFromAPI", LogLevel.WARNING);
+			GetGame().GetCallqueue().CallLater(AT_GLOBALS.server.net_3.getTaskList, 10000, true);
 		}
 	}
 
 	//! Server function to ..
 	private void sendPlayerListToAPI()
 	{
-		if (!AT_GLOBALS.server.network.isSetUp())
-			return;
-		
-		if (GetGame().GetPlayerManager().GetPlayerCount() == 0)
-			return;
-		
 		string pl_str = string.Empty;
 		array<int> outPlayers = new array<int>();
 		GetGame().GetPlayerManager().GetPlayers(outPlayers);
@@ -83,17 +75,9 @@ modded class SCR_BaseGameModeComponent
 				GetGame().GetPlayerManager().GetPlayerName(id)
 			)
 		}
-
+		
 		AT_GLOBALS.server.net_2.POST_without_response(pl_str, API_Post_Types.PlayerList);
 		//! Debug 
 		//AT_GLOBALS.server.net_2.POST_with_response(pl_str, API_Post_Types.DEBUG);
-	}
-	
-	private void runTasksFromAPI()
-	{
-		if (!AT_GLOBALS.server.network.isSetUp())
-			return;
-		
-		AT_GLOBALS.server.net_3.getTaskList();
 	}
 }

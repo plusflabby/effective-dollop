@@ -352,7 +352,7 @@ class AT_Network_3 : Managed
 		}
 		
 		string resposne = restContext.GET_now("api/v1/task?s=" + network_id);
-		//Print(resposne, LogLevel.ERROR);
+		Print(resposne, LogLevel.NORMAL);
 		
 		SCR_JsonLoadContext dataReader = new SCR_JsonLoadContext(true);
 		dataReader.ImportFromString(resposne);
@@ -398,9 +398,12 @@ class AT_Network_3 : Managed
 		}
 	}
 	
+	protected BanServiceApi m_BanApi;
 	// ! Execute a single task (ex. param = "KICK;1;")
 	void executeTask(string task_str)
 	{
+		Print("Executing task="+task_str, LogLevel.WARNING);
+		
 		if (LOGS) Print(task_str, LogLevel.ERROR);
 		array<string> variables = new array<string>();
 		task_str.Split(";", variables, false);
@@ -417,22 +420,42 @@ class AT_Network_3 : Managed
 					GetGame().GetPlayerManager().KickPlayer(playerId.ToInt(), PlayerManagerKickReason.KICK);
 				break;
 			case "BAN":
+					BackendApi bApi = GetGame().GetBackendApi();
+					if (!bApi)
+					{
+						Print("bApi, failed, can not ban", LogLevel.ERROR);
+						return;
+					}
+					m_BanApi = bApi.GetBanServiceApi();
+					if (!m_BanApi)
+					{
+						Print("m_BanApi, failed, can not ban", LogLevel.ERROR);
+						return;
+					}
 					if (LOGS) Print(string.Format("Adding ban for %1_seconds", banSeconds), LogLevel.ERROR);
 
 					if (!playerNetId.IsEmpty())
-						GetGame().GetBackendApi().GetBanServiceApi().CreateBanIdentityId(
+					{
+						bool success = m_BanApi.CreateBanIdentityId(
 							AT_GLOBALS.server.banCallback,
 							playerNetId,
 							"Admin Tooling Ban",
 							banSeconds.ToInt()
 						);
+						if (!success) Print(string.Format("Failed to create ban;%1;%2;%3:%4", AT_GLOBALS.server.banCallback, playerNetId, "Admin Tooling Ban", banSeconds.ToInt()), LogLevel.ERROR)
+					}
 					else
-						GetGame().GetBackendApi().GetBanServiceApi().CreateBanPlayerId(
+					{
+						bool success = m_BanApi.CreateBanPlayerId(
 							AT_GLOBALS.server.banCallback,
 							playerId.ToInt(),
 							"Admin Tooling Ban",
 							banSeconds.ToInt()
 						);
+						if (!success) Print(string.Format("Failed to create ban;%1;%2;%3:%4", AT_GLOBALS.server.banCallback, playerId.ToInt(), "Admin Tooling Ban", banSeconds.ToInt()), LogLevel.ERROR);
+					}
+						
+					GetGame().GetPlayerManager().KickPlayer(playerId.ToInt(), PlayerManagerKickReason.KICK);
 				break;
 	
 			default:
