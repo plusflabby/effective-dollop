@@ -58,6 +58,7 @@ modded class SCR_BaseGameModeComponent
 			
 			//! Game -> API -> Game, every 10 seconds, for tasks like kick
 			GetGame().GetCallqueue().CallLater(runTasksFromAPI, 10000, true);
+			Print("runTasksFromAPI", LogLevel.WARNING);
 		}
 	}
 

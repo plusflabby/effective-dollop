@@ -22,7 +22,7 @@ class AT_Network : Managed
 	bool isSetUp()
 	{
 		bool check = FileIO.FileExists(FILE);
-		// if (LOGS) Print("AT_Network network isSetUp=" + check.ToString(), LogLevel.WARNING);
+		//if (LOGS) Print("AT_Network network isSetUp=" + check.ToString(), LogLevel.WARNING);
 		return check;
 	}
 	// ! Public function to init... for the first time
@@ -126,15 +126,6 @@ class AT_NETWORK_1_RestCallback: RestCallback
 
 
 //! Network part 2 
-/*
-
-
-//! 
-//! returns response uuid or "success"
-
-... if resppnse is needed a callque will be made to get the data?
-*/
-
 //! Class overall will send/exchange data to the api
 class AT_Network_2 : Managed
 {
@@ -347,9 +338,13 @@ class AT_Network_3 : Managed
 	{
 		//! Get net remote id 
 		string network_id = AT_GLOBALS.server.net_2.getServerRemoteId();
-		
+		if (network_id.IsEmpty())
+		{
+			Print("AT_Network_2 POST, Failed, to get Remote Network Id. Unable to send data", LogLevel.ERROR);
+			return;
+		}
+
 		RestContext restContext = GetGame().GetRestApi().GetContext(AT_GLOBALS.server.API_SERVER);
-		
 		if (!restContext)
 		{
 			Print("AT_Network_3 SetUp, Failed, to get RestAPI context. Unable to send data", LogLevel.ERROR);
@@ -423,19 +418,20 @@ class AT_Network_3 : Managed
 				break;
 			case "BAN":
 					if (LOGS) Print(string.Format("Adding ban for %1_seconds", banSeconds), LogLevel.ERROR);
-					if (playerNetId)
+
+					if (!playerNetId.IsEmpty())
 						GetGame().GetBackendApi().GetBanServiceApi().CreateBanIdentityId(
 							AT_GLOBALS.server.banCallback,
 							playerNetId,
 							"Admin Tooling Ban",
-							banSeconds.ToInt() || 60
+							banSeconds.ToInt()
 						);
 					else
 						GetGame().GetBackendApi().GetBanServiceApi().CreateBanPlayerId(
 							AT_GLOBALS.server.banCallback,
 							playerId.ToInt(),
 							"Admin Tooling Ban",
-							banSeconds.ToInt() || 60
+							banSeconds.ToInt()
 						);
 				break;
 	
@@ -455,7 +451,7 @@ class BanCallback : BackendCallback
 	*/
 	override void OnError( int code, int restCode, int apiCode )
 	{
-		Print("[BackendCallback] OnError: "+ g_Game.GetBackendApi().GetErrorCode(code));
+		Print("[BackendCallback] OnError: "+ g_Game.GetBackendApi().GetErrorCode(code), LogLevel.ERROR);
 	}
 
 	/**
@@ -464,7 +460,7 @@ class BanCallback : BackendCallback
 	*/
 	override void OnSuccess( int code )
 	{
-		Print("[BackendCallback] OnSuccess()");
+		Print("[BackendCallback] OnSuccess()", LogLevel.ERROR);
 	}
 
 	/**
@@ -472,7 +468,7 @@ class BanCallback : BackendCallback
 	*/
 	override void OnTimeout()
 	{
-		Print("[BackendCallback] OnTimeout");
+		Print("[BackendCallback] OnTimeout", LogLevel.ERROR);
 	}
 
 }
