@@ -12,7 +12,7 @@ class AdminToolingCommand: ScrServerCommand
 		if (!ps)
 			return ScrServerCmdResult(string.Empty, EServerCmdResultType.ERR);
 		ps.OpenBrowser("https://admin-tooling.flabby.dev/");
-		return ScrServerCmdResult("Opened remote admin menu!", EServerCmdResultType.OK);
+		return ScrServerCmdResult("Opened admin website", EServerCmdResultType.OK);
 	}
 
 	protected ScrServerCmdResult menu_open()
@@ -21,40 +21,29 @@ class AdminToolingCommand: ScrServerCommand
 		if (!mm)
 			return ScrServerCmdResult(string.Empty, EServerCmdResultType.ERR);
 		mm.OpenMenu(ChimeraMenuPreset.AT_DASHBOARD);
+		return ScrServerCmdResult("Opened admin menu", EServerCmdResultType.OK);
+	}
+	
+	protected ScrServerCmdResult help()
+	{
+		string str = string.Empty;
+		str += "Help for admin command.";
+		str += "\n#admin open (Opens the admin tooling menu)";
+		str += "\n#admin remote (Opens the administration website)";
 		
-		return ScrServerCmdResult("Opened admin menu!", EServerCmdResultType.OK);
+		return ScrServerCmdResult(str, EServerCmdResultType.OK);
 	}
 	
 	protected ScrServerCmdResult HandleCommand(array<string> argv, int playerId = 0)
 	{
-		
 		if (argv.Count() > 1)
 		{
-			if (argv[1] == "help")
-			{
-				if (argv[2] == "menu") return ScrServerCmdResult(
-					"Help for admin menu command." +
-					"\n#admin menu open (Opens the admin tooling menu)" +
-					"\n#admin menu logout (Logout of the admin tooling menu)" +
-					"\n#admin menu remote (Opens the administration website)",
-					EServerCmdResultType.OK
-				);
-				else return ScrServerCmdResult(string.Empty, EServerCmdResultType.ERR);
-			}
-			else if (argv[1] == "menu")
-			{
-				if (argv[2] == "remote")
-					return menu_remote();
-			}
+			if (argv[1] == "open")
+				return menu_open();
+			if (argv[1] == "remote")
+				return menu_remote();
 		}
-		
-		
-		return ScrServerCmdResult(
-			"Help for admin command." +
-			"\n#admin help <menu/remote>" +
-			"\n#admin menu <logout/open/remote>",
-			EServerCmdResultType.OK
-		);
+		return help();
 	}
 	
 	// Specify keyword of command
@@ -68,7 +57,7 @@ class AdminToolingCommand: ScrServerCommand
 	//-----------------------------------------------------------------------------
 	override bool IsServerSide()
 	{
-		return true;
+		return false;
 	}
 	
 	// Set requirement to admin permission via RCON
@@ -89,23 +78,14 @@ class AdminToolingCommand: ScrServerCommand
 	//-----------------------------------------------------------------------------
 	override ref ScrServerCmdResult OnChatServerExecution(array<string> argv, int playerId)
 	{
-		return HandleCommand(argv, playerId);
+		return ScrServerCmdResult(string.Empty, EServerCmdResultType.OK);
 	}
 	
 	// Handle Chat command on client
 	//-----------------------------------------------------------------------------
 	override ref ScrServerCmdResult OnChatClientExecution(array<string> argv, int playerId)
 	{
-		if (argv.Count() > 2)
-		{
-			if (argv[1] == "menu")
-			{
-				if (argv[2] == "open")
-					return menu_open();
-			}
-		}
-		
-		return ScrServerCmdResult(string.Empty, EServerCmdResultType.OK);
+		return HandleCommand(argv, playerId);
 	}
 	
 	// Handle RCON command on server
@@ -119,22 +99,6 @@ class AdminToolingCommand: ScrServerCommand
 	//-----------------------------------------------------------------------------
 	protected ScrServerCmdResult HandleSuccessfulResult()
 	{
-		switch(m_eSubcommandArg)
-		{
-			// Handle Create Result
-			case SCR_EBanSubcommandArg.EBSA_CREATE:
-//				if (m_iBanPlayerId > 0)
-//					GetGame().GetPlayerManager().KickPlayer(m_iBanPlayerId, PlayerManagerKickReason.BAN);
-				return ScrServerCmdResult(string.Format("Player '%1' banned!", "tests"), EServerCmdResultType.OK);
-			
-			// Handle Remove Result
-			case SCR_EBanSubcommandArg.EBSA_REMOVE:
-				return ScrServerCmdResult("Ban removed!", EServerCmdResultType.OK);
-		
-//			// Handle List Result
-//			case SCR_EBanSubcommandArg.EBSA_LIST:
-//				return ListBansResult();
-		}
 		return ScrServerCmdResult(string.Empty, EServerCmdResultType.OK);
 	}
 	
@@ -142,12 +106,6 @@ class AdminToolingCommand: ScrServerCommand
 	//-----------------------------------------------------------------------------
 	override ref ScrServerCmdResult OnUpdate()
 	{
-		switch(m_Callback.m_eState)
-		{
-			case EBackendCallbackState.EBCS_SUCCESS: return HandleSuccessfulResult();
-			case EBackendCallbackState.EBCS_PENDING: return ScrServerCmdResult(string.Empty, EServerCmdResultType.PENDING);
-			case EBackendCallbackState.EBCS_TIMEOUT: return ScrServerCmdResult("Timeout", EServerCmdResultType.ERR);
-		}
-		return ScrServerCmdResult(string.Empty, EServerCmdResultType.ERR);	
+		return ScrServerCmdResult(string.Empty, EServerCmdResultType.OK);
 	}
 }
