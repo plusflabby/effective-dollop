@@ -1,5 +1,24 @@
 modded class SCR_PlayerController : PlayerController
 {
+	protected bool hasGodMode = false;
+	protected PlayerManager playerManager;
+	protected SCR_DamageManagerComponent damageManager;
+	protected SCR_CharacterDamageManagerComponent characterDamageManager;
+	protected IEntity ownerI;
+	
+	protected void heal(IEntity player)
+	{
+		damageManager = SCR_DamageManagerComponent.GetDamageManager(player);
+		if (!damageManager)
+		{
+			Print("Failed to get damageManager in AT_Client", LogLevel.ERROR);
+			return;
+		}
+		
+		if (damageManager.CanBeHealed())
+			damageManager.FullHeal();
+	}
+	
 	override void EOnInit(IEntity owner)
 	{
 		if (AT_GLOBALS.client.DEBUG)
@@ -166,9 +185,63 @@ modded class SCR_PlayerController : PlayerController
 						AT_Global.client.AT_EVENT_CLASS.remove(i);
 						break;
 					}
+					case AT_Events.PlayerGodMode:
+					{
+						// Get menu listbox selected player
+						AT_playerData player = AT_playerData.Cast(ev.getData());
+						
+		Print(player.id.ToString(), LogLevel.ERROR);
+						//check if enabled and turn off if yes
+						SCR_PlayerController playerScr = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(player.id));
+						if (!playerScr)
+						{
+							Debug.Error("PlayerController not casted to SCR_PlayerController");
+							break;
+						}
+						
+						// Disable take damage
+						Rpc(RpcAsk_Authority_Method_DisablePlayerDamage, player.id, !playerScr.hasGodMode);
+						
+						// Heal
+						heal(playerManager.GetPlayerControlledEntity(player.id));
+						
+						//Remove from events
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
+						break;
+					}
+					default:
+						if (AT_Global.client.DEBUG)
+							Print(string.Format("AT_Event %1 does not exists on switch", ev.getName()), LogLevel.ERROR);
+					
+						AT_Global.client.AT_EVENT_CLASS.remove(i);
+						break;
 				}
 			}
 		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_Authority_Method_DisablePlayerDamage(int pId, bool enable)
+	{
+		IEntity pEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(pId);
+		if (!pEntity)
+		{
+			Print("!pEntity", LogLevel.ERROR);
+			return;
+		}
+		ChimeraCharacter char = ChimeraCharacter.Cast(pEntity);
+		if (!char)
+		{
+			Print("!char", LogLevel.ERROR);
+			return;
+		}
+		SCR_CharacterDamageManagerComponent damageMgr = SCR_CharacterDamageManagerComponent.Cast(char.GetDamageManager());
+		if (!damageMgr)
+		{
+			Print("SCR_CharacterDamageManagerComponent not casted to SCR_DamageManagerComponent", LogLevel.ERROR);
+			return;
+		}
+		damageMgr.EnableDamageHandling(enable);
 	}
 	
 	private void updatePlayTime()
@@ -187,4 +260,3 @@ modded class SCR_PlayerController : PlayerController
 		Rpc(RpcAsk_Authority_Method_PlayerProfile_Join, GetPlayerId());
 	}
 };
-

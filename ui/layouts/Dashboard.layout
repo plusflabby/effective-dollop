@@ -24,6 +24,75 @@ WindowWidgetClass {
      Slot LayoutSlot "{5F113A93095FF156}" {
       SizeMode Fill
      }
+     {
+      HorizontalLayoutWidgetClass "{5E87554916C513EF}" {
+       Prefab "{5E87554916C513EF}"
+       {
+        VerticalLayoutWidgetClass "{5E875548292A7FB6}" {
+         Prefab "{5E875548292A7FB6}"
+         {
+          ButtonWidgetClass "{60B8570E3855B6DE}" {
+           Name "Button5"
+           Slot LayoutSlot {
+            Padding 5 5 5 5
+           }
+           components {
+            SCR_ButtonBaseComponent "{60B8570E2E157B38}" {
+            }
+           }
+           {
+            TextWidgetClass "{60B8570E0D06F1D6}" {
+             Name "Text0"
+             Slot ButtonWidgetSlot {
+             }
+             Color 0 0 0 1
+             Text "Player God Mode"
+            }
+           }
+          }
+          ButtonWidgetClass "{60B8570E7BB6490F}" {
+           Name "Button6"
+           Slot LayoutSlot "{60B8570E7BB64888}" {
+            Padding 5 5 5 5
+           }
+           components {
+            SCR_ButtonBaseComponent "{60B8570E2E157B38}" {
+            }
+           }
+           {
+            TextWidgetClass "{60B8570E7BB6490E}" {
+             Name "Text0"
+             Slot ButtonWidgetSlot "{60B8570E7BB64929}" {
+             }
+             Color 0 0 0 1
+             Text "Vehicle God Mode"
+            }
+           }
+          }
+          ButtonWidgetClass "{60B8570E5CAA0E21}" {
+           Name "Button7"
+           Slot LayoutSlot "{60B8570E7BB64888}" {
+            Padding 5 5 5 5
+           }
+           components {
+            SCR_ButtonBaseComponent "{60B8570E2E157B38}" {
+            }
+           }
+           {
+            TextWidgetClass "{60B8570E5CAA0E20}" {
+             Name "Text0"
+             Slot ButtonWidgetSlot "{60B8570E7BB64929}" {
+             }
+             Color 0 0 0 1
+             Text "Map Display"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
     }
     WindowWidgetClass "{5F113A93FAE4961B}" : "{3575FD3F0C3424A9}ui/layouts/Player Database/Search.layout" {
      Name "rootFrame0"

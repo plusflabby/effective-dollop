@@ -26,7 +26,34 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 	protected WindowWidget windowWidget;
 	protected TextListboxWidget listboxWidget;
 	protected SCR_ButtonBaseComponent openProfileButton;
-
+	
+	// Game Features Update (PArt 1)
+	protected SCR_ButtonBaseComponent BUTTON_PLAYER_GODMODE;
+	protected static const string BUTTON_PLAYER_GODMODE_STR = "Button5";
+	protected SCR_ButtonBaseComponent BUTTON_VEHICLE_GODMODE;
+	protected static const string BUTTON_VEHICLE_GODMODE_STR = "Button6";
+	protected SCR_ButtonBaseComponent BUTTON_MAP_DISPLAY;
+	protected static const string BUTTON_MAP_DISPLAY_STR = "Button7";
+	
+	private void PLAYER_GODMODE() {
+		if (AT_Global.client.DEBUG)
+			Print("PLAYER_GODMODE()", LogLevel.WARNING);
+		
+		events(AT_Events.PlayerGodMode);
+	}
+	private void VEHICLE_GODMODE() {
+		if (AT_Global.client.DEBUG)
+			Print("VEHICLE_GODMODE()", LogLevel.WARNING);
+		
+		events(AT_Events.VehicleGodMode);
+	}
+	private void MAP_DISPLAY() {
+		if (AT_Global.client.DEBUG)
+			Print("MAP_DISPLAY()", LogLevel.WARNING);
+		
+		events(AT_Events.MapDisplay);
+	}
+	
 	protected override void OnMenuOpen()
 	{
 		if (AT_GLOBALS.client.DEBUG)
@@ -35,9 +62,21 @@ class AT_Player_ManagementUI : AT_UI_MENU_BASE
 		TEXT_TITLE = "UI_PlayerManagement";
 		super.OnMenuOpen();
 		
+		//! setup player godmode button
+		BUTTON_PLAYER_GODMODE = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_PLAYER_GODMODE_STR, rootWidget);
+		BUTTON_PLAYER_GODMODE.m_OnClicked.Insert(PLAYER_GODMODE);
+		
+		//! setup vehicle godmode button
+		BUTTON_VEHICLE_GODMODE = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_VEHICLE_GODMODE_STR, rootWidget);
+		BUTTON_VEHICLE_GODMODE.m_OnClicked.Insert(VEHICLE_GODMODE);
+		
+		//! setup map display button
+		BUTTON_MAP_DISPLAY = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_MAP_DISPLAY_STR, rootWidget);
+		BUTTON_MAP_DISPLAY.m_OnClicked.Insert(SpectateButton);
+		
 		//! setup spectate button
 		spectateButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_SPECTATE, rootWidget);
-		spectateButton.m_OnClicked.Insert(SpectateButton);
+		spectateButton.m_OnClicked.Insert(MAP_DISPLAY);
 		
 		//! setup kick button
 		kickButton = SCR_ButtonBaseComponent.GetButtonBase(BUTTON_KICK, rootWidget);

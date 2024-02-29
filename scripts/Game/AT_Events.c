@@ -47,7 +47,11 @@ enum AT_Events
 	Spectate,
 	SessionUpdate,
 	PlayerDatabaseSearch,
-	PlayerProfileGetData
+	PlayerProfileGetData,
+	
+	PlayerGodMode,
+	VehicleGodMode,
+	MapDisplay
 }
 
 class AT_Event
