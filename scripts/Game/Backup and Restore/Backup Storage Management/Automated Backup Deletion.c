@@ -5,7 +5,7 @@ class AutomatedBackupDeletion
 	void AutomatedBackupDeletion()
 	{
 		//if (BackUpLocation.PROFILE == BackUpLocation.PROFILE)
-		System.FindFiles(backupFiles.Insert, "$profile:", BackupAndRestore.backupsExtension);
+		FileIO.FindFiles(backupFiles.Insert, "$profile:", BackupAndRestore.backupsExtension);
 	}
 	
 	//! TODO delete backups based upon retention policy

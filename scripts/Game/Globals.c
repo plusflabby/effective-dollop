@@ -60,21 +60,33 @@ class AT_Server
 	ref RolesClass myRolesClass = new RolesClass();
 	ref atRBAC_STORAGE rbac_STORAGE = new atRBAC_STORAGE();
 	ref AT_Network network = new AT_Network();
-	bool DEBUG = true;
+	bool DEBUG = false;
 	ref AT_Network_2 net_2 = new AT_Network_2();
 	ref AT_Network_3 net_3 = new AT_Network_3();
 	//string API_SERVER = "http://127.0.0.1:8787/";
 	string API_SERVER = "http://15.204.134.11:8787/";
 	ref BanCallback banCallback = new BanCallback();
+	
+	void AT_Server()
+	{
+		#ifdef AT_DEBUG
+		DEBUG = true;
+		#endif 
+	}
 }
 
 class AT_Client
 {
 	string m_sAtUiProfileUID = string.Empty;
-	//ref array<string> profileItem = new array<string>();
 	ref array<ref array<string>> profileData = new array<ref array<string>>();
 	ref AT_EventClass AT_EVENT_CLASS = new AT_EventClass();
 	string sessionId = string.Empty;
-	bool DEBUG = true;
-	// AT_UI_AUTH auth_menu = new AT_UI_AUTH();
+	bool DEBUG = false;
+	
+	void AT_Client()
+	{
+		#ifdef AT_DEBUG
+		DEBUG = true;
+		#endif 
+	}
 }

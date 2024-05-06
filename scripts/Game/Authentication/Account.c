@@ -21,7 +21,7 @@ class Account
 		Password_Storage_Password password_storing = new Password_Storage_Password(password, username);
 		Password_Storage.addPasswordToDatabase(password_storing);
 		
-		session = new ref Session_Init();
+		session = new Session_Init();
 		Session_Structure session_data = new Session_Structure();
 		session_data.sessionId = session.mySessionId;
 		session_data.data = username;
@@ -63,7 +63,7 @@ class Account
 		if (!Password_Storage.compareForLogin(username, password))
 			return false;
 		
-		session = new ref Session_Init();
+		session = new Session_Init();
 		Session_Structure session_data = new Session_Structure();
 		session_data.sessionId = session.mySessionId;
 		session_data.data = username;

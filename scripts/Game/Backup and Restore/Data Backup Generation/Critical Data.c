@@ -9,7 +9,7 @@ class CriticalDataToBackup
 	{
 		foreach (string extension : extensions)
 		{
-			System.FindFiles(files.Insert, "$profile:", extension);
+			FileIO.FindFiles(files.Insert, "$profile:", extension);
 		}
 	}
 	

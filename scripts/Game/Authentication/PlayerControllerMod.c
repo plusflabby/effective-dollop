@@ -25,7 +25,7 @@ modded class SCR_PlayerController
 			if (!Password_Storage.compareForLogin(username, password))
 				return;
 			
-			Session_Init session = new ref Session_Init();
+			Session_Init session = new Session_Init();
 			Session_Structure session_data = new Session_Structure();
 			session_data.sessionId = session.mySessionId;
 			session_data.data = username;

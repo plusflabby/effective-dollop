@@ -15,7 +15,7 @@ class StorageSpaceMonitoring
 	bool isSpaceLeft()
 	{
 		array<string> backupFiles = new array<string>();
-		System.FindFiles(backupFiles.Insert, "$profile:", BackupAndRestore.backupsExtension);
+		FileIO.FindFiles(backupFiles.Insert, "$profile:", BackupAndRestore.backupsExtension);
 		
 		if (backupFiles.Count() == 0)
 			return true;

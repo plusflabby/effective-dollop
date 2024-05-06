@@ -18,7 +18,7 @@ class vFileSizeAndIoOperations : vSetMod
 		//
 		//Print("file", LogLevel.NORMAL);
 		array<string> files = {};
-		System.FindFiles(files.Insert, "$profile:/.db/AdminTooling", ".json");
+		FileIO.FindFiles(files.Insert, "$profile:/.db/AdminTooling", ".json");
 		
 		// probably will be limited if size > int
 		int filesSize = 0;
@@ -48,4 +48,4 @@ class vFileSizeAndIoOperations : vSetMod
 	}
 }
 
-//ref vFileSizeAndIoOperations vfszio = new ref vFileSizeAndIoOperations();
+//ref vFileSizeAndIoOperations vfszio = new vFileSizeAndIoOperations();

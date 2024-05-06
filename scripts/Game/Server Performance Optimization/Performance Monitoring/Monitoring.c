@@ -114,6 +114,6 @@ class Monitoring
 		scriptAverageCompleteInMiliSeconds = scriptAverageCompleteInMiliSeconds_;
 	}
 }
-ref Monitoring ServerPerformanceMonitor = new ref Monitoring();
+ref Monitoring ServerPerformanceMonitor = new Monitoring();
 //ServerPerformanceMonitor.startMonitoringWithInterval();
 

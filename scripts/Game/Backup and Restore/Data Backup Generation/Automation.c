@@ -15,7 +15,7 @@ class Automation
 		
 		// Critical data to backup
 		array<string> files = {};
-		System.FindFiles(files.Insert, "$profile:", ".ATbin");
+		FileIO.FindFiles(files.Insert, "$profile:", ".ATbin");
 		System.FindFiles(files.Insert, "$profile:", ".ATjson");
 		
 		int year, month, day, hour, minute, second;
