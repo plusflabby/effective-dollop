@@ -1,3 +1,6 @@
+# [Project has been moved!]
+# https://flabby.dev/discord
+# [Project has been moved!]
 # Arma Reforger - Admin Tooling
 
 Arma Reforger's Admin Tooling project is geared towards enhancing the server management experience for administrators using Computer PCs in Arma Reforger. Here's a detailed overview for developers:
